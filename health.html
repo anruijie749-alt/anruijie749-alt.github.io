@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能健康减肥助手 - AI智能服务助手</title>
+    <meta name="description" content="AI智能健康减肥助手，为您定制专属健康管理和减肥方案，包含饮食计划、运动指导和进度追踪">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">AI智能服务助手</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="health.html" class="active">健康减肥</a></li>
+                <li><a href="senior.html">银发族顾问</a></li>
+                <li><a href="tea.html">茶文化助手</a></li>
+                <li><a href="tools.html">AI工具助手</a></li>
+                <li><a href="products.html">精品周边</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区 -->
+        <section class="main-content">
+            <h1 class="page-title">AI智能健康减肥助手</h1>
+            <p class="page-subtitle">基于AI算法，为您定制专属健康管理和减肥方案，科学管理体重，塑造理想体态</p>
+            <div>
+                <button class="btn" onclick="generatePlan('health')">生成专属方案</button>
+                <a href="#resources" class="btn btn-outline">查看方案模板</a>
+            </div>
+        </section>
+
+        <!-- 功能特点 -->
+        <section class="card">
+            <h2 class="card-title">核心功能</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>📊 智能健康评估</h3>
+                    <p>输入身高、体重、年龄等基础信息，AI自动评估您的健康状态，生成个性化健康报告</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🍎 专属饮食计划</h3>
+                    <p>根据您的身体状况和目标，AI定制每日饮食方案，包含营养搭配和热量控制建议</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🏃 科学运动指导</h3>
+                    <p>提供适合您的运动计划，包含有氧、力量训练和拉伸，配有动作示范视频</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📈 进度追踪分析</h3>
+                    <p>实时记录体重、体脂等数据，AI分析趋势，动态调整方案，确保科学减重不反弹</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 方案模板 -->
+        <section class="card" id="resources">
+            <h2 class="card-title">方案模板</h2>
+            <p class="card-desc">免费获取基础模板，付费解锁全套AI定制方案，含详细执行指南和工具清单</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>7天基础模板（免费）</h3>
+                    <p>含基础饮食搭配+简易运动计划，适合健康管理新手快速入门</p>
+                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/health-free')">免费领取</button>
+                </div>
+                <div class="feature-item">
+                    <h3>30天AI定制全套方案（付费）</h3>
+                    <p>AI动态优化方案细节，含深度教程+工具包，科学健康管理不反弹</p>
+                    <button class="btn" onclick="showPayCode()">9.9元解锁</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐产品 -->
+        <section class="card">
+            <h2 class="card-title">推荐产品</h2>
+            <p class="card-desc">搭配健康管理方案的实用产品，提升运动体验和健康监测</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-image">🏋️</div>
+                    <h3>健身便携运动套装</h3>
+                    <p>瑜伽垫+阻力带+跳绳，适配减肥健身方案日常训练</p>
+                    <button class="btn" onclick="alert('产品详情：https://example.com/product1')">了解详情</button>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">📊</div>
+                    <h3>健康管理检测小工具</h3>
+                    <p>血压计+体脂秤+血糖试纸，适配健康管理方案监测</p>
+                    <button class="btn" onclick="alert('产品详情：https://example.com/product2')">了解详情</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1v1咨询服务 -->
+        <section class="card">
+            <h2 class="card-title">1v1专业健康管理咨询服务</h2>
+            <p class="card-desc">AI算法辅助定制健康方案，全程指导饮食运动落地细节</p>
+            <div class="pay-section">
+                <div class="pay-code">
+                    <div class="pay-code-placeholder">微信/支付宝<br>收款码</div>
+                </div>
+                <p class="pay-tips">咨询费用：49元/次（扫码支付后填写联系方式，24小时内对接）</p>
+                <button class="btn" onclick="showConsultForm('健康管理')">填写咨询信息</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 20px; text-align: center;">
+                本咨询仅提供生活方式建议，不替代医疗诊断与治疗，身体不适问题请遵医嘱
+            </p>
+        </section>
+
+        <!-- 广告位 -->
+        <div class="ad-slot">
+            <p class="ad-tips">广告位预留（可接入Google AdSense或国内广告联盟）</p>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="index.html">返回首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <p class="copyright">© 2025 AI智能服务助手 版权所有</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showPayCode() {
+            alert('支付二维码功能\n\n（可对接微信/支付宝支付接口）');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

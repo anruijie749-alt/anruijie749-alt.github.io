@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通用AI工具助手 - AI智能服务助手</title>
+    <meta name="description" content="整合各类AI工具，提供使用教程、效率提升方案和工具组合推荐，让AI成为您的得力助手">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">AI智能服务助手</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="health.html">健康减肥</a></li>
+                <li><a href="senior.html">银发族顾问</a></li>
+                <li><a href="tea.html">茶文化助手</a></li>
+                <li><a href="tools.html" class="active">AI工具助手</a></li>
+                <li><a href="products.html">精品周边</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区 -->
+        <section class="main-content">
+            <h1 class="page-title">通用AI工具助手</h1>
+            <p class="page-subtitle">整合各类AI工具，提供使用教程、效率提升方案和工具组合推荐，让AI成为您的得力助手</p>
+            <div>
+                <button class="btn" onclick="generatePlan('tools')">生成专属方案</button>
+                <a href="#resources" class="btn btn-outline">查看方案模板</a>
+            </div>
+        </section>
+
+        <!-- 功能特点 -->
+        <section class="card">
+            <h2 class="card-title">核心功能</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🤖 AI工具推荐</h3>
+                    <p>输入工具需求、使用场景，AI生成专属通用AI工具教程，含工具选择、高效使用方法</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📖 使用教程库</h3>
+                    <p>涵盖ChatGPT、Midjourney、Claude等热门AI工具的详细使用教程和技巧分享</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ 效率提升方案</h3>
+                    <p>动态适配工具使用场景，含组合技巧+效率提升方案，最大化AI工具价值</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔗 工具组合推荐</h3>
+                    <p>根据您的需求，推荐最佳AI工具组合，实现工作流程自动化和效率倍增</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门工具 -->
+        <section class="card">
+            <h2 class="card-title">热门AI工具</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>💬 ChatGPT</h3>
+                    <p>对话式AI助手，适用于文案创作、问答、翻译等多种场景</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎨 Midjourney</h3>
+                    <p>AI图像生成工具，轻松创作高质量艺术作品和设计素材</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📝 Claude</h3>
+                    <p>强大的AI写作助手，擅长长文本处理和复杂推理任务</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎬 Runway</h3>
+                    <p>AI视频生成和编辑工具，让视频创作变得简单高效</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 方案模板 -->
+        <section class="card" id="resources">
+            <h2 class="card-title">方案模板</h2>
+            <p class="card-desc">免费获取基础模板，付费解锁全套AI定制方案，含详细执行指南和工具清单</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>AI工具基础模板（免费）</h3>
+                    <p>含热门AI工具清单+基础使用教程，快速上手高效AI工具</p>
+                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/tools-free')">免费领取</button>
+                </div>
+                <div class="feature-item">
+                    <h3>30天AI定制全套方案（付费）</h3>
+                    <p>动态适配工具使用场景，含组合技巧+效率提升方案，最大化AI工具价值</p>
+                    <button class="btn" onclick="showPayCode()">9.9元解锁</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1v1咨询服务 -->
+        <section class="card">
+            <h2 class="card-title">1v1专业AI工具咨询服务</h2>
+            <p class="card-desc">AI工具管理师+AI算法双重加持，1对1定制工具方案，全程指导高效使用技巧</p>
+            <div class="pay-section">
+                <div class="pay-code">
+                    <div class="pay-code-placeholder">微信/支付宝<br>收款码</div>
+                </div>
+                <p class="pay-tips">咨询费用：49元/次（扫码支付后填写联系方式，24小时内对接）</p>
+                <button class="btn" onclick="showConsultForm('通用AI工具')">填写咨询信息</button>
+            </div>
+        </section>
+
+        <!-- 广告位 -->
+        <div class="ad-slot">
+            <p class="ad-tips">广告位预留（可接入Google AdSense或国内广告联盟）</p>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="index.html">返回首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <p class="copyright">© 2025 AI智能服务助手 版权所有</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showPayCode() {
+            alert('支付二维码功能\n\n（可对接微信/支付宝支付接口）');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

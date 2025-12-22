@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>银发族生活旅居顾问 - AI智能服务助手</title>
+    <meta name="description" content="专为银发族设计的智能生活顾问，提供养老规划、旅居方案和健康管理一站式服务">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">AI智能服务助手</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="health.html">健康减肥</a></li>
+                <li><a href="senior.html" class="active">银发族顾问</a></li>
+                <li><a href="tea.html">茶文化助手</a></li>
+                <li><a href="tools.html">AI工具助手</a></li>
+                <li><a href="products.html">精品周边</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区 -->
+        <section class="main-content">
+            <h1 class="page-title">银发族生活旅居顾问</h1>
+            <p class="page-subtitle">专为银发族设计的智能生活顾问，提供养老规划、旅居方案和健康管理一站式服务</p>
+            <div>
+                <button class="btn" onclick="generatePlan('senior')">生成专属方案</button>
+                <a href="#resources" class="btn btn-outline">查看方案模板</a>
+            </div>
+        </section>
+
+        <!-- 功能特点 -->
+        <section class="card">
+            <h2 class="card-title">核心功能</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🏠 生活规划顾问</h3>
+                    <p>根据身体状况、兴趣偏好，AI生成专属养老生活规划，含健康管理、休闲活动建议</p>
+                </div>
+                <div class="feature-item">
+                    <h3>✈️ 旅居方案定制</h3>
+                    <p>输入康养需求、地域偏好，AI生成专属旅居方案，含目的地筛选、行程规划、适老保障建议</p>
+                </div>
+                <div class="feature-item">
+                    <h3>💊 健康管理服务</h3>
+                    <p>动态优化健康管理方案，含专属饮食建议+适老化改造指南，提升养老品质</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎯 应急保障方案</h3>
+                    <p>动态适配目的地气候与医疗资源，含专属行程规划+应急保障方案，安心旅居</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 方案模板 -->
+        <section class="card" id="resources">
+            <h2 class="card-title">方案模板</h2>
+            <p class="card-desc">免费获取基础模板，付费解锁全套AI定制方案，含详细执行指南和工具清单</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>生活规划基础模板（免费）</h3>
+                    <p>含基础健康管理清单+休闲活动建议，快速规划舒适养老日常</p>
+                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/senior-free')">免费领取</button>
+                </div>
+                <div class="feature-item">
+                    <h3>旅居方案基础模板（免费）</h3>
+                    <p>含基础旅居目的地指南+适老准备清单，快速了解银发旅居核心要点</p>
+                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/travel-free')">免费领取</button>
+                </div>
+                <div class="feature-item">
+                    <h3>30天AI定制全套方案（付费）</h3>
+                    <p>AI动态优化方案细节，含深度教程+工具包，提升养老品质</p>
+                    <button class="btn" onclick="showPayCode()">9.9元解锁</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐产品 -->
+        <section class="card">
+            <h2 class="card-title">推荐产品</h2>
+            <p class="card-desc">搭配银发族生活方案的实用产品，提升生活品质和健康监测</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-image">🌿</div>
+                    <h3>特产AI鲜选</h3>
+                    <p>各地健康食材+银发养生特产，AI精选适配日常饮食</p>
+                    <button class="btn" onclick="alert('产品详情：https://example.com/product3')">了解详情</button>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">📊</div>
+                    <h3>健康管理检测小工具</h3>
+                    <p>血压计+体脂秤+血糖试纸，适配健康管理方案监测</p>
+                    <button class="btn" onclick="alert('产品详情：https://example.com/product2')">了解详情</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1v1咨询服务 -->
+        <section class="card">
+            <h2 class="card-title">1v1专业银发族咨询服务</h2>
+            <p class="card-desc">养老管理师+AI算法双重加持，1对1定制养老方案，全程指导健康与生活规划</p>
+            <div class="pay-section">
+                <div class="pay-code">
+                    <div class="pay-code-placeholder">微信/支付宝<br>收款码</div>
+                </div>
+                <p class="pay-tips">咨询费用：49元/次（扫码支付后填写联系方式，24小时内对接）</p>
+                <button class="btn" onclick="showConsultForm('银发族生活')">填写咨询信息</button>
+            </div>
+        </section>
+
+        <!-- 广告位 -->
+        <div class="ad-slot">
+            <p class="ad-tips">广告位预留（可接入Google AdSense或国内广告联盟）</p>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="index.html">返回首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <p class="copyright">© 2025 AI智能服务助手 版权所有</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showPayCode() {
+            alert('支付二维码功能\n\n（可对接微信/支付宝支付接口）');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶文化知识助手 - AI智能服务助手</title>
+    <meta name="description" content="深度茶文化知识库，AI智能推荐茶品、泡茶技巧和品鉴指南，传承茶文化精髓">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <a href="index.html" class="logo">AI智能服务助手</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="health.html">健康减肥</a></li>
+                <li><a href="senior.html">银发族顾问</a></li>
+                <li><a href="tea.html" class="active">茶文化助手</a></li>
+                <li><a href="tools.html">AI工具助手</a></li>
+                <li><a href="products.html">精品周边</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区 -->
+        <section class="main-content">
+            <h1 class="page-title">茶文化知识助手</h1>
+            <p class="page-subtitle">深度茶文化知识库，AI智能推荐茶品、泡茶技巧和品鉴指南，传承茶文化精髓</p>
+            <div>
+                <button class="btn" onclick="generatePlan('tea')">生成专属方案</button>
+                <a href="#resources" class="btn btn-outline">查看方案模板</a>
+            </div>
+        </section>
+
+        <!-- 功能特点 -->
+        <section class="card">
+            <h2 class="card-title">核心功能</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🍃 茶品智能推荐</h3>
+                    <p>根据您的喜好茶类、场景需求，AI生成专属茶文化知识指南，含选茶、泡茶、品鉴技巧</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🫖 泡茶技巧指导</h3>
+                    <p>动态匹配茶类场景，提供专属泡茶步骤、水温控制和时间把握，提升品茶体验</p>
+                </div>
+                <div class="feature-item">
+                    <h3>👃 品鉴进阶指南</h3>
+                    <p>含专属茶礼搭配+品鉴进阶技巧，从入门到精通，成为茶文化达人</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📚 茶文化知识库</h3>
+                    <p>涵盖六大茶类、茶史文化、茶道礼仪等丰富内容，传承千年茶文化精髓</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 方案模板 -->
+        <section class="card" id="resources">
+            <h2 class="card-title">方案模板</h2>
+            <p class="card-desc">免费获取基础模板，付费解锁全套AI定制方案，含详细执行指南和工具清单</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>茶文化基础模板（免费）</h3>
+                    <p>含基础茶类识别+简易泡茶步骤，快速入门茶文化核心知识</p>
+                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/tea-free')">免费领取</button>
+                </div>
+                <div class="feature-item">
+                    <h3>30天AI定制全套方案（付费）</h3>
+                    <p>动态匹配茶类场景，含专属茶礼搭配+品鉴进阶技巧，成为茶文化达人</p>
+                    <button class="btn" onclick="showPayCode()">9.9元解锁</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐产品 -->
+        <section class="card">
+            <h2 class="card-title">推荐产品</h2>
+            <p class="card-desc">搭配茶文化方案的精品茶具和茶叶，提升品茶体验</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <div class="product-image">🫖</div>
+                    <h3>精品茶文化茶具套装</h3>
+                    <p>紫砂茶壶+陶瓷茶杯，适配茶文化品鉴与泡茶场景</p>
+                    <button class="btn" onclick="alert('产品详情：https://example.com/product4')">了解详情</button>
+                </div>
+                <div class="product-item">
+                    <div class="product-image">🍃</div>
+                    <h3>AI精选茶叶礼盒</h3>
+                    <p>六大茶类精选组合，适配不同场景和口味偏好</p>
+                    <button class="btn" onclick="alert('产品详情：https://example.com/product5')">了解详情</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1v1咨询服务 -->
+        <section class="card">
+            <h2 class="card-title">1v1专业茶文化咨询服务</h2>
+            <p class="card-desc">茶学管理师+AI算法双重加持，1对1定制茶文化方案，全程指导选茶泡茶品鉴</p>
+            <div class="pay-section">
+                <div class="pay-code">
+                    <div class="pay-code-placeholder">微信/支付宝<br>收款码</div>
+                </div>
+                <p class="pay-tips">咨询费用：49元/次（扫码支付后填写联系方式，24小时内对接）</p>
+                <button class="btn" onclick="showConsultForm('茶文化')">填写咨询信息</button>
+            </div>
+        </section>
+
+        <!-- 广告位 -->
+        <div class="ad-slot">
+            <p class="ad-tips">广告位预留（可接入Google AdSense或国内广告联盟）</p>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="index.html">返回首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <p class="copyright">© 2025 AI智能服务助手 版权所有</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function showPayCode() {
+            alert('支付二维码功能\n\n（可对接微信/支付宝支付接口）');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
