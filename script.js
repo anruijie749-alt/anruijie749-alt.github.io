@@ -124,8 +124,8 @@ function submitConsult() {
 // 全局函数：生成方案
 function generatePlan(type) {
     const typeMap = {
-        'health': '健康管理',
-        'senior': '银发族生活',
+        'health': '形体管理',
+        'senior': '长者生活',
         'tea': '茶文化',
         'tools': 'AI工具'
     };
