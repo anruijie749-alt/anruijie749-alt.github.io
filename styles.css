@@ -574,4 +574,251 @@ body {
     font-weight: 650;
     letter-spacing: 0.015em;
   }
-   
+  /* ============================================
+   导航栏修复代码 - 防止换行
+   粘贴到CSS文件最后即可
+============================================ */
+
+/* 修复主导航栏 */
+.main-nav ul {
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.main-nav ul li {
+    flex: 1 !important;
+    min-width: 0 !important; /* 防止flex项溢出 */
+    margin: 0 3px !important; /* 减小间距 */
+    text-align: center !important;
+}
+
+.main-nav ul li a {
+    font-size: 13px !important; /* 减小字体 */
+    padding: 8px 6px !important; /* 减小内边距 */
+    white-space: nowrap !important;
+    display: block !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 鼠标悬停效果 */
+.main-nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 响应式调整 - 在更小的屏幕上进一步调整 */
+@media (max-width: 1024px) {
+    .main-nav ul li a {
+        font-size: 12px !important;
+        padding: 8px 4px !important;
+    }
+    
+    .main-nav ul li {
+        margin: 0 2px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 在平板和手机上切换为可滚动导航 */
+    .main-nav {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .main-nav ul {
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        min-width: fit-content !important;
+    }
+    
+    .main-nav ul li {
+        flex: none !important;
+        margin: 0 8px !important;
+    }
+    
+    .main-nav ul li a {
+        font-size: 13px !important;
+        padding: 10px 8px !important;
+    }
+    
+    /* 隐藏滚动条但保持可滚动 */
+    .main-nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .main-nav {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+/* 确保在移动端也能正常显示 */
+@media (max-width: 480px) {
+    .main-nav ul li a {
+        font-size: 11px !important;
+        padding: 8px 6px !important;
+    }
+    
+    .main-nav ul li {
+        margin: 0 4px !important;
+    }
+}
+
+/* 修复可能的内边距问题 */
+nav, .navigation, .navbar {
+    box-sizing: border-box !important;
+}
+
+/* 确保导航容器不会换行 */
+nav ul, .navigation ul, .navbar ul {
+    white-space: nowrap !important;
+} 
+/* ===== 顶部导航栏整体压缩（防止换行）===== */
+
+/* 导航容器：不换行 */
+.navbar {
+    flex-wrap: nowrap;
+  }
+  
+  /* 左侧站点名称 */
+  .navbar .logo {
+    font-size: 1rem;              /* 原来偏大，这里压一档 */
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  
+  /* 导航菜单整体 */
+  .nav-menu {
+    display: flex;
+    gap: 8px;                     /* 原来间距过大，这里明显收紧 */
+    flex-wrap: nowrap;            /* 强制不换行 */
+  }
+  
+  /* 每一个导航按钮 */
+  .nav-menu a {
+    font-size: 0.85rem;           /* 字体小一号 */
+    padding: 6px 10px;            /* 内边距缩小 */
+    border-radius: 10px;          /* 圆角同步变小 */
+    white-space: nowrap;          /* 防止文字自己断行 */
+  }
+  
+  /* hover / active 状态边框也同步变细 */
+  .nav-menu a:hover,
+  .nav-menu a.active {
+    border-width: 1px;
+  }
+  
+  /* 右侧功能按钮（订阅更新 / 商务合作） */
+  .navbar .nav-actions a {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  
+  /* 小屏幕下进一步压缩（很关键，防止临界换行） */
+  @media (max-width: 1200px) {
+    .nav-menu {
+      gap: 6px;
+    }
+  
+    .nav-menu a {
+      font-size: 0.8rem;
+      padding: 5px 8px;
+    }
+  
+    .navbar .logo {
+      font-size: 0.95rem;
+    }
+  }
+/* ===== 顶部导航栏整体压缩（防止换行）===== */
+
+/* 导航容器：不换行 */
+.navbar {
+    flex-wrap: nowrap;
+  }
+  
+  /* 左侧站点名称 */
+  .navbar .logo {
+    font-size: 1rem;              /* 原来偏大，这里压一档 */
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  
+  /* 导航菜单整体 */
+  .nav-menu {
+    display: flex;
+    gap: 8px;                     /* 原来间距过大，这里明显收紧 */
+    flex-wrap: nowrap;            /* 强制不换行 */
+  }
+  
+  /* 每一个导航按钮 */
+  .nav-menu a {
+    font-size: 0.85rem;           /* 字体小一号 */
+    padding: 6px 10px;            /* 内边距缩小 */
+    border-radius: 10px;          /* 圆角同步变小 */
+    white-space: nowrap;          /* 防止文字自己断行 */
+  }
+  
+  /* hover / active 状态边框也同步变细 */
+  .nav-menu a:hover,
+  .nav-menu a.active {
+    border-width: 1px;
+  }
+  
+  /* 右侧功能按钮（订阅更新 / 商务合作） */
+  .navbar .nav-actions a {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  
+  /* 小屏幕下进一步压缩（很关键，防止临界换行） */
+  @media (max-width: 1200px) {
+    .nav-menu {
+      gap: 6px;
+    }
+  
+    .nav-menu a {
+      font-size: 0.8rem;
+      padding: 5px 8px;
+    }
+  
+    .navbar .logo {
+      font-size: 0.95rem;
+    }
+  }
+/* ===== 内容地图排版 ===== */
+
+.sitemap-actions {
+    margin: 12px 0 18px;
+  }
+  
+  .sitemap-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sitemap-list li {
+    margin: 8px 0;
+  }
+  
+  .sitemap-list a {
+    font-size: 0.95rem;
+    color: #9b7cff;
+    text-decoration: none;
+  }
+  
+  .sitemap-list a:hover {
+    text-decoration: underline;
+  }
+      
