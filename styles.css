@@ -821,4 +821,20 @@ nav ul, .navigation ul, .navbar ul {
   .sitemap-list a:hover {
     text-decoration: underline;
   }
-      
+ /* ===== 兜底：手机/窄屏导航永远看得全 ===== */
+@media (max-width: 768px){
+  .navbar{ flex-wrap: wrap; }
+  .navbar .logo{ width: 100%; }
+  .nav-menu{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .nav-menu a{
+    font-size: 0.82rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+}
+     
