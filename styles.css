@@ -1,840 +1,407 @@
+/* =========================
+   全局基础
+========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', 'Microsoft YaHei', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Microsoft YaHei', sans-serif;
 }
 
 body {
-    background: #020817;
-    color: #e2e8f0;
-    min-height: 100vh;
-    overflow-x: hidden;
+  background: #020817;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* =========================
+   粒子背景
+========================= */
 #particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
 }
 
+/* =========================
+   页面容器
+========================= */
 .container {
-    position: relative;
-    z-index: 1;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 30px 20px;
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 20px;
 }
 
-/* 导航栏样式 */
+/* =========================
+   导航栏（非汉堡，稳态）
+========================= */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    margin-bottom: 40px;
-    background: rgba(10, 25, 47, 0.8);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 15px 30px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  margin-bottom: 40px;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  flex-wrap: wrap;              /* ✅ 关键：允许换行 */
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #38bdf8, #a78bfa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 650;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  margin-right: 8px;
 }
 
 .nav-menu {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;              /* ✅ 菜单内部也允许换行 */
+  gap: 8px;
+  list-style: none;
+  margin-left: auto;
 }
 
 .nav-menu a {
-    padding: 8px 18px;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid #38bdf8;
-    border-radius: 8px;
-    color: #38bdf8;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: 0.3s;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  background: rgba(56, 189, 248, 0.08);
+  white-space: nowrap;
+  transition: 0.25s;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    background: rgba(56, 189, 248, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.18);
 }
 
-/* 主内容区 */
+/* 手机：Logo 一行，菜单一行（看得全） */
+@media (max-width: 768px) {
+  .logo {
+    width: 100%;
+  }
+  .nav-menu {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================
+   主内容区
+========================= */
 .main-content {
-    text-align: center;
-    backdrop-filter: blur(12px);
-    background: rgba(10, 25, 47, 0.7);
-    border-radius: 24px;
-    padding: 60px 40px;
-    box-shadow: 0 0 80px rgba(56, 189, 248, 0.15);
-    margin-bottom: 40px;
+  text-align: center;
+  background: rgba(10, 25, 47, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 56px 36px;
+  box-shadow: 0 0 80px rgba(56, 189, 248, 0.15);
+  margin-bottom: 40px;
 }
 
 .page-title {
-    font-size: 3rem;
-    margin-bottom: 25px;
-    line-height: 1.2;
-    background: linear-gradient(90deg, #38bdf8, #818cf8, #a78bfa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  font-size: clamp(2.2rem, 3.6vw, 2.6rem);
+  line-height: 1.25;
+  font-weight: 650;
+  margin-bottom: 22px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .page-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 40px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
-    color: #cbd5e1;
+  font-size: 1.1rem;
+  max-width: 900px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  color: #cbd5e1;
 }
 
-/* 按钮样式 */
+/* =========================
+   按钮
+========================= */
 .btn {
-    padding: 16px 36px;
-    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-    color: #020817;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: 0.4s;
-    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
-    margin: 0 12px 20px;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
+  display: inline-block;
+  padding: 12px 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  color: #020817;
+  text-decoration: none;
+  margin: 0 10px 16px;
+  transition: 0.25s;
 }
 
 .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
-    background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.45);
 }
 
 .btn-outline {
-    background: transparent;
-    border: 2px solid #38bdf8;
-    color: #38bdf8;
-    box-shadow: none;
+  background: transparent;
+  color: #38bdf8;
+  border: 1.5px solid #38bdf8;
 }
 
-.btn-outline:hover {
-    background: rgba(56, 189, 248, 0.1);
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
-}
-
-/* 卡片样式 */
+/* =========================
+   卡片
+========================= */
 .card {
-    background: rgba(17, 25, 40, 0.85);
-    border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 30px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    box-shadow: 0 0 40px rgba(14, 165, 233, 0.1);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 50px rgba(14, 165, 233, 0.15);
+  background: rgba(17, 25, 40, 0.85);
+  border-radius: 20px;
+  padding: 36px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .card-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #818cf8;
-    font-weight: 600;
+  font-size: 1.45rem;
+  font-weight: 650;
+  margin-bottom: 18px;
+  color: #818cf8;
 }
 
 .card-desc {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    line-height: 1.6;
-    color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 22px;
 }
 
-/* 功能网格 */
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.feature-item {
-    background: rgba(30, 41, 59, 0.8);
-    border-radius: 16px;
-    padding: 30px;
-    text-align: left;
-    border: 1px solid rgba(56, 189, 248, 0.1);
-    transition: 0.3s;
-}
-
-.feature-item:hover {
-    border-color: rgba(56, 189, 248, 0.4);
-    transform: translateY(-3px);
-}
-
-.feature-item h3 {
-    color: #38bdf8;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-.feature-item p {
-    font-size: 1rem;
-    color: #94a3b8;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.feature-item .btn {
-    margin: 0;
-    padding: 12px 24px;
-    font-size: 0.95rem;
-    width: 100%;
-    text-align: center;
-}
-
-/* 产品展示 */
+/* =========================
+   功能 / 产品网格
+========================= */
+.feature-grid,
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
 }
 
+.feature-item,
 .product-item {
-    background: rgba(30, 41, 59, 0.8);
-    border-radius: 16px;
-    padding: 25px;
-    text-align: center;
-    border: 1px solid rgba(56, 189, 248, 0.1);
-    transition: 0.3s;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(56, 189, 248, 0.12);
 }
 
-.product-item:hover {
-    border-color: rgba(56, 189, 248, 0.4);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.2);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(167, 139, 250, 0.2));
-    border-radius: 12px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: #38bdf8;
-}
-
+.feature-item h3,
 .product-item h3 {
-    color: #38bdf8;
-    margin-bottom: 12px;
-    font-size: 1.2rem;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  color: #38bdf8;
 }
 
+.feature-item p,
 .product-item p {
-    font-size: 0.95rem;
-    color: #94a3b8;
-    margin-bottom: 18px;
-    line-height: 1.5;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
 }
 
-/* 广告位 */
-.ad-slot {
-    background: rgba(30, 41, 59, 0.8);
-    border-radius: 16px;
-    padding: 45px 20px;
-    text-align: center;
-    border: 1px dashed rgba(56, 189, 248, 0.3);
-    margin-bottom: 30px;
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ad-tips {
-    font-size: 1rem;
-    color: #94a3b8;
-}
-
-/* 支付二维码 */
-.pay-section {
-    text-align: center;
-    padding: 30px;
-}
-
-.pay-code {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 25px;
-    background: #fff;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.pay-code-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    font-size: 0.9rem;
-}
-
-.pay-tips {
-    font-size: 0.95rem;
-    color: #94a3b8;
-    margin-bottom: 20px;
-}
-
-/* 页脚 */
+/* =========================
+   页脚
+========================= */
 .footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(10, 25, 47, 0.5);
-    border-radius: 20px;
-    margin-top: 60px;
+  text-align: center;
+  padding: 36px 20px;
+  background: rgba(10, 25, 47, 0.5);
+  border-radius: 20px;
+  margin-top: 60px;
 }
 
 .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
 }
 
 .footer-links a {
-    color: #94a3b8;
-    text-decoration: none;
-    transition: 0.3s;
+  color: #94a3b8;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
-    color: #38bdf8;
+  color: #38bdf8;
+}
+
+.footer-disclaimer {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 14px;
 }
 
 .copyright {
-    font-size: 0.9rem;
-    color: #64748b;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
 }
 
-/* 响应式设计 */
+/* =========================
+   响应式
+========================= */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
-    }
-
-    .nav-menu {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .nav-menu a {
-        padding: 6px 14px;
-        font-size: 0.85rem;
-    }
-
-    .main-content {
-        padding: 40px 20px;
-    }
-
-    .page-title {
-        font-size: 2.2rem;
-    }
-
-    .page-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .card {
-        padding: 30px 20px;
-    }
-
-    .card-title {
-        font-size: 1.5rem;
-    }
-
-    .feature-grid,
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .btn {
-        display: block;
-        margin: 0 auto 15px;
-        max-width: 280px;
-        padding: 14px 20px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-title {
-        font-size: 1.8rem;
-    }
-
-    .card {
-        padding: 25px 15px;
-    }
-
-    .pay-code {
-        width: 180px;
-        height: 180px;
-    }
-}
-/* ===== 仅调整：主标题/模块标题/按钮尺寸（不改背景、不改颜色） ===== */
-
-/* 1) 主标题有点大：缩小一点，更像商业站 */
-.page-title {
-    font-size: clamp(1.55rem, 2.6vw, 1.95rem);
-    line-height: 1.25;
-    font-weight: 650;
-    letter-spacing: 0.01em;
+  .main-content {
+    padding: 42px 20px;
   }
-  
-  /* 2) 模块标题比 logo 还显大：两头一起收敛（模块略小，logo略稳） */
-  .logo {
-    font-size: 1.05rem;   /* 如果你觉得logo还小，可改成 1.08rem */
-    font-weight: 650;
-    letter-spacing: 0.01em;
-  }
-  
-  .card-title {
-    font-size: 1.28rem;   /* 模块标题压到略小于logo的“感官压力” */
-    line-height: 1.25;
-    font-weight: 650;
-    letter-spacing: 0.01em;
-  }
-  
-  /* 3) 按钮太大：缩小 padding + 字号，保持“可点”但更高级 */
-  .btn {
-    padding: 9px 14px;
-    font-size: 0.92rem;
-    font-weight: 520;
-    letter-spacing: 0.02em;
-    border-radius: 12px;
-  }
-  /* ===== 微调：Logo 与主标题存在感 ===== */
-
-/* Logo：略大一点，稳住品牌感 */
-.logo {
-    font-size: 1.12rem;      /* 原来约 1.05，现在略放大 */
-    font-weight: 650;
-    letter-spacing: 0.015em;
-  }
-  
-  /* 主标题：比现在略大，但仍明显小于最初版本 */
   .page-title {
-    font-size: clamp(1.65rem, 2.9vw, 2.05rem);
-    line-height: 1.25;
-    font-weight: 650;
-    letter-spacing: 0.015em;
+    font-size: 2rem;
   }
-  /* ===== 最终确认：Logo / 主标题 / 页脚比例 ===== */
-
-/* Logo：明确 ≥ 模块标题，稳住品牌存在感 */
-.logo {
-    font-size: 1.22rem;      /* 明显比模块标题大一点 */
-    font-weight: 650;
-    letter-spacing: 0.015em;
+  .card {
+    padding: 28px 20px;
   }
-  
-  /* 主标题：再大一号，但仍是“克制型商业感” */
-  .page-title {
-    font-size: clamp(1.85rem, 3.2vw, 2.25rem);
-    line-height: 1.25;
-    font-weight: 650;
-    letter-spacing: 0.015em;
-  }
-  
-  /* 模块标题（核心服务等）：略小于 logo */
-  .card-title {
-    font-size: 1.28rem;
-    line-height: 1.25;
-    font-weight: 650;
-  }
-  
-  /* 页脚免责声明：再弱一点 + 拉开与版权的距离 */
-  .footer-disclaimer,
-  .site-disclaimer {
-    font-size: 0.76rem;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.6);
-    margin-top: 14px;
-  }
-  
-  /* 版权信息：和免责拉开空间 */
-  .copyright {
-    margin-top: 20px;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.56);
-  }
- /* ===== 导航栏：区分内容导航 vs 行为按钮 ===== */
-
-/* 普通导航按钮（内容类） */
-.nav-menu a {
-    padding: 6px 10px;
-    font-size: 0.92rem;
-  }
-  
-  /* 订阅更新 / 商务合作：行为按钮，样式收敛 */
-  .nav-menu a[href*="subscribe"],
-  .nav-menu a[href*="cooperation"] {
-    padding: 5px 9px;
-    font-size: 0.88rem;
-    opacity: 0.9;
-  }
-  
-  /* 行为按钮悬停时再强调 */
-  .nav-menu a[href*="subscribe"]:hover,
-  .nav-menu a[href*="cooperation"]:hover {
-    opacity: 1;
-  }
-  /* Logo 和导航之间多一点呼吸 */
-.logo {
-    margin-right: 12px;
-  }
-   /* ===== 字体比例最终稳态（恢复但不夸张） ===== */
-
-/* Logo：恢复品牌存在感（略小于最初，但明显大于模块） */
-.logo {
-    font-size: 1.38rem;     /* 初始≈1.45，现在回收一点 */
-    font-weight: 650;
-    letter-spacing: 0.015em;
-    margin-right: 16px;
-  }
-  
-  /* 主标题：恢复为页面重心（比最初略小） */
-  .page-title {
-    font-size: clamp(2.05rem, 3.6vw, 2.45rem);
-    line-height: 1.25;
-    font-weight: 650;
-    letter-spacing: 0.015em;
-  }
-  
-  /* 核心模块标题 / 产品模块标题 */
-  .card-title {
-    font-size: 1.45rem;     /* 恢复主体感 */
-    line-height: 1.3;
-    font-weight: 650;
-  }
-  
-  /* 功能模块里的小标题 */
-  .feature-item h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-  }
-  
-  /* 正文保持不动，防止整体变松 */
-  p {
-    font-size: 1rem;
-  }
- /* ===== 主标题最终定稿尺寸（介于原版与新版之间） ===== */
-.page-title {
-    font-size: clamp(2.25rem, 3.9vw, 2.65rem);
-    line-height: 1.25;
-    font-weight: 650;
-    letter-spacing: 0.015em;
-  }
-  /* ============================================
-   导航栏修复代码 - 防止换行
-   粘贴到CSS文件最后即可
-============================================ */
-
-/* 修复主导航栏 */
-.main-nav ul {
-    display: flex !important;
-    justify-content: space-between !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
+}
+/* ===== 导航：最多两行视觉高度，超出则横向滑动（非汉堡、可见全） ===== */
+:root{
+  --nav-item-h: 36px; /* 单个导航按钮高度基准 */
+  --nav-gap: 8px;
 }
 
-.main-nav ul li {
-    flex: 1 !important;
-    min-width: 0 !important; /* 防止flex项溢出 */
-    margin: 0 3px !important; /* 减小间距 */
-    text-align: center !important;
+/* 默认：允许换行（通常 1-2 行） */
+.nav-menu{
+  flex-wrap: wrap;
+  gap: var(--nav-gap);
 }
 
-.main-nav ul li a {
-    font-size: 13px !important; /* 减小字体 */
-    padding: 8px 6px !important; /* 减小内边距 */
-    white-space: nowrap !important;
-    display: block !important;
-    text-decoration: none !important;
-    border-radius: 4px !important;
-    transition: all 0.3s ease !important;
-}
-
-/* 鼠标悬停效果 */
-.main-nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    transform: translateY(-2px) !important;
-}
-
-/* 响应式调整 - 在更小的屏幕上进一步调整 */
-@media (max-width: 1024px) {
-    .main-nav ul li a {
-        font-size: 12px !important;
-        padding: 8px 4px !important;
-    }
-    
-    .main-nav ul li {
-        margin: 0 2px !important;
-    }
-}
-
-@media (max-width: 768px) {
-    /* 在平板和手机上切换为可滚动导航 */
-    .main-nav {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-    }
-    
-    .main-nav ul {
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        min-width: fit-content !important;
-    }
-    
-    .main-nav ul li {
-        flex: none !important;
-        margin: 0 8px !important;
-    }
-    
-    .main-nav ul li a {
-        font-size: 13px !important;
-        padding: 10px 8px !important;
-    }
-    
-    /* 隐藏滚动条但保持可滚动 */
-    .main-nav::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .main-nav {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-}
-
-/* 确保在移动端也能正常显示 */
-@media (max-width: 480px) {
-    .main-nav ul li a {
-        font-size: 11px !important;
-        padding: 8px 6px !important;
-    }
-    
-    .main-nav ul li {
-        margin: 0 4px !important;
-    }
-}
-
-/* 修复可能的内边距问题 */
-nav, .navigation, .navbar {
-    box-sizing: border-box !important;
-}
-
-/* 确保导航容器不会换行 */
-nav ul, .navigation ul, .navbar ul {
-    white-space: nowrap !important;
-} 
-/* ===== 顶部导航栏整体压缩（防止换行）===== */
-
-/* 导航容器：不换行 */
-.navbar {
-    flex-wrap: nowrap;
-  }
-  
-  /* 左侧站点名称 */
-  .navbar .logo {
-    font-size: 1rem;              /* 原来偏大，这里压一档 */
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  
-  /* 导航菜单整体 */
-  .nav-menu {
-    display: flex;
-    gap: 8px;                     /* 原来间距过大，这里明显收紧 */
-    flex-wrap: nowrap;            /* 强制不换行 */
-  }
-  
-  /* 每一个导航按钮 */
-  .nav-menu a {
-    font-size: 0.85rem;           /* 字体小一号 */
-    padding: 6px 10px;            /* 内边距缩小 */
-    border-radius: 10px;          /* 圆角同步变小 */
-    white-space: nowrap;          /* 防止文字自己断行 */
-  }
-  
-  /* hover / active 状态边框也同步变细 */
-  .nav-menu a:hover,
-  .nav-menu a.active {
-    border-width: 1px;
-  }
-  
-  /* 右侧功能按钮（订阅更新 / 商务合作） */
-  .navbar .nav-actions a {
-    font-size: 0.82rem;
-    padding: 6px 10px;
-    border-radius: 10px;
-    white-space: nowrap;
-  }
-  
-  /* 小屏幕下进一步压缩（很关键，防止临界换行） */
-  @media (max-width: 1200px) {
-    .nav-menu {
-      gap: 6px;
-    }
-  
-    .nav-menu a {
-      font-size: 0.8rem;
-      padding: 5px 8px;
-    }
-  
-    .navbar .logo {
-      font-size: 0.95rem;
-    }
-  }
-/* ===== 顶部导航栏整体压缩（防止换行）===== */
-
-/* 导航容器：不换行 */
-.navbar {
-    flex-wrap: nowrap;
-  }
-  
-  /* 左侧站点名称 */
-  .navbar .logo {
-    font-size: 1rem;              /* 原来偏大，这里压一档 */
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  
-  /* 导航菜单整体 */
-  .nav-menu {
-    display: flex;
-    gap: 8px;                     /* 原来间距过大，这里明显收紧 */
-    flex-wrap: nowrap;            /* 强制不换行 */
-  }
-  
-  /* 每一个导航按钮 */
-  .nav-menu a {
-    font-size: 0.85rem;           /* 字体小一号 */
-    padding: 6px 10px;            /* 内边距缩小 */
-    border-radius: 10px;          /* 圆角同步变小 */
-    white-space: nowrap;          /* 防止文字自己断行 */
-  }
-  
-  /* hover / active 状态边框也同步变细 */
-  .nav-menu a:hover,
-  .nav-menu a.active {
-    border-width: 1px;
-  }
-  
-  /* 右侧功能按钮（订阅更新 / 商务合作） */
-  .navbar .nav-actions a {
-    font-size: 0.82rem;
-    padding: 6px 10px;
-    border-radius: 10px;
-    white-space: nowrap;
-  }
-  
-  /* 小屏幕下进一步压缩（很关键，防止临界换行） */
-  @media (max-width: 1200px) {
-    .nav-menu {
-      gap: 6px;
-    }
-  
-    .nav-menu a {
-      font-size: 0.8rem;
-      padding: 5px 8px;
-    }
-  
-    .navbar .logo {
-      font-size: 0.95rem;
-    }
-  }
-/* ===== 内容地图排版 ===== */
-
-.sitemap-actions {
-    margin: 12px 0 18px;
-  }
-  
-  .sitemap-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sitemap-list li {
-    margin: 8px 0;
-  }
-  
-  .sitemap-list a {
-    font-size: 0.95rem;
-    color: #9b7cff;
-    text-decoration: none;
-  }
-  
-  .sitemap-list a:hover {
-    text-decoration: underline;
-  }
- /* ===== 兜底：手机/窄屏导航永远看得全 ===== */
-@media (max-width: 768px){
-  .navbar{ flex-wrap: wrap; }
-  .navbar .logo{ width: 100%; }
+/* 窄屏：限制菜单区域最多两行高度；内容过多时允许横向滚动 */
+@media (max-width: 860px){
   .nav-menu{
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 8px;
+    max-height: calc(var(--nav-item-h) * 2 + var(--nav-gap)); /* 约两行 */
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; /* 给滑动留一点呼吸 */
   }
+
+  /* 在滚动模式下，按钮略微紧凑，减少溢出概率 */
   .nav-menu a{
-    font-size: 0.82rem;
     padding: 6px 10px;
-    white-space: nowrap;
+    font-size: 0.86rem;
+  }
+
+  /* 隐藏滚动条但保留可滚动 */
+  .nav-menu::-webkit-scrollbar{ height: 6px; }
+}
+/* ===== sitemap 更舒服的排版（不改配色体系） ===== */
+.sitemap-card .card-desc{ margin-bottom: 14px; }
+
+.sitemap-actions{ margin: 10px 0 18px; }
+
+.sitemap-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.sitemap-group{
+  background: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.sitemap-group h2{
+  font-size: 1.05rem;
+  color: #38bdf8;
+  margin-bottom: 12px;
+}
+
+.sitemap-group ul{ list-style: none; padding: 0; }
+.sitemap-group li{ margin: 10px 0; }
+
+.sitemap-group a{
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sitemap-group a:hover{ text-decoration: underline; }
+
+.sitemap-group span{
+  display: block;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px){
+  .sitemap-grid{ grid-template-columns: 1fr; }
+}
+/* --- 1. 广告占位底板样式 --- */
+.ad-slot {
+  margin: 20px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05); /* 半透明深色背景 */
+  border: 1px dashed rgba(255, 255, 255, 0.2); /* 虚线边框 */
+  border-radius: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- 2. 咨询服务左右布局与收款码面板 --- */
+/* 将咨询服务的容器设为左右排列 */
+.pay-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  text-align: left; /* 确保左侧文字左对齐 */
+}
+
+/* 调整左侧文字区域宽度 */
+.pay-section > div:first-child {
+  flex: 1;
+}
+
+/* 收款码面板样式 */
+.pay-code {
+  width: 150px;
+  height: 200px;
+  background: linear-gradient(145deg, #2c3e50, #000000); /* 深色渐变底板，不突兀 */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pay-code-placeholder {
+  color: #4facfe; /* 科技蓝色文字 */
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* 适配手机端：在小屏幕上自动改为上下排列 */
+@media (max-width: 768px) {
+  .pay-section {
+      flex-direction: column;
+  }
+  .pay-code {
+      width: 100%;
+      max-width: 200px;
   }
 }
-     
