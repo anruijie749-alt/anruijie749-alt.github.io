@@ -405,3 +405,31 @@ body {
       max-width: 200px;
   }
 }
+/* 汉堡菜单 */
+.hamburger { display: none; }
+@media (max-width: 768px) {
+    .hamburger { 
+        display: flex; 
+        flex-direction: column;
+        width: 30px;
+        height: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .hamburger span {
+        height: 3px;
+        background: #333;
+        margin: 3px 0;
+    }
+    .nav-container {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white(10, 25, 47, 0.85);
+    }
+    .nav-container.active { display: block; }
+    .nav-menu { flex-direction: column; }
+}

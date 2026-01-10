@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>长者品质生活指南｜生活方式 · 旅居 · 日常安排参考</title>
+    <meta name="description" content="...">
     <meta name="description" content="展示面向长者人群的生活方式与旅居场景内容示例，用于参考信息清晰可用的内容入口。">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -14,23 +15,48 @@
         <!-- 导航栏 -->
         <nav class="navbar">
             <a href="index.html" class="logo">AI智能生活助手</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="health.html">长者品质生活</a></li>
-                <li><a href="senior.html" class="active">体态与重塑</a></li>
-                <li><a href="tea.html">茶文化助手</a></li>
-                <li><a href="tools.html">AI工具助手</a></li>
-                <li><a href="products.html">精品周边</a></li>
-                <li><a href="sitemap.html">内容地图</a></li>
-                <li><a href="subscribe.html">订阅更新</a></li>
-                <li><a href="cooperation.html">商务合作</a></li>
-
-            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="health.html">长者品质生活</a></li>
+                    <li><a href="senior.html">身体叙事馆</a></li>
+                    <li><a href="tea.html">茶文化助手</a></li>
+                    <li><a href="tools.html">AI工具助手</a></li>
+                    <li><a href="products.html">精品周边</a></li>
+                    <li><a href="sitemap.html">内容地图</a></li>
+                    <li><a href="subscribe.html">订阅更新</a></li>
+                    <li><a href="cooperation.html">商务合作</a></li>
+                </ul>
+            </div>
         </nav>
 
         <!-- 主内容区 -->
         <section class="main-content">
             <h1 class="page-title">长者品质生活指南与生活方式参考</h1>
+            <div class="focus-landing-box" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(0,255,255,0.2); padding: 25px; border-radius: 15px; margin: 20px 0 20px 0; backdrop-filter: blur(5px); text-align: left;">
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <span style="font-size: 2.5rem; text-shadow: 0 0 15px #00f2fe;">🛡️</span>
+                    <div>
+                        <h2 style="color: #fff; margin: 0; font-size: 1.6rem; letter-spacing: 1px;">智慧守护：尊享长者品质生活</h2>
+                        <p style="color: #00f2fe; margin: 5px 0 0 0; font-size: 0.9rem;">全方位数字康养与旅居生活方案</p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: #ccc;">
+                    <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: #fff; display: block; margin-bottom: 5px;">● 智慧康养监测</strong>
+                        <span style="font-size: 0.85rem; line-height: 1.6;">整合医疗级数据采集，提供主动式健康预警与日常状态深度分析。</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                        <strong style="color: #fff; display: block; margin-bottom: 5px;">● 全球旅居索引</strong>
+                        <span style="font-size: 0.85rem; line-height: 1.6;">AI 精选适配长者的候鸟式目的地，涵盖气候、医疗、生活指数等核心维度。</span>
+                    </div>
+                </div>
+            </div>
             <p class="page-subtitle">整理不同地区与生活方式相关的长者品质生活信息，
                 从环境、成本、便利性等角度帮助用户进行初步了解与对比。</p>
             <div>
@@ -121,9 +147,16 @@
             </section>
 
      <!-- 广告位 -->
-     <div class="ad-slot">
-          <p class="ad-tips">广告位预留（可接入Google AdSense或国内广告联盟）</p>
-     </div>
+<div class="ad-slot">
+    <p class="ad-tips">
+        广告位预留（可接入Google AdSense或国内广告联盟）<br>
+        <small style="font-weight: normal; display: block; margin-top: 8px;">
+            📢 现开放合作：健康产品 | 养老机构 | 保险服务 | 旅游服务<br>
+            <a href="cooperation.html" style="color: #0066cc;">点击联系合作</a> 
+            | 所有广告均会明确标注"广告"标识
+        </small>
+    </p>
+</div>
         <!-- 页脚 -->
         <footer class="footer">
             <div class="footer-links">
@@ -151,6 +184,12 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

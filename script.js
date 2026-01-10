@@ -132,4 +132,11 @@ function generatePlan(type) {
     const typeName = typeMap[type] || '专属';
     alert(`AI正在为您生成${typeName}专属方案，请稍候...\n\n（此功能可对接AI API，如OpenAI、文心一言等）\n\n实现方式：\n1. 收集用户输入信息\n2. 调用AI API生成方案\n3. 返回个性化方案文档\n4. 支持付费解锁完整版`);
 }
-
+// 汉堡菜单点击
+const hamburger = document.getElementById('hamburger');
+const navContainer = document.getElementById('navContainer');
+if (hamburger) {
+    hamburger.addEventListener('click', function() {
+        navContainer.classList.toggle('active');
+    });
+}
