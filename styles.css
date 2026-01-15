@@ -221,10 +221,12 @@ body {
 ========================= */
 .footer {
   text-align: center;
-  padding: 36px 20px;
-  background: rgba(10, 25, 47, 0.5);
-  border-radius: 20px;
-  margin-top: 60px;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05); /* 调成更通透的白色透明 */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* 增加顶部发光细线 */
+  backdrop-filter: blur(10px); /* 核心：开启磨砂玻璃效果 */
+  margin-top: 50px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-links {
@@ -235,15 +237,11 @@ body {
   margin-bottom: 22px;
 }
 
-.footer-links a {
-  color: #94a3b8;
-  text-decoration: none;
-}
-
 .footer-links a:hover {
-  color: #38bdf8;
+  color: #00f2fe; /* 统一成你落地页的极客蓝 */
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.8); /* 增加发光字效果 */
+  transition: 0.3s;
 }
-
 .footer-disclaimer {
   font-size: 0.78rem;
   line-height: 1.6;
@@ -255,7 +253,24 @@ body {
   font-size: 0.82rem;
   color: rgba(255,255,255,0.55);
 }
+/* 1. 按钮悬停特效：鼠标放上去会发光微动 */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+  filter: brightness(1.2);
+  transition: all 0.3s ease;
+}
 
+/* 2. 手机端响应式补丁：防止内容在手机上挤在一起 */
+@media (max-width: 768px) {
+  .feature-grid, .product-grid, .display-grid {
+      grid-template-columns: 1fr !important; /* 强制手机端一列显示 */
+  }
+  .focus-landing-box {
+      padding: 15px !important;
+      margin-bottom: 30px !important;
+  }
+}
 /* =========================
    响应式
 ========================= */
@@ -510,4 +525,10 @@ body {
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* 专门针对手机端的点击反馈 */
+.footer-links a:active {
+  color: #00ff7f !important; /* 点击瞬间变绿 */
+  text-shadow: 0 0 15px #00ff7f;
+  transform: scale(0.95); /* 点击时微弱缩小，模拟按压感 */
 }
