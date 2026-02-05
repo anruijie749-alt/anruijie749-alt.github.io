@@ -532,3 +532,40 @@ body {
   text-shadow: 0 0 15px #00ff7f;
   transform: scale(0.95); /* 点击时微弱缩小，模拟按压感 */
 }
+/* --- 修正版：AI引导框居中 --- */
+.ai-input-hint {
+  background: rgba(255,255,255,0.05); 
+  border: 1px dashed rgba(0,242,254,0.3); 
+  padding: 15px; 
+  border-radius: 30px; 
+  text-align: center;
+  /* 下面这三行是居中核心，千万不能多加别的宽度 */
+  margin: 20px auto !important; 
+  width: 90%; 
+  max-width: 800px;
+  
+  backdrop-filter: blur(5px);
+  display: block;
+  animation: hintPulse 2s infinite;
+}
+
+@keyframes hintPulse {
+  0% { border-color: rgba(0,242,254,0.3); }
+  50% { border-color: rgba(0,242,254,0.8); }
+  100% { border-color: rgba(0,242,254,0.3); }
+}
+/* 专属发光呼吸引擎 */
+.hero-image-engine {
+  animation: glowEffect 3s infinite alternate ease-in-out;
+}
+
+@keyframes glowEffect {
+  0% {
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+      border-color: rgba(0, 242, 254, 0.2);
+  }
+  100% {
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+      border-color: rgba(0, 242, 254, 0.5);
+  }
+}
