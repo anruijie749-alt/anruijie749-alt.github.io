@@ -1,0 +1,10 @@
+# 允许所有爬虫访问站点
+User-agent: *
+Allow: /
+
+# 声明站点地图的位置（必须和你实际的 sitemap.xml 路径一致）
+Sitemap: https://anruijie749-alt.github.io/sitemap.xml
+
+# 可选：排除不需要收录的文件/目录（如果没有可忽略）
+Disallow: /node_modules/
+Disallow: /assets/temp/
