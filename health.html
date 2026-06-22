@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>长者品质生活指南｜生活方式 · 旅居 · 日常安排参考</title>
-    <meta name="description" content="提供长者健康生活方式、旅居信息、运动建议等品质生活指南，帮助长者享受健康晚年">
+    <title>乐龄品质生活指南｜生活方式 · 旅居 · 日常安排参考</title>
+    <meta name="description" content="提供乐龄健康生活方式、旅居信息、运动建议等品质生活指南，帮助乐龄享受健康晚年">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
@@ -12,27 +12,33 @@
     <div id="particles-js"></div>
     <div class="container">
         <nav class="navbar">
-            <a href="index.html" class="logo">AI智能生活助手</a>
+            <a href="index.html" class="logo">乐龄品质生活 AI助手</a>
             <button class="hamburger" id="hamburger">
                 <span></span><span></span><span></span>
             </button>
             <div class="nav-container" id="navContainer">
                 <ul class="nav-menu">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="health.html" class="active">长者品质生活</a></li>
+                    <li><a href="index.html" >首页</a></li>
+                    <li><a href="health.html"class="active">乐龄品质生活</a></li>
+                    <li><a href="travel.html">AI旅居规划</a></li>
                     <li><a href="senior.html">身体叙事馆</a></li>
-                    <li><a href="tea.html">茶文化助手</a></li>
                     <li><a href="tools.html">AI工具助手</a></li>
-                    <li><a href="products.html">精品周边</a></li>
-                    <li><a href="sitemap.html">内容地图</a></li>
-                    <li><a href="subscribe.html">订阅更新</a></li>
-                    <li><a href="cooperation.html">商务合作</a></li>
+                    <li><a href="lunch.html">外卖领红包</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">好物推荐 ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tea.html">茶文化好物</a></li>
+                            <li><a href="products.html#health">健康周边</a></li>
+                            <li><a href="sitemap.html" target="_blank">内容地图</a></li>
+                        </ul>
+                    </li> 
+                    <li><a href="about.html">关于我们</a></li>
                 </ul>
             </div>
         </nav>
 
         <section class="main-content">
-            <h1 class="page-title">长者品质生活指南与生活方式参考</h1>
+            <h1 class="page-title"style="margin-top: -0.5cm;">乐龄品质生活指南与生活方式参考</h1>
             
             <div class="focus-landing-box" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(0,255,255,0.2); padding: 30px; border-radius: 15px; margin: 20px 0 30px 0; backdrop-filter: blur(8px); text-align: left;">
                 <div style="margin-bottom: 25px;">
@@ -42,7 +48,7 @@
                       </p>                  
                       
                       <p style="color:#00f2fe; line-height:1.8; margin-top:12px;">
-                        下面这份内容，是我为身边长者反复整理、踩过坑后的生活方式参考，如果你也在为这些问题反复琢磨，不妨慢慢往下看。
+                        下面这份内容，是我为身边乐龄反复整理、踩过坑后的生活方式参考，如果您也在为这些问题反复琢磨，不妨慢慢往下看。
                       </p>                      
                 </div>
                 
@@ -52,130 +58,138 @@
                     
                     <div style="margin-top: 15px; background: rgba(0,242,254,0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #00f2fe;">
                         <p style="margin: 0; color: #fff;"><b>🌍 全球服务提示：</b></p>
-                        <p style="margin: 5px 0 0 0;">我们为全球华裔长者整理了《跨国养老衔接手册》。不涉及任何医疗诊断，仅提供生活成本与环境对比参考，助您在全球寻找最适宜的栖息地。</p>
+                        <p style="margin: 5px 0 0 0;">我们为全球华裔乐龄整理了《跨国养老衔接手册》。不涉及任何医疗诊断，仅提供生活成本与环境对比参考，助您在全球寻找最适宜的栖息地。</p>
                     </div>
                 </div>
                 
-                <div style="margin: 25px 0; text-align: center;">
-                    <button class="btn" style="padding: 12px 30px; font-weight: bold;"onclick="alert('我正在整理这份长者旅居参考手册中～\n\n如果你对长者旅居 / 生活方式很关心，可以先通过页面底部联系方式找到我，一起交流。')">查看我整理的长者旅居参考手册（免费）
-                </button>
-                </div>
+               
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; color: #ccc; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
                     <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
                         <strong style="color: #fff; display: block; margin-bottom: 5px;">● 智慧康养监测</strong>
-                        <span style="font-size: 0.85rem; line-height: 1.6;">整合医疗级数据采集，提供主动式健康预警与日常状态深度分析。</span>
+                        <span style="font-size: 0.85rem; line-height: 1.6;">整合日常数据记录，提供生活状态追踪与健康习惯参考。</span>
                     </div>
                     <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
                         <strong style="color: #fff; display: block; margin-bottom: 5px;">● 全球旅居索引</strong>
+                        
                         <span style="font-size: 0.85rem; line-height: 1.6;">AI 精选适配目的地，涵盖气候、医疗、生活指数等核心维度。</span>
                     </div>
-                </div>
+                </div>  
             </div>
-
-            <p class="page-subtitle">整理不同地区与生活方式相关的长者品质生活信息，从环境、成本、便利性等角度帮助用户进行初步了解与对比。</p>
-            <div style="margin-top: 20px;">
-                <button class="btn" onclick="generatePlan('senior')">继续往下看内容</button>
-                <a href="#resources" class="btn btn-outline">查看平台结构</a>
+            <div style="margin: 25px 0; text-align: center;">
+                <button class="btn" style="padding: 12px 30px; font-weight: bold;" onclick="window.open('./guide.pdf', '_blank')">
+                    📖 免费领取乐龄旅居参考手册
+                </button>
             </div>
-        </section>
-
+           <!--  这是优化后的新代码：融合了 SEO 引导与视觉暗示，且绝不冗余 -->
+<div style="text-align: center; margin: 40px auto 20px auto; max-width: 700px;">
+    <p class="page-subtitle" style="font-size: 1.1rem; color: #00f2fe; margin-bottom: 10px; font-weight: bold;">
+        🧭 乐龄品质生活 AI 助手能帮您做什么？
+    </p>
+    <p style="color: #aaa; font-size: 0.95rem; margin: 0; line-height: 1.6;">
+        我们为您整理了不同地区的环境、成本与便利性信息。请在下方查看我们的核心功能与定制参考：
+    </p>
+    <div style="color: #00f2fe; font-size: 1.5rem; margin-top: 15px; animation: bounce 2s infinite;">⬇️</div>
+</div>
         <section class="card">
             <h2 class="card-title">核心功能</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>🏠 生活信息整理示例</h3>
-                    <p>根据身体状况、兴趣偏好，AI生成专属长者品质生活内容示例，含生活方式参考、休闲活动建议</p>
+                    <h3>🏠 生活信息整理参考</h3>
+                    <p>根据身体状况、兴趣偏好，AI生成专属乐龄品质生活内容示例，含生活方式参考、休闲活动建议</p>
                 </div>
                 <div class="feature-item">
-                    <h3>✈️ 旅居相关内容展示示例</h3>
+                    <h3>✈️ 旅居内容参考</h3>
                     <p>输入康养需求等偏好，AI生成专属旅居方案，含目的地筛选、行程方案设计</p>
                 </div>
                 <div class="feature-item">
-                    <h3>💊 日常安排内容结构示例</h3>
+                    <h3>🌞日常生活安排参考</h3>
                     <p>优化生活状态内容示例，含地域营养饮食+适龄参考，提升生活品质</p>
                 </div>
                 <div class="feature-item">
-                    <h3>🎯 信息汇总与页面组织示例</h3>
+                    <h3>🎯 生活信息综合参考</h3>
                     <p>动态适配目的地气候与医疗资源，含旅居行程内容示例+应急信息参考</p>
                 </div>
             </div>
         </section>
 
         <section class="card" id="resources">
-            <h2 class="card-title">方案模板</h2>
-            <p class="card-desc">免费获取基础模板，查看示例内容全套AI定制方案</p>
+            <h2 class="card-title">参考内容</h2>
+            <p class="card-desc">以下内容均免费查看</p>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>生活内容参考基础模板（免费）</h3>
-                    <p>含基础身体状态清单+休闲活动建议，快速了解舒适长者日常</p>
-                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/senior-free')">免费领取</button>
+                    <h3>生活方式参考指南</h3>
+                    <p>含基础身体状态清单+休闲活动建议，快速了解舒适乐龄日常</p>
+                    <a href="guide-lifestyle.html" class="btn">生活方式参考指南</a>
                 </div>
                 <div class="feature-item">
-                    <h3>旅居内容参考基础模板（免费）</h3>
-                    <p>含基础旅居目的地指南+适龄准备清单，快速了解长者旅居要点</p>
-                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/travel-free')">免费领取</button>
+                    <h3>旅居参考指南</h3>
+                    <p>含基础旅居目的地指南+适龄准备清单，快速了解乐龄旅居要点</p>
+                    <a href="guide-travel.html" class="btn">旅居参考指南</a>
                 </div>
                 <div class="feature-item">
-                    <h3>30天AI定制全套内容示例</h3>
+                    <h3>30天AI定制全套内容指南</h3>
                     <p>展示更完整的内容结构示例，包括内容层级、信息组织与参考清单示意</p>
-                    <button class="btn" onclick="showPayCode()">查看示例内容</button>
+                    <a href="guide-30day.html" class="btn">30天AI定制内容指南</a>
                 </div>
             </div>
         </section>
 
         <section class="card">
             <h2 class="card-title">推荐产品</h2>
-            <p class="card-desc">搭配长者品质生活习惯的实用产品，提升生活品质和日常数据记录</p>
+            <p class="card-desc">搭配乐龄品质生活习惯的实用产品，提升生活品质和日常数据记录</p>
             <div class="product-grid">
                 <div class="product-item">
                     <div class="product-image">🌿</div>
                     <h3>特产AI鲜选</h3>
-                    <p>各地优质食材+长者养生特产，AI精选适配日常饮食</p>
-                    <button class="btn" onclick="alert('产品详情：https://example.com/product3')">了解详情</button>
+                    <p>各地优质食材+乐龄养生特产，AI精选适配日常饮食</p>
+                    <a href="guide-food.html" class="btn">特产AI鲜选</a>
                 </div>
                 <div class="product-item">
                     <div class="product-image">📊</div>
                     <h3>生活状态监测小工具</h3>
                     <p>日常监测工具+体态数据秤+生活检测设备，适配生活状态数据记录</p>
-                    <button class="btn" onclick="alert('产品详情：https://example.com/product2')">了解详情</button>
+                    <a href="guide-tools.html" class="btn">生活状态监测小工具</a>
                 </div>
             </div>
         </section>
 
         <section class="card">
-            <h2 class="card-title">长者品质生活内容交流示例</h2>
-            <p class="card-desc">长者品质生活信息平台+AI辅助展示内容示例</p>
-            <div class="pay-section">
+            <h2 class="card-title">联系我们·乐龄生活交流</h2>
+            <p class="card-desc">扫码加微信，聊聊旅居、健康、生活方式</p>
+            <div class="pay-section" style="max-width:680px; margin:0 auto;">
                 <div class="pay-code">
-                    <div class="pay-code-placeholder">微信/支付宝<br>收款码</div>
+                    <img src="images/qrcode2.jpg" style="width:180px; border-radius:10px;">
                 </div>
-                <p class="pay-tips">本区域仅为页面结构与交互示例，不提供真实咨询或收费服务</p>
-                <button class="btn" onclick="showConsultForm('长者品质生活')">填写交流信息</button>
+                <p class="pay-tips">畅聊人生时光，欢迎交流乐龄生活话题</p>
+                <a href="about.html" class="btn">关于我们</a>
             </div>   
         </section>
 
         <div class="ad-slot">
             <p class="ad-tips">
-                广告位预留（可接入Google AdSense或国内广告联盟）<br>
-                <small style="font-weight: normal; display: block; margin-top: 8px;">📢 现开放合作：健康产品 | 养老机构 | 保险服务 | 旅游服务</small>
+                <!-- 广告位预留（可接入Google AdSense或国内广告联盟）<br> -->
+                <!-- <small style="font-weight: normal; display: block; margin-top: 8px;">
+                    📢 现开放合作：健康产品 | 养老机构 | 保险服务 | 旅游服务<br>
+                    <a href="cooperation.html" style="color: #0066cc;">点击联系合作</a> 
+                    | 所有广告均会明确标注"广告"标识
+                </small> -->
             </p>
         </div>
 
         <footer class="footer">
             <div class="footer-links">
                 <a href="index.html">返回首页</a>
-                <a href="about.html">关于我们</a>
                 <a href="service.html">服务说明</a>
                 <a href="privacy.html">隐私政策</a>
                 <a href="subscribe.html">订阅更新</a>
                 <a href="contact.html">联系我们</a>
             </div>
             <p class="footer-disclaimer">本站内容基于公开信息与 AI 技术进行整理与生成，不替代专业判断。</p>
-            <p style="font-size: 0.7rem; color: #666; margin-top: 8px; line-height: 1.4; opacity: 0.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 0.7rem; color: #666; margin-top: 8px; line-height: 1.4; opacity: 0.6; max-width: 258px; margin-left: auto; margin-right: auto;">
                 <b>Disclaimer:</b> This site provides information and AI-assisted data analysis for informational purposes only. It is NOT a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider.
             </p>
-            <p class="copyright">© 2025 AI智能生活助手</p>
+            <p class="copyright">© 2026 anrjai.com · 乐龄品质生活 AI助手</p>
         </footer>
     </div>
     <script src="script.js"></script>
