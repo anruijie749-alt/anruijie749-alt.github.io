@@ -569,3 +569,37 @@ body {
       border-color: rgba(0, 242, 254, 0.5);
   }
 }
+.nav-menu li a { padding: 3px 7px !important; font-size: 0.8rem !important; }
+.nav-container { margin-left: auto; }
+/* 确保下拉菜单在所有页面都能正确隐藏和显示 */
+.navbar { position: relative; z-index: 1000; }
+.dropdown { position: relative; }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(10,10,30,0.97);
+    border: 1px solid rgba(0,242,254,0.3);
+    border-radius: 8px;
+    min-width: 100px;
+    z-index: 99999;
+    padding: 6px 0;
+    list-style: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+.dropdown:hover .dropdown-menu { 
+    display: block !important; 
+}
+.dropdown-menu li a {
+    display: block;
+    padding: 8px 12px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu li a:hover { 
+    color: #00f2fe; 
+    background: rgba(255,255,255,0.05);
+}
