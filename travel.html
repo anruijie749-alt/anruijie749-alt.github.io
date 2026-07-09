@@ -559,7 +559,7 @@ ${extra ? `- 特别要求：${extra}` : ''}
 
 try {
    // 删掉真实的 Key，改为直接请求你自己的 Vercel 后端
-   const response = await fetch('/api/chat', {
+   const response = await fetch('/api/generate-plan', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
