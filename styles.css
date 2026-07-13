@@ -1,0 +1,605 @@
+/* =========================
+   全局基础
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+  background: #020817;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =========================
+   粒子背景
+========================= */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* =========================
+   页面容器
+========================= */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* =========================
+   导航栏（非汉堡，稳态）
+========================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  margin-bottom: 40px;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  flex-wrap: wrap;              /* ✅ 关键：允许换行 */
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 650;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;              /* ✅ 菜单内部也允许换行 */
+  gap: 8px;
+  list-style: none;
+  margin-left: auto;
+}
+
+.nav-menu a {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  background: rgba(56, 189, 248, 0.08);
+  white-space: nowrap;
+  transition: 0.25s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  background: rgba(56, 189, 248, 0.18);
+}
+
+/* 手机：Logo 一行，菜单一行（看得全） */
+@media (max-width: 768px) {
+  .logo {
+    width: 100%;
+  }
+  .nav-menu {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================
+   主内容区
+========================= */
+.main-content {
+  text-align: center;
+  background: rgba(10, 25, 47, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 20px 36px;
+  box-shadow: 0 0 80px rgba(56, 189, 248, 0.15);
+  margin-bottom: 40px;
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 3.6vw, 2.6rem);
+  line-height: 1.25;
+  font-weight: 650;
+  margin-bottom: 22px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  max-width: 900px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+/* =========================
+   按钮
+========================= */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  color: #020817;
+  text-decoration: none;
+  margin: 0 10px 16px;
+  transition: 0.25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #38bdf8;
+  border: 1.5px solid #38bdf8;
+}
+
+/* =========================
+   卡片
+========================= */
+.card {
+  background: rgba(17, 25, 40, 0.85);
+  border-radius: 20px;
+  padding: 36px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.card-title {
+  font-size: 1.45rem;
+  font-weight: 650;
+  margin-bottom: 18px;
+  color: #818cf8;
+}
+
+.card-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 22px;
+}
+
+/* =========================
+   功能 / 产品网格
+========================= */
+.feature-grid,
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.feature-item,
+.product-item {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.feature-item h3,
+.product-item h3 {
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  color: #38bdf8;
+}
+
+.feature-item p,
+.product-item p {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* =========================
+   页脚
+========================= */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05); /* 调成更通透的白色透明 */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* 增加顶部发光细线 */
+  backdrop-filter: blur(10px); /* 核心：开启磨砂玻璃效果 */
+  margin-top: 50px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.footer-links a:hover {
+  color: #00f2fe; /* 统一成你落地页的极客蓝 */
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.8); /* 增加发光字效果 */
+  transition: 0.3s;
+}
+.footer-disclaimer {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 14px;
+}
+
+.copyright {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+/* 1. 按钮悬停特效：鼠标放上去会发光微动 */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+  filter: brightness(1.2);
+  transition: all 0.3s ease;
+}
+
+/* 2. 手机端响应式补丁：防止内容在手机上挤在一起 */
+@media (max-width: 768px) {
+  .feature-grid, .product-grid, .display-grid {
+      grid-template-columns: 1fr !important; /* 强制手机端一列显示 */
+  }
+  .focus-landing-box {
+      padding: 15px !important;
+      margin-bottom: 30px !important;
+  }
+}
+/* =========================
+   响应式
+========================= */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 15px 20px;
+  }
+  .page-title {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 28px 20px;
+  }
+}
+/* ===== 导航：最多两行视觉高度，超出则横向滑动（非汉堡、可见全） ===== */
+:root{
+  --nav-item-h: 36px; /* 单个导航按钮高度基准 */
+  --nav-gap: 8px;
+}
+
+/* 默认：允许换行（通常 1-2 行） */
+.nav-menu{
+  flex-wrap: wrap;
+  gap: var(--nav-gap);
+}
+
+/* 窄屏：限制菜单区域最多两行高度；内容过多时允许横向滚动 */
+@media (max-width: 860px){
+  .nav-menu{
+    max-height: calc(var(--nav-item-h) * 2 + var(--nav-gap)); /* 约两行 */
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; /* 给滑动留一点呼吸 */
+  }
+
+  /* 在滚动模式下，按钮略微紧凑，减少溢出概率 */
+  .nav-menu a{
+    padding: 6px 10px;
+    font-size: 0.86rem;
+  }
+
+  /* 隐藏滚动条但保留可滚动 */
+  .nav-menu::-webkit-scrollbar{ height: 6px; }
+}
+/* ===== sitemap 更舒服的排版（不改配色体系） ===== */
+.sitemap-card .card-desc{ margin-bottom: 14px; }
+
+.sitemap-actions{ margin: 10px 0 18px; }
+
+.sitemap-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.sitemap-group{
+  background: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.sitemap-group h2{
+  font-size: 1.05rem;
+  color: #38bdf8;
+  margin-bottom: 12px;
+}
+
+.sitemap-group ul{ list-style: none; padding: 0; }
+.sitemap-group li{ margin: 10px 0; }
+
+.sitemap-group a{
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.sitemap-group a:hover{ text-decoration: underline; }
+
+.sitemap-group span{
+  display: block;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px){
+  .sitemap-grid{ grid-template-columns: 1fr; }
+}
+/* --- 1. 广告占位底板样式 --- */
+.ad-slot {
+  margin: 20px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05); /* 半透明深色背景 */
+  border: 1px dashed rgba(255, 255, 255, 0.2); /* 虚线边框 */
+  border-radius: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- 2. 咨询服务左右布局与收款码面板 --- */
+/* 将咨询服务的容器设为左右排列 */
+.pay-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  text-align: left; /* 确保左侧文字左对齐 */
+}
+
+/* 调整左侧文字区域宽度 */
+.pay-section > div:first-child {
+  flex: 1;
+}
+
+/* 收款码面板样式 */
+.pay-code {
+  width: 150px;
+  height: 200px;
+  background: linear-gradient(145deg, #2c3e50, #000000); /* 深色渐变底板，不突兀 */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pay-code-placeholder {
+  color: #4facfe; /* 科技蓝色文字 */
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* 适配手机端：在小屏幕上自动改为上下排列 */
+@media (max-width: 768px) {
+  .pay-section {
+      flex-direction: column;
+  }
+  .pay-code {
+      width: 100%;
+      max-width: 200px;
+  }
+}
+/* =========================
+   手机端汉堡菜单：终极优化修复版
+   ========================= */
+
+/* 1. 默认状态（电脑端隐藏按钮） */
+.hamburger { 
+  display: none; 
+}
+
+@media (max-width: 768px) {
+  /* 2. 导航栏容器修复：防止 Logo 和按钮乱跑 */
+  .navbar {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding: 10px 16px !important;
+      position: relative;
+      z-index: 1000;
+  }
+
+  .logo {
+      width: auto !important;
+      margin: 0 !important;
+      font-size: 1.1rem !important;
+  }
+
+  /* 3. 汉堡按钮：改为精致的科技蓝 */
+  .hamburger { 
+      display: flex; 
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+  }
+
+  .hamburger span {
+      width: 100%;
+      height: 2px;
+      background: #38bdf8; 
+      border-radius: 2px;
+  }
+
+  /* 4. 下拉菜单面板：解决重叠与巨大化 */
+  .nav-container {
+      display: none; 
+      position: absolute;
+      top: 100%; 
+      left: 0;
+      width: 100%;
+      background: rgba(10, 25, 47, 0.98); /* 修正了之前的语法错误 */
+      backdrop-filter: blur(15px);
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  /* 激活下拉 */
+  .nav-container.active { 
+      display: block !important; 
+      animation: fadeInDown 0.3s ease;
+  }
+
+  /* 5. 菜单列表：精致按钮排版 */
+  .nav-menu { 
+      display: flex !important;
+      flex-direction: column !important; 
+      width: 100% !important;
+      max-height: none !important; /* 彻底解除之前的高度限制 */
+      gap: 8px !important; /* 按钮之间的间距 */
+      margin: 0 !important;
+      padding: 0 !important;
+  }
+
+  .nav-menu li {
+      width: 100%;
+      list-style: none;
+  }
+
+  .nav-menu a { 
+      display: block !important;
+      padding: 8px 15px !important; /* 缩小高度，不再吓人 */
+      text-align: center;
+      background: rgba(56, 189, 248, 0.08) !important;
+      border: 1px solid rgba(56, 189, 248, 0.2) !important;
+      border-radius: 8px !important;
+      color: #38bdf8 !important;
+      font-size: 0.9rem !important;
+      text-decoration: none;
+      transition: 0.2s;
+  }
+
+  .nav-menu a:active {
+      background: rgba(56, 189, 248, 0.2) !important;
+      transform: scale(0.98);
+  }
+}
+
+/* 下拉动画定义 */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* 专门针对手机端的点击反馈 */
+.footer-links a:active {
+  color: #00ff7f !important; /* 点击瞬间变绿 */
+  text-shadow: 0 0 15px #00ff7f;
+  transform: scale(0.95); /* 点击时微弱缩小，模拟按压感 */
+}
+/* --- 修正版：AI引导框居中 --- */
+.ai-input-hint {
+  background: rgba(255,255,255,0.05); 
+  border: 1px dashed rgba(0,242,254,0.3); 
+  padding: 15px; 
+  border-radius: 30px; 
+  text-align: center;
+  /* 下面这三行是居中核心，千万不能多加别的宽度 */
+  margin: 20px auto !important; 
+  width: 90%; 
+  max-width: 800px;
+  
+  backdrop-filter: blur(5px);
+  display: block;
+  animation: hintPulse 2s infinite;
+}
+
+@keyframes hintPulse {
+  0% { border-color: rgba(0,242,254,0.3); }
+  50% { border-color: rgba(0,242,254,0.8); }
+  100% { border-color: rgba(0,242,254,0.3); }
+}
+/* 专属发光呼吸引擎 */
+.hero-image-engine {
+  animation: glowEffect 3s infinite alternate ease-in-out;
+}
+
+@keyframes glowEffect {
+  0% {
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+      border-color: rgba(0, 242, 254, 0.2);
+  }
+  100% {
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+      border-color: rgba(0, 242, 254, 0.5);
+  }
+}
+.nav-menu li a { padding: 3px 7px !important; font-size: 0.8rem !important; }
+.nav-container { margin-left: auto; }
+/* 确保下拉菜单在所有页面都能正确隐藏和显示 */
+.navbar { position: relative; z-index: 1000; }
+.dropdown { position: relative; }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(10,10,30,0.97);
+    border: 1px solid rgba(0,242,254,0.3);
+    border-radius: 8px;
+    min-width: 100px;
+    z-index: 99999;
+    padding: 6px 0;
+    list-style: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+.dropdown:hover .dropdown-menu { 
+    display: block !important; 
+}
+.dropdown-menu li a {
+    display: block;
+    padding: 8px 12px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.dropdown-menu li a:hover { 
+    color: #00f2fe; 
+    background: rgba(255,255,255,0.05);
+}
