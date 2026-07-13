@@ -311,29 +311,85 @@
     .form-card { padding: 24px 18px; }
     .header h1 { font-size: 1.5rem; }
   }
+  /* 下拉菜单与导航补充样式 */
+  .navbar { position: relative; z-index: 1000; }
+    .dropdown { position: relative; }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(10,10,30,0.97);
+        border: 1px solid rgba(0,242,254,0.3);
+        border-radius: 8px;
+        min-width: 80px;
+        max-width: 100px;
+        z-index: 99999;
+        padding: 6px 0;
+        list-style: none;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    .dropdown:hover .dropdown-menu { display: block; z-index: 9999; }
+    .dropdown-menu li a {
+        display: block;
+        padding: 5px 10px;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+    .dropdown-menu li a:hover { color: #00f2fe; }
+    .nav-menu li a { padding: 3px 7px !important; font-size: 0.8rem !important;
+      font-weight: 530 !important; /* 强制改为 500（中黑/中粗体），文字立刻清晰 */
+        letter-spacing: 0.03em; /* 稍微拉开一点字间距，更方便老年人阅读 */
+    }
+    
+    .nav-container { margin-left: auto; }
+    .nav-menu { justify-content: flex-end; }
 </style>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
- 
-  <div class="container" style="max-width:100%; padding:0;">
-    <nav class="navbar" style="position:relative; z-index:1000; display:flex; align-items:center; padding:12px 20px; background:rgba(10,14,26,0.95); border-bottom:1px solid rgba(0,242,254,0.1);">
-        <a href="index.html" style="color:#00f2fe; text-decoration:none; font-size:1rem; font-weight:500; white-space:nowrap;">乐龄品质生活 AI助手</a>
-        <ul style="display:flex; list-style:none; margin-left:auto; gap:6px; flex-wrap:wrap;">
-            <li><a href="index.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">首页</a></li>
-            <li><a href="health.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">乐龄品质生活</a></li>
-            <li><a href="travel.html" style="color:#00f2fe; text-decoration:none; padding:3px 7px; font-size:0.8rem;">AI旅居规划</a></li>
-            <li><a href="senior.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">身体叙事馆</a></li>
-            <li><a href="tools.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">AI工具助手</a></li>
-            <li><a href="lunch.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">外卖领红包</a></li>
-            <li><a href="products.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">好物推荐</a></li>
-            <li><a href="about.html" style="color:rgba(255,255,255,0.8); text-decoration:none; padding:3px 7px; font-size:0.8rem;">关于我们</a></li>
-        </ul>
-    </nav> 
-<div class="planner">
-  <div class="header">
-    <div class="header-badge">✦ AI 旅居规划助手</div>
-    <h1>专属于你的乐龄旅居方案</h1>
-    <p>告诉我你的情况，AI为你生成一份<br>真正适合自己的旅居路线</p>
+  <div id="particles-js"></div>
+  <div class="container" style="max-width:100%; padding:30px 0 0 0;">   
+    <!--  替换为与首页完全统一的导航栏代码 -->
+<nav class="navbar">
+  <a href="index.html" class="logo">乐龄品质生活 AI助手</a>
+  <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+  </button>
+  <div class="nav-container" id="navContainer">
+      <ul class="nav-menu">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="health.html">乐龄品质生活</a></li>
+          <li><a href="travel.html" class="active">AI旅居规划</a></li>
+          <li><a href="senior.html">身体叙事馆</a></li>
+          <li><a href="tools.html">AI工具助手</a></li>
+          <li><a href="lunch/index.html">福利专区</a></li>
+          <li class="dropdown">
+              <a href="products.html">好物推荐 ▾</a>
+              <ul class="dropdown-menu">
+                  <li><a href="tea.html">茶文化好物</a></li>
+                  <li><a href="sololiving.html">尊严自理清单</a></li>
+                  <li><a href="sitemap.html">内容地图</a></li>
+              </ul>
+          </li>
+          <li><a href="about.html">关于我们</a></li>
+      </ul>
+  </div>
+</nav>
+<!--  精简上移、布局优化版 -->
+<div class="planner" style="padding-top: 0px;"> <!-- 顶部间距由40px缩减到10px -->
+  <div class="header" style="margin-bottom: 5px;padding-bottom: 30px"> <!-- 缩短与下方表单的距离 -->
+    
+    <!-- 优化后的微型标签，紧贴大标题 -->
+    <div class="header-badge" style="margin-bottom: 10px; font-weight: 500;">✦ AI 旅居规划助手</div>
+    
+    <h1 style="margin-top: 5px;">专属于你的乐龄旅居方案</h1>
+    <p style="margin-top: 8px;">告诉我你的情况，AI为你生成一份<br>真正适合自己的旅居路线</p>
   </div>
 
   <div class="form-card">
@@ -501,30 +557,31 @@ ${extra ? `- 特别要求：${extra}` : ''}
 
 语气要像一位有经验的老朋友在帮你出主意，亲切自然，不要像旅游广告。字数控制在500字左右。`;
 
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+try {
+   // 删掉真实的 Key，改为直接请求你自己的 Vercel 后端
+   const response = await fetch('/api/generate-plan', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
+        model: 'glm-4-flash',
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: 1000
       })
     });
-
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error?.message || '请求失败，请稍后再试');
+      throw new Error(data.error || '请求失败，请稍后再试');
     }
 
-    const text = data.content?.[0]?.text || '';
-    // Format bold text
+    // 2. 接收智谱返回的文本内容并渲染
+    const text = data.choices?.[0]?.message?.content || '';
     const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     resultContent.innerHTML = formatted;
     resultArea.classList.add('visible');
     resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+  
   } catch (err) {
     errorMsg.textContent = '生成失败：' + err.message;
     errorMsg.style.display = 'block';

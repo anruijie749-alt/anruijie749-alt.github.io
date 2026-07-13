@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="今天吃什么总纠结？3秒随机帮你决定午餐！支持预算筛选、口味偏好、最近记录，让选择更轻松。" />
+  <meta name="keywords" content="午餐转盘,今天吃什么,lunch picker,random lunch picker,food wheel,random food picker" />
+  <title>今天吃什么？随机午餐转盘｜午餐选择工具</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
+  
+  <meta property="og:image" content="https://lunch.anrjai.com/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="今天吃什么？随机午餐转盘" />
+<meta name="twitter:description" content="3秒随机帮你决定午餐，支持预算筛选和口味偏好。" />
+   
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lunch.anrjai.com/">
+
+  <meta property="og:title" content="今天吃什么？外卖红包转盘" />
+  <meta property="og:description" content="随机午餐大转盘，一键决定今天吃什么，外卖优惠信息（自愿）！" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lunch.anrjai.com/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "今天吃什么 - 外卖红包转盘",
+    "description": "随机午餐转盘工具，帮你决定今天吃什么，同时领取外卖优惠红包",
+    "url": "https://lunch.anrjai.com/",
+    "applicationCategory": "LifestyleApplication",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1 class="title">🍱 今天吃什么？3秒随机帮你决定午餐</h1>
+      <p class="brand-text">
+        乐龄品质生活｜今天吃什么工具站
+        </p>
+      <p class="subtitle">
+        每天中午纠结吃什么？点一下直接给答案（可选：结果页提供外卖优惠入口，自愿领取）。
+      </p>
+    </header>
+
+    <p id="locationHint" class="location-hint" aria-live="polite"></p>
+
+    <div class="button-area">
+      <div class="today-tip">
+        🔥 查看今日优惠信息，先领红包再下单更省钱
+      </div> 
+      <button id="spinBtn" class="btn-primary" type="button">🍜 立即帮我选午餐</button>
+      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 换一个结果</button>
+    </div>
+
+    <div class="tool-area">
+      <button id="menuBtn" class="btn-tool" type="button">📋 菜单目录</button>
+      <button id="statsBtn" class="btn-tool" type="button">📊 查看统计</button>
+      <button id="clearBtn" class="btn-tool btn-danger" type="button">🗑️ 清除数据</button>
+    </div>
+
+    <p class="tip-text">
+      *说明：本页为“午餐选择工具”。如您主动点击相关入口，将跳转第三方平台查看优惠信息；是否领券/下单以第三方页面为准。
+    </p>
+
+    <div class="wheel-container">
+      <canvas id="wheelCanvas" aria-label="午餐选择随机转盘" role="img"></canvas>
+    </div>
+
+    <section class="filter-section">
+      <h2 class="section-title">💰 预算控制</h2>
+      <div class="budget-controls">
+        <label class="budget-option">
+          <input type="radio" name="budget" value="30" checked />
+          <span>30元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="50" />
+          <span>50元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="100" />
+          <span>100元或请人吃😎</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="999" />
+          <span>不限</span>
+        </label>
+      </div>
+
+      <h2 class="section-title">🌶️ 口味偏好</h2>
+      <div class="taste-controls">
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="清淡" />
+          <span>清淡</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="中辣" />
+          <span>中辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="重辣" />
+          <span>重辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="素食" />
+          <span>素食</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="recommend-section">
+      <h2 class="section-title">⭐ 今日推荐</h2>
+      <div id="todayRecommend" class="recommend-item">加载中...</div>
+
+      <h2 class="section-title">🧾 最近选择</h2>
+      <div id="recentChips" class="recent-chips"></div>
+      
+      <div class="hot-keywords">
+        🔥 热门选择：
+        <span class="keyword-tag">火锅</span> / 
+        <span class="keyword-tag">黄焖鸡</span> / 
+        <span class="keyword-tag">麻辣烫</span> / 
+        <span class="keyword-tag">汉堡</span> / 
+        <span class="keyword-tag">炸鸡</span> / 
+        <span class="keyword-tag">寿司</span>
+      </div>
+    </section>
+
+    <div class="menu-catalog-section">
+      <a id="catalogBtn" class="btn-catalog" href="javascript:void(0);" rel="noopener noreferrer">
+        🎟️ 查看平台活动入口（自愿）
+      </a>
+    </div>
+
+    <div class="platform-section"style="display:none;">
+      <h2 class="section-title platform-title">🍱 外卖平台快捷入口（无强制、无默认推广）</h2>
+      <p class="platform-tip">
+        这里只是帮你快速打开平台App/H5，自行选择是否下单；如您以后开通官方推广，只需在配置里填入链接即可。
+      </p>
+      <div class="platform-buttons">
+        <button id="elemeBtn" class="btn-platform btn-eleme" type="button">
+          饿了么直达
+        </button>
+        <button id="jingdongBtn" class="btn-platform btn-jingdong" type="button">
+          京东外卖
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h2 class="modal-title" id="modalTitle">恭喜你！</h2>
+      <p class="modal-text" id="modalText">今天吃火锅！</p>
+
+      <div class="modal-buttons">
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 跳转平台查看优惠</button>
+        <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="seo-text">
+    <h2>午餐选择困难怎么办？</h2>
+    <p>
+      每天中午不知道吃什么？很多人都会遇到“午餐选择困难”问题，打开外卖平台翻了十几分钟，最后还是不知道点什么。
+    </p>
+    <p>
+      本随机午餐转盘工具，可以帮助你快速随机决定今天吃什么，支持预算筛选、口味偏好、最近记录等功能，减少纠结时间，让午餐选择更轻松。
+    </p>
+  
+    <h2>适合哪些人使用？</h2>
+    <ul class="seo-list">
+      <li>每天纠结午餐吃什么的上班族</li>
+      <li>经常点外卖的学生党</li>
+      <li>情侣随机决定吃什么</li>
+      <li>聚餐前快速决定餐饮类型</li>
+      <li>不知道今天吃什么的人</li>
+    </ul>
+  
+    <h2>热门午餐推荐</h2>
+    <p>
+      火锅、黄焖鸡、麻辣烫、炸鸡、寿司、汉堡、盖浇饭、轻食沙拉、拉面、牛肉饭等都可以随机推荐。
+    </p>
+  
+    <h2>常见问题 FAQ</h2>
+    <h3>这个午餐转盘是随机的吗？</h3>
+    <p>
+      是的，系统会根据你的预算和口味偏好，随机推荐适合的午餐选择。
+    </p>
+  
+    <h3>需要开启定位吗？</h3>
+    <p>
+      不需要。即使关闭定位，也可以正常使用全国随机午餐推荐功能。
+    </p>
+  
+    <h3>是否会自动跳转外卖平台？</h3>
+    <p>
+      不会。所有平台入口均为用户主动点击，无默认跳转、无强制下载。
+    </p>
+  
+    <h3>支持全国使用吗？</h3>
+    <p>
+      支持。无论你在国内哪个城市，都可以正常使用随机午餐功能。
+    </p>
+  </section>
+  
+  <section class="related-links">
+    <h2>🍽️ 更多选择工具</h2>
+    <ul>
+      <li><a href="what-to-eat.html">今天吃什么</a></li>
+      <li><a href="breakfast.html">早餐吃什么</a></li>
+      <li><a href="dinner.html">晚餐吃什么</a></li>
+      <li><a href="diet.html">减脂吃什么</a></li>
+      <li><a href="couple.html">情侣吃什么</a></li>
+      <li><a href="decision.html">选择困难症</a></li>
+      <li><a href="food-wheel.html">Random Lunch Picker</a></li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a id="privacyLink" href="javascript:void(0);">隐私政策</a>
+      <a id="termsLink" href="javascript:void(0);">使用条款</a>
+    </div>
+    <p class="footer-note">© 2026 乐龄品质生活 · 今天吃什么工具站  </p>
+
+  <div id="infoModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h2 class="modal-title" id="infoTitle">信息</h2>
+      <p class="modal-text" id="infoText">内容</p>
+      <div class="modal-buttons">
+        <button id="infoOkBtn" class="btn-share" type="button">✅ 我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+按钮名称：
+guide-lifestyle.html  →  生活方式参考指南页面
+guide-travel.html     →  旅居参考指南页面
+guide-30day.html      →  30天生活节奏参考页面
+guide-food.html       →  特产鲜选页面
+guide-tools.html      →  监测工具页面
+
+
+
+
+
+
+文件名称：
+subscribe.html--订阅更新
+contact.html--联系我们

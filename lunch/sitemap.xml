@@ -1,0 +1,86 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://anrjai.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/health.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/products.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/travel.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/service.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/senior.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/tools.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/article1.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/article2.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/article3.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/guide-30day.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/guide-food.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/guide-lifestyle.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/guide-tools.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/guide-travel.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/subscribe.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/tea.html</loc>
+  </url>
+
+  <url>
+    <loc>https://anrjai.com/sitemap.html</loc>
+  </url>
+
+</urlset>
+```
