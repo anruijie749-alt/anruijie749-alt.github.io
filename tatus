@@ -1,0 +1,19 @@
+[33mcommit db6d373723f777c51ba23c534c888a512987297e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: anruijie749-alt <anruijie749@gmail.com>
+Date:   Tue Jul 14 10:11:57 2026 +0800
+
+    改用免费模型glm-4-flash测试
+
+[1mdiff --git a/api/generate-plan.js b/api/generate-plan.js[m
+[1mindex 2700fea..fecf8e1 100644[m
+[1m--- a/api/generate-plan.js[m
+[1m+++ b/api/generate-plan.js[m
+[36m@@ -22,7 +22,7 @@[m [mexport default async function handler(req, res) {[m
+         'Authorization': `Bearer ${apiKey}`[m
+       },[m
+       body: JSON.stringify({[m
+[31m-        model: 'glm-4-flash', // 使用智谱性价比最高的通用大模型[m
+[32m+[m[32m        model: 'glm-4.7-flash', // 使用智谱性价比最高的通用大模型[m
+         messages: [{ role: 'user', content: prompt }],[m
+         temperature: 0.7[m
+       })[m
