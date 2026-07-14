@@ -560,14 +560,10 @@ ${extra ? `- 特别要求：${extra}` : ''}
 try {
    // 删掉真实的 Key，改为直接请求你自己的 Vercel 后端
    const response = await fetch('/api/generate-plan', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'glm-4-flash',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 1000
-      })
-    });
+   method: 'POST',
+   headers: { 'Content-Type': 'application/json' },
+   body: JSON.stringify({ prompt: prompt })
+ });
     const data = await response.json();
 
     if (!response.ok) {
@@ -575,7 +571,7 @@ try {
     }
 
     // 2. 接收智谱返回的文本内容并渲染
-    const text = data.choices?.[0]?.message?.content || '';
+    const text = data.text || '';
     const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     resultContent.innerHTML = formatted;
     resultArea.classList.add('visible');
