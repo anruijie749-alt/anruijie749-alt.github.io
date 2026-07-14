@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      return res.status(response.status).json({ error: data.error?.message || '智谱接口调用失败' });
+      return res.status(response.status).json({ error: JSON.stringify(data) });
     }
 
     // 3. 把大模型的文本结果返回给前端
