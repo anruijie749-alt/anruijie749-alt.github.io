@@ -23,8 +23,12 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'glm-4.7-flash', // 使用智谱性价比最高的通用大模型
-        messages: [{ role: 'user', content: prompt }],
-        thinking: { type: 'disabled' },
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
         temperature: 0.7
     })
     });
