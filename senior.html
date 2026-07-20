@@ -48,7 +48,7 @@
                 <p style="color: #ddd; line-height: 1.8;">别总觉得哪疼就是“老了”。很多时候，是您的体态在偷偷“罢工”。在叙事馆里，我们不谈沉重的医疗诊断，我们用 AI 视觉技术帮您看清那些肉眼难查的重心偏移，帮您找回轻盈、挺拔的自己。</p>
                 
                 <div style="margin: 25px 0; text-align: center;">
-                    <button class="btn" style="background: #9c27b0; border: none; font-weight: bold; padding: 12px 30px;">找我聊聊体态问题</button>
+                    <button class="btn" onclick="scrollToContact()">找我聊聊体态问题</button>
                 </div>
         
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
@@ -85,6 +85,7 @@
                     <p>展示数据记录与变化趋势的示例形式，用于内容结构与功能展示，展示体态与习惯变化的记录示例，用于内容展示与借鉴</p>
                 </div>
             </div>
+            <p style="color:#ccc; font-size:0.9rem; line-height:1.8; margin-top:15px;">体态问题在中老年人群中十分常见，常见诱因包括久坐、长期低头看手机、缺乏核心力量训练等。通过日常观察与适度的柔性伸展运动，多数轻度体态问题可以得到改善。</p> 
         </section>
 
         <!-- 方案模板 -->
@@ -95,12 +96,12 @@
                 <div class="feature-item">
                     <h3>7天基础模板（免费）</h3>
                     <p>含基础饮食搭配+简易运动计划，适合状态管理新手快速入门</p>
-                    <button class="btn" onclick="alert('免费模板下载链接：https://example.com/health-free')">查看内容示例</button>
+                    <button class="btn" onclick="showConsultForm('7天免费模板领取')">领取7天体态观察指南</button>
                 </div>
                 <div class="feature-item">
                     <h3>30天AI智能定制生活方式规划模板（内容产品）</h3>
                     <p>展示更完整的内容结构示例，包括内容层级、信息组织与参考清单示意</p>
-                    <button class="btn" onclick="showPayCode()">查看结构示例</button>
+                    <button class="btn" onclick="showConsultForm('30天定制方案咨询')">获取30天体态改善方案</button>
                 </div>
             </div>
         </section>
@@ -114,13 +115,13 @@
                     <div class="product-image">🏋️</div>
                     <h3>健身便携运动包</h3>
                     <p>瑜伽垫+阻力带+跳绳，适配身体叙事馆日常训练</p>
-                    <button class="btn" onclick="alert('产品详情：https://example.com/product1')">了解详情</button>
+                    <button class="btn" onclick="window.location.href='products.html'">了解详情</button>
                 </div>
                 <div class="product-item">
                     <div class="product-image">📊</div>
                     <h3>生活状态监测小工具</h3>
                     <p>日常监测工具+体态数据秤+生活检测设备，适配生活状态数据记录</p>
-                    <button class="btn" onclick="alert('产品详情：https://example.com/product2')">了解详情</button>
+                    <button class="btn" onclick="window.location.href='products.html'">了解详情</button>
                 </div>
             </div>
         </section>
@@ -129,7 +130,18 @@
         <section class="card">
             <h2 class="card-title">生活方式内容交流示例</h2>
             <p class="card-desc">用于展示页面结构与内容交互形式，不提供真实咨询或个性化服务</p>
-            <div class="pay-section">
+            <div class="<!-- 1v1咨询服务修改版 -->
+                <section class="card" id="contact-section">
+                    <h2 class="card-title">获取一对一交流</h2>
+                    <p class="card-desc">如需进一步咨询，欢迎添加微信联系，我们将为您提供真人回复。</p>
+                    
+                    <div style="text-align: center; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px;">
+                        <!-- 直接显示二维码 -->
+                        <img src="images/wechat-qrcode.jpg" alt="微信二维码" style="width:180px; height:180px; border-radius:10px; margin-bottom:10px;">
+                        <p style="color: #e1bee7; font-size: 1rem; font-weight: bold;">微信号：anruijie1357924680</p>
+                        <p style="color: #ccc; font-size: 0.85rem;">（请直接搜索微信号或扫码添加）</p>
+                    </div>
+                </section>">
                 <div class="pay-code">
                     <div class="pay-code-placeholder">微信/支付宝<br>收款码</div>
                 </div>
@@ -175,10 +187,21 @@
           </footer>
           
     </div>
+    <div id="consultModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center;">
+        <div style="background:#1a1a2e; padding:30px; border-radius:15px; max-width:320px; text-align:center; position:relative;">
+          <button onclick="document.getElementById('consultModal').style.display='none'" style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;">×</button>
+          <h3 id="consultModalTitle" style="color:#e1bee7; margin-bottom:15px;"></h3>
+          <p style="color:#ccc; font-size:0.9rem; margin-bottom:15px;">扫码添加微信，获取真人一对一交流</p>
+          <img src="images/wechat-qrcode.jpg" alt="微信二维码" style="width:180px; height:180px; border-radius:10px; margin-bottom:10px;">
+          <p style="color:#e1bee7; font-size:0.85rem;">微信号：anruijie1357924680</p>
+        </div>
+      </div>
     <script src="script.js"></script>
     <script>
-        function showPayCode() {
-            alert('支付二维码功能\n\n（可对接微信/支付宝支付接口）');
+        function scrollToContact() {
+            document.getElementById('contact-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
         }
     </script>
 </body>

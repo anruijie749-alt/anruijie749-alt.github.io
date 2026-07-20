@@ -435,6 +435,34 @@
         </select>
       </div>
     </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>意向旅居地域</label>
+        <select id="region">
+          <option value="" disabled selected>请选择意向地域</option>
+          <option value="海南">海南</option>
+          <option value="云南">云南</option>
+          <option value="广西">广西</option>
+          <option value="广东">广东</option>
+          <option value="福建">福建</option>
+          <option value="江浙沪">江浙沪</option>
+          <option value="四川·重庆">四川·重庆</option>
+          <option value="贵州">贵州</option>
+          <option value="山东">山东</option>
+          <option value="东北·华北">东北·华北</option>
+          <option value="西北">西北</option>
+          <option value="不限，听AI推荐">不限，听AI推荐</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>季节/气候偏好</label>
+        <select id="climate">
+          <option value="" disabled selected>请选择偏好</option>
+          <option value="冬季避寒">冬季避寒</option>
+          <option value="夏季避暑">夏季避暑</option>
+          <option value="四季皆宜，不挑季节">四季皆宜，不挑季节</option>
+        </select>
+    </div>
   </div>
 
   <div class="form-card">
@@ -465,13 +493,14 @@
           <span class="tag" data-val="文化古迹">文化古迹</span>
           <span class="tag" data-val="美食探索">美食探索</span>
           <span class="tag" data-val="摄影写生">摄影写生</span>
+          <span class="tag" data-val="晨间漫步者">晨练散步</span>        
         </div>
       </div>
     </div>
     <div class="form-row single" style="margin-top:16px">
       <div class="form-group">
         <label>还有什么特别要求？（可不填）</label>
-        <textarea id="extra" placeholder="例如：不喜欢太多游客、希望有医院、子女方便来探望……"></textarea>
+        <textarea id="extra" placeholder="例如：想去三亚附近、不喜欢太多游客、希望有医院、子女方便来探望……"></textarea>
       </div>
     </div>
   </div>
@@ -479,6 +508,7 @@
   <button class="submit-btn" id="submit_btn" onclick="generatePlan()">
     ✦ 生成我的专属旅居方案
   </button>
+  <p style="font-size:0.8rem; color:#999; margin-top:15px; line-height:1.6;">以上旅居规划内容由AI根据公开信息自动生成，仅供参考，不构成任何旅行、居住或投资建议。具体行程请结合实际情况自行核实，我们不对因采用本规划产生的任何后果承担责任。</p> 
   <div class="error-msg" id="error_msg"></div>
 
   <div class="result-area" id="result_area">
@@ -526,10 +556,16 @@ async function generatePlan() {
   const travelType = document.getElementById('travel_type').value;
   const duration = document.getElementById('duration').value;
   const budget = document.getElementById('budget').value;
+  const region = document.getElementById('region').value;
   const health = getSelectedTags('health_tags') || '未特别说明';
   const prefs = getSelectedTags('pref_tags') || '未特别说明';
+  const climate = document.getElementById('climate').value;
   const extra = document.getElementById('extra').value.trim();
-
+  if (!region) {
+    document.getElementById('error_msg').textContent = '请先选择地域和季节偏好～';
+    document.getElementById('error_msg').style.display = 'block';
+    return;
+  }
   btn.disabled = true;
   btn.innerHTML = '<span class="loading-dots"><span></span><span></span><span></span></span> AI正在为你规划中…';
   errorMsg.style.display = 'none';
@@ -543,14 +579,17 @@ async function generatePlan() {
 - 出行方式：${travelType}
 - 旅居时长：${duration}
 - 预算：${budget}
+- 意向地域：${region}
+- 季节/气候偏好：${climate}
 - 身体状况：${health}
 - 生活偏好：${prefs}
 ${extra ? `- 特别要求：${extra}` : ''}
-
+请严格在用户选择的地域范围内推荐具体目的地，不要跳出这个范围去推荐其他省份或地区。请确保推荐目的地的气候特点，符合用户选择的季节偏好（例如：选了"冬季避寒"，就不要推荐冬天同样很冷的地方；选了"夏季避暑"，就不要推荐夏天酷热的地方）。如果你对某个细节把握不大，可以说得笼统一些，不要编造具体的数据或事实。
 请输出一份真诚、具体、实用的旅居方案，包含：
 
 1. **推荐目的地**（给出1-2个最适合的地方，说明为什么选它）
 2. **具体居住建议**（住在哪个区域、住多少钱的房子、什么类型）
+（请在这部分说明该区域的交通便利程度——是否方便打车、坐公交、离机场火车站远近，以及周边生活设施情况——医院、超市、菜市场是否齐全，这些对老年人旅居选择很重要）
 3. **日常生活安排**（一天怎么过，有哪些好去处）
 4. **身体方面的注意事项**（针对上面的身体状况给出贴心提示）
 5. **实用小建议**（2-3条只有去过的人才知道的真实建议）
