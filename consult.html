@@ -1,1 +1,1541 @@
- 提交身体情况
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>我的生活记录｜每日状态与就医记录 - 乐龄品质生活 AI助手</title>
+
+    <meta name="description" content="记录每天的生活状态、身体感受、活动情况以及就医、体检、化验和影像检查信息，帮助中老年人更好地整理自己的生活与健康资料。">
+
+    <link rel="canonical" href="https://anrjai.com/consult.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="我的生活记录｜乐龄品质生活 AI助手">
+    <meta property="og:description" content="简单记录每天的生活状态、活动情况以及就医和检查信息，让自己的生活变化有迹可循。">
+    <meta property="og:url" content="https://anrjai.com/consult.html">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+
+        /* =========================
+           页面基础
+        ========================= */
+
+        .record-intro {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            padding: 28px;
+            margin: 20px 0 30px;
+            text-align: center;
+        }
+
+        .record-intro h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .record-intro p {
+            color: #ccc;
+            line-height: 1.9;
+            max-width: 800px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           日期
+        ========================= */
+
+        .date-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .date-box label {
+            display: block;
+            color: #ddd;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .date-box input {
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+
+        /* =========================
+           表单
+        ========================= */
+
+        .record-form {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-group small {
+            display: block;
+            color: #999;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        textarea,
+        select,
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+
+        /* =========================
+           快速选择按钮
+        ========================= */
+
+        .quick-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-option {
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+            color: #ddd;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .quick-option.active {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.4);
+            color: #fff;
+        }
+
+
+        /* =========================
+           检查记录
+        ========================= */
+
+        .medical-notice {
+            background: rgba(255,255,255,0.04);
+            border-left: 4px solid rgba(255,255,255,0.3);
+            padding: 18px;
+            border-radius: 8px;
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .medical-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .medical-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .medical-card.active {
+            border-color: rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .medical-card h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .medical-card p {
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           操作按钮
+        ========================= */
+
+        .action-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .save-btn {
+            padding: 16px 40px;
+            border-radius: 10px;
+            border: none;
+            background: #fff;
+            color: #222;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .clear-btn {
+            margin-left: 10px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           历史记录
+        ========================= */
+
+        .history-item {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .history-item h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .history-item p {
+            color: #bbb;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .empty-history {
+            text-align: center;
+            color: #999;
+            padding: 30px;
+        }
+
+
+        /* =========================
+           合规说明
+        ========================= */
+
+        .disclaimer-box {
+            color: #999;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+
+        /* =========================
+           移动端
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .medical-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .record-intro {
+                padding: 22px 18px;
+            }
+
+            .quick-option {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .save-btn {
+                width: 90%;
+                margin-bottom: 12px;
+            }
+
+            .clear-btn {
+                margin-left: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+
+
+    <!-- =========================
+         导航
+    ========================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            乐龄品质生活 AI助手
+        </a>
+
+        <button class="hamburger" id="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+        <div class="nav-container" id="navContainer">
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html">
+                        首页
+                    </a>
+                </li>
+
+                <li>
+                    <a href="health.html">
+                        乐龄品质生活
+                    </a>
+                </li>
+
+                <li>
+                    <a href="travel.html">
+                        AI旅居规划
+                    </a>
+                </li>
+
+                <li>
+                    <a href="senior.html" class="active">
+                        身体叙事馆
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tools.html">
+                        AI工具助手
+                    </a>
+                </li>
+
+                <li>
+                    <a href="lunch/index.html">
+                        福利专区
+                    </a>
+                </li>
+
+                <li class="dropdown">
+
+                    <a href="products.html">
+                        好物推荐 ▾
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="tea.html">
+                                茶文化好物
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sololiving.html">
+                                尊严自理清单
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sitemap.html" target="_blank">
+                                内容地图
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        关于我们
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         页面标题
+    ========================= -->
+
+    <section class="main-content">
+
+        <h1 class="page-title">
+            📝 我的生活记录
+        </h1>
+
+        <div class="record-intro">
+
+            <h2>
+                给自己的生活留下一份记录
+            </h2>
+
+            <p>
+                人的身体和生活状态每天都会有一些变化。
+                今天睡得好不好、吃了什么、走了多少路、
+                心情怎么样，这些看似普通的小事，
+                时间久了就会成为了解自己的重要线索。
+                <br><br>
+
+                这里可以帮助您简单记录每天的生活状态，
+                也可以整理自己的就医、体检和检查资料。
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         每日记录
+    ========================= -->
+
+    <section class="card">
+
+        <h2 class="card-title">
+            📅 每日生活记录
+        </h2>
+
+        <p class="card-desc">
+            不需要每天填写很多内容，想到什么就记录什么。
+        </p>
+
+
+        <div class="record-form">
+
+
+            <!-- 日期 -->
+
+            <div class="date-box">
+
+                <label for="recordDate">
+                    今天是哪一天？
+                </label>
+
+                <input
+                    type="date"
+                    id="recordDate">
+
+            </div>
+
+
+            <!-- 今日状态 -->
+
+            <div class="form-group">
+
+                <label>
+                    今天整体感觉怎么样？
+                </label>
+
+                <div class="quick-options">
+
+                    <button class="quick-option" data-value="很好">
+                        😊 很好
+                    </button>
+
+                    <button class="quick-option" data-value="还不错">
+                        🙂 还不错
+                    </button>
+
+                    <button class="quick-option" data-value="一般">
+                        😐 一般
+                    </button>
+
+                    <button class="quick-option" data-value="有点累">
+                        😔 有点累
+                    </button>
+
+                    <button class="quick-option" data-value="不太舒服">
+                        😟 不太舒服
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 睡眠 -->
+
+            <div class="form-group">
+
+                <label>
+                    🌙 昨晚睡得怎么样？
+                </label>
+
+                <div class="quick-options">
+
+                    <button class="quick-option" data-value="睡得很好">
+                        睡得很好
+                    </button>
+
+                    <button class="quick-option" data-value="还可以">
+                        还可以
+                    </button>
+
+                    <button class="quick-option" data-value="睡得不太好">
+                        睡得不太好
+                    </button>
+
+                    <button class="quick-option" data-value="经常醒">
+                        经常醒
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 活动 -->
+
+            <div class="form-group">
+
+                <label>
+                    🚶 今天做了什么活动？
+                </label>
+
+                <small>
+                    可以点击选择，也可以在下面自己描述。
+                </small>
+
+                <div class="quick-options">
+
+                    <button class="quick-option" data-value="散步">
+                        🚶 散步
+                    </button>
+
+                    <button class="quick-option" data-value="做家务">
+                        🏠 做家务
+                    </button>
+
+                    <button class="quick-option" data-value="简单拉伸">
+                        🧘 简单拉伸
+                    </button>
+
+                    <button class="quick-option" data-value="广场活动">
+                        👥 广场活动
+                    </button>
+
+                    <button class="quick-option" data-value="没有特别活动">
+                        今天没有特别活动
+                    </button>
+
+                </div>
+
+                <br>
+
+                <textarea
+                    id="activityDescription"
+                    placeholder="例如：今天上午出去买菜，下午散步20分钟；今天陪老朋友聊天；今天感觉比较累，所以在家休息……"></textarea>
+
+            </div>
+
+
+            <!-- 身体感受 -->
+
+            <div class="form-group">
+
+                <label>
+                    💭 今天有什么特别的身体感受？
+                </label>
+
+                <small>
+                    可以记录自己的主观感受，不需要判断是不是疾病。
+                </small>
+
+                <textarea
+                    id="bodyFeeling"
+                    placeholder="例如：今天走路感觉比昨天轻松；肩颈有些僵硬；下午感觉比较疲劳……"></textarea>
+
+            </div>
+
+
+            <!-- 今天最想记住的事 -->
+
+            <div class="form-group">
+
+                <label>
+                    🌿 今天最想记录的一件事
+                </label>
+
+                <textarea
+                    id="dailyNote"
+                    placeholder="今天发生了什么？或者有什么事情值得以后回头看看？"></textarea>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         就医检查记录
+    ========================= -->
+
+    <section class="card">
+
+        <h2 class="card-title">
+            🏥 我的就医与检查记录
+        </h2>
+
+        <p class="card-desc">
+            可以把自己经历过的就医、体检和检查信息整理下来，方便以后查看或向专业人士提供资料。
+        </p>
+
+
+        <div class="medical-notice">
+
+            <strong>
+                温馨提示：
+            </strong>
+
+            <p>
+                这里是个人资料整理工具，不对化验结果、影像检查或身体状况进行诊断和判断。
+            </p>
+
+            <p>
+                如果您有身体不适或检查异常，请及时咨询医生或其他合格的医疗专业人员。
+            </p>
+
+        </div>
+
+
+        <div class="medical-grid">
+
+
+            <div class="medical-card" data-medical="医院就诊">
+
+                <h3>
+                    🏥 医院就诊
+                </h3>
+
+                <p>
+                    记录就诊日期、医院、科室以及医生建议等信息。
+                </p>
+
+            </div>
+
+
+            <div class="medical-card" data-medical="化验报告">
+
+                <h3>
+                    🧪 化验报告
+                </h3>
+
+                <p>
+                    记录血液、尿液等检查项目名称和日期。
+                </p>
+
+            </div>
+
+
+            <div class="medical-card" data-medical="影像检查">
+
+                <h3>
+                    🩻 影像检查
+                </h3>
+
+                <p>
+                    记录 X 光、CT、核磁共振、超声等检查信息。
+                </p>
+
+            </div>
+
+
+            <div class="medical-card" data-medical="体检记录">
+
+                <h3>
+                    📋 体检记录
+                </h3>
+
+                <p>
+                    整理年度体检、专项检查等个人资料。
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="record-form" style="margin-top:30px;">
+
+            <div class="form-group">
+
+                <label>
+                    检查或就诊日期
+                </label>
+
+                <input
+    type="date"
+    style="background:#111827;
+           color:#fff;
+           border:1px solid #38bdf8;
+           border-radius:8px;
+           padding:12px;
+           font-size:18px;">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    医院、机构或检查地点
+                </label>
+
+                <input
+                    type="text"
+                    id="medicalPlace"
+                    placeholder="例如：某某医院">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    检查或就诊内容
+                </label>
+
+                <textarea
+                    id="medicalDescription"
+                    placeholder="例如：今天在医院进行了体检；做了腹部超声；拿到了血液化验报告……"></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    医生或专业人员给出的建议（可选）
+                </label>
+
+                <textarea
+                    id="medicalAdvice"
+                    placeholder="可以记录医生告诉您的注意事项或复诊时间。"></textarea>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         保存
+    ========================= -->
+
+    <section class="card">
+
+        <div class="action-area">
+
+            <button
+    class="save-btn"
+    onclick="saveRecord()"
+    style="background: linear-gradient(135deg, #29b6f6, #03a9f4); color: #fff; border: none; padding: 12px 28px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold;">
+
+    💾 保存今天的记录
+
+</button>
+
+            <button
+                class="clear-btn"
+                onclick="clearForm()">
+
+                清空本次填写
+
+            </button>
+
+        </div>
+
+        <p class="disclaimer-box">
+
+            当前版本的数据仅保存在您自己的浏览器中。
+            清除浏览器数据或更换设备后可能无法继续查看。
+            未来如果升级为账号系统或小程序，将另行说明数据存储方式。
+
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         历史记录
+    ========================= -->
+
+    <section class="card">
+
+        <h2 class="card-title">
+            📖 我的记录
+        </h2>
+
+        <div id="historyList">
+
+            <div class="empty-history">
+                暂时还没有保存的记录。
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         相关功能
+    ========================= -->
+
+    <section class="card">
+
+        <h2 class="card-title">
+            🌿 继续探索
+        </h2>
+
+        <div style="text-align:center;">
+
+            <a href="ai-posture.html" class="btn">
+                📸 AI体态自我观察
+            </a>
+
+            <a href="posture-plan.html" class="btn">
+                📅 30天生活方式计划
+            </a>
+
+            <a href="safe-check.html" class="btn">
+                🛡️ 安心守护
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         页脚
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                返回首页
+            </a>
+
+            <a href="about.html">
+                关于我们
+            </a>
+
+            <a href="service.html">
+                服务说明
+            </a>
+
+            <a href="privacy.html">
+                隐私政策
+            </a>
+
+            <a href="subscribe.html">
+                订阅更新
+            </a>
+
+            <a href="contact.html">
+                联系我们
+            </a>
+
+        </div>
+
+        <p class="footer-disclaimer">
+
+            本站内容基于公开信息与 AI 技术进行整理与生成，
+            旨在提供信息参考与认知辅助，不替代专业判断。
+            具体决策请结合个人情况自行判断。
+
+        </p>
+
+        <p class="copyright">
+
+            © 2026 anrjai.com · 乐龄品质生活 AI助手
+
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================
+     JavaScript
+========================= -->
+
+<script src="script.js"></script>
+
+<script>
+
+    /* =========================
+       默认日期
+    ========================= */
+
+    const today =
+        new Date()
+        .toISOString()
+        .split("T")[0];
+
+    document.getElementById(
+        "recordDate"
+    ).value = today;
+
+
+    /* =========================
+       快速选项
+    ========================= */
+
+    const quickOptions =
+        document.querySelectorAll(
+            ".quick-option"
+        );
+
+
+    quickOptions.forEach(
+        function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    const parent =
+                        button.parentElement;
+
+                    parent
+                        .querySelectorAll(
+                            ".quick-option"
+                        )
+                        .forEach(
+                            function(item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================
+       检查记录类型
+    ========================= */
+
+    let medicalType =
+        "未选择";
+
+
+    const medicalCards =
+        document.querySelectorAll(
+            ".medical-card"
+        );
+
+
+    medicalCards.forEach(
+        function(card) {
+
+            card.addEventListener(
+                "click",
+                function() {
+
+                    medicalCards.forEach(
+                        function(item) {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    card.classList.add(
+                        "active"
+                    );
+
+
+                    medicalType =
+                        card.dataset.medical;
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================
+       保存记录
+    ========================= */
+
+    function saveRecord() {
+
+
+        const date =
+            document.getElementById(
+                "recordDate"
+            ).value;
+
+
+        const activity =
+            document.getElementById(
+                "activityDescription"
+            ).value;
+
+
+        const bodyFeeling =
+            document.getElementById(
+                "bodyFeeling"
+            ).value;
+
+
+        const dailyNote =
+            document.getElementById(
+                "dailyNote"
+            ).value;
+
+
+        const medicalDate =
+            document.getElementById(
+                "medicalDate"
+            ).value;
+
+
+        const medicalPlace =
+            document.getElementById(
+                "medicalPlace"
+            ).value;
+
+
+        const medicalDescription =
+            document.getElementById(
+                "medicalDescription"
+            ).value;
+
+
+        const medicalAdvice =
+            document.getElementById(
+                "medicalAdvice"
+            ).value;
+
+
+        const selectedOptions =
+            document.querySelectorAll(
+                ".quick-option.active"
+            );
+
+
+        const selectedValues = [];
+
+
+        selectedOptions.forEach(
+            function(item) {
+
+                selectedValues.push(
+                    item.dataset.value
+                );
+
+            }
+        );
+
+
+        const record = {
+
+            date:
+                date,
+
+            selected:
+                selectedValues,
+
+            activity:
+                activity,
+
+            bodyFeeling:
+                bodyFeeling,
+
+            dailyNote:
+                dailyNote,
+
+            medicalType:
+                medicalType,
+
+            medicalDate:
+                medicalDate,
+
+            medicalPlace:
+                medicalPlace,
+
+            medicalDescription:
+                medicalDescription,
+
+            medicalAdvice:
+                medicalAdvice,
+
+            createdAt:
+                new Date().toLocaleString(
+                    "zh-CN"
+                )
+
+        };
+
+
+        let records =
+            JSON.parse(
+                localStorage.getItem(
+                    "anrjai_daily_records"
+                ) || "[]"
+            );
+
+
+        records.unshift(
+            record
+        );
+
+
+        localStorage.setItem(
+
+            "anrjai_daily_records",
+
+            JSON.stringify(
+                records
+            )
+
+        );
+
+
+        alert(
+            "今天的生活记录已经保存。\n\n记录保存在当前浏览器中。"
+        );
+
+
+        loadHistory();
+
+
+        clearForm();
+
+    }
+
+
+    /* =========================
+       清空表单
+    ========================= */
+
+    function clearForm() {
+
+
+        document.getElementById(
+            "activityDescription"
+        ).value = "";
+
+
+        document.getElementById(
+            "bodyFeeling"
+        ).value = "";
+
+
+        document.getElementById(
+            "dailyNote"
+        ).value = "";
+
+
+        document.getElementById(
+            "medicalDate"
+        ).value = "";
+
+
+        document.getElementById(
+            "medicalPlace"
+        ).value = "";
+
+
+        document.getElementById(
+            "medicalDescription"
+        ).value = "";
+
+
+        document.getElementById(
+            "medicalAdvice"
+        ).value = "";
+
+
+        document.querySelectorAll(
+            ".quick-option"
+        ).forEach(
+            function(item) {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        medicalCards.forEach(
+            function(item) {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        medicalType =
+            "未选择";
+
+    }
+
+
+    /* =========================
+       加载历史记录
+    ========================= */
+
+    function loadHistory() {
+
+
+        const historyList =
+            document.getElementById(
+                "historyList"
+            );
+
+
+        const records =
+            JSON.parse(
+
+                localStorage.getItem(
+                    "anrjai_daily_records"
+                ) || "[]"
+
+            );
+
+
+        if (
+            records.length === 0
+        ) {
+
+            historyList.innerHTML =
+
+                '<div class="empty-history">' +
+
+                '暂时还没有保存的记录。' +
+
+                '</div>';
+
+            return;
+
+        }
+
+
+        historyList.innerHTML = "";
+
+
+        records.forEach(
+            function(record) {
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "history-item";
+
+
+                item.innerHTML =
+
+                    "<h3>📅 " +
+
+                    record.date +
+
+                    "</h3>" +
+
+
+                    "<p><strong>今日状态：</strong>" +
+
+                    (
+                        record.selected
+                        .join("、") ||
+                        "未填写"
+                    ) +
+
+                    "</p>" +
+
+
+                    "<p><strong>活动记录：</strong>" +
+
+                    (
+                        record.activity ||
+                        "未填写"
+                    ) +
+
+                    "</p>" +
+
+
+                    "<p><strong>身体感受：</strong>" +
+
+                    (
+                        record.bodyFeeling ||
+                        "未填写"
+                    ) +
+
+                    "</p>" +
+
+
+                    "<p><strong>今日记录：</strong>" +
+
+                    (
+                        record.dailyNote ||
+                        "未填写"
+                    ) +
+
+                    "</p>" +
+
+
+                    "<p><strong>就医/检查类型：</strong>" +
+
+                    record.medicalType +
+
+                    "</p>" +
+
+
+                    (
+                        record.medicalDescription
+
+                        ?
+
+                        "<p><strong>检查记录：</strong>" +
+
+                        record.medicalDescription +
+
+                        "</p>"
+
+                        :
+
+                        ""
+
+                    );
+
+
+                historyList.appendChild(
+                    item
+                );
+
+            }
+        );
+
+    }
+
+
+    /* 页面加载 */
+
+    loadHistory();
+
+
+    /* =========================
+       粒子背景
+    ========================= */
+
+    if (
+        typeof particlesJS !==
+        "undefined"
+    ) {
+
+        particlesJS(
+
+            "particles-js",
+
+            {
+
+                "particles": {
+
+                    "number": {
+
+                        "value": 45,
+
+                        "density": {
+
+                            "enable": true,
+
+                            "value_area": 900
+
+                        }
+
+                    },
+
+                    "color": {
+
+                        "value": "#ffffff"
+
+                    },
+
+                    "shape": {
+
+                        "type": "circle"
+
+                    },
+
+                    "opacity": {
+
+                        "value": 0.25,
+
+                        "random": true
+
+                    },
+
+                    "size": {
+
+                        "value": 2,
+
+                        "random": true
+
+                    },
+
+                    "line_linked": {
+
+                        "enable": true,
+
+                        "distance": 150,
+
+                        "color": "#ffffff",
+
+                        "opacity": 0.12,
+
+                        "width": 1
+
+                    },
+
+                    "move": {
+
+                        "enable": true,
+
+                        "speed": 1,
+
+                        "direction": "none",
+
+                        "random": false,
+
+                        "straight": false,
+
+                        "out_mode": "out"
+
+                    }
+
+                },
+
+                "interactivity": {
+
+                    "detect_on": "canvas",
+
+                    "events": {
+
+                        "onhover": {
+
+                            "enable": true,
+
+                            "mode": "grab"
+
+                        },
+
+                        "onclick": {
+
+                            "enable": true,
+
+                            "mode": "push"
+
+                        },
+
+                        "resize": true
+
+                    }
+
+                },
+
+                "retina_detect": true
+
+            }
+
+        );
+
+    }
+
+</script>
+
+</body>
+
+</html>
+```

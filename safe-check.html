@@ -1,0 +1,1558 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>安心守护｜独居老人平安确认与安心伙伴 - 乐龄品质生活 AI助手</title>
+
+    <meta name="description" content="安心守护为独居老人、中老年人及缺少身边支持的人提供简单的平安确认、安心伙伴需求登记与生活支持信息入口，让一个人的生活多一份安心。">
+
+    <meta name="keywords" content="安心守护,独居老人,老人平安,中老年生活,安心伙伴,独居生活支持,老人关怀,乐龄品质生活 AI助手">
+
+    <link rel="canonical" href="https://anrjai.com/safe-check.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="安心守护｜平安确认与安心伙伴">
+    <meta property="og:description" content="让平安确认更简单，让缺少身边支持的人多一个寻找帮助和连接资源的入口。">
+    <meta property="og:url" content="https://anrjai.com/safe-check.html">
+    <meta property="og:site_name" content="乐龄品质生活 AI助手">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+
+        /* ==============================
+           页面介绍
+        ============================== */
+
+        .safe-intro {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            padding: 30px 25px;
+            margin: 20px 0 30px;
+            text-align: center;
+        }
+
+        .safe-intro h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .safe-intro p {
+            color: #ccc;
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+
+        /* ==============================
+           今日平安确认
+        ============================== */
+
+        .safe-check-box {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 35px 25px;
+        }
+
+        .safe-check-icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .safe-check-box h2 {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .safe-check-box p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .safe-status {
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+            max-width: 500px;
+        }
+
+        .safe-status.success {
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 大按钮 */
+
+        .safe-main-btn {
+            display: inline-block;
+            border: none;
+            border-radius: 12px;
+            padding: 18px 42px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(135deg, #29b6f6, #03a9f4);
+color: #fff;
+border: none;
+            color: #222;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin-top: 15px;
+        }
+
+        .safe-main-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* 需要帮助按钮 */
+
+        .help-btn {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: transparent;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        .help-btn:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+
+        /* ==============================
+           安心伙伴
+        ============================== */
+
+        .partner-intro {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .partner-intro h3 {
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .partner-intro p {
+            color: #ccc;
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .partner-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .partner-item h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .partner-item p {
+            color: #bbb;
+            line-height: 1.8;
+            min-height: 75px;
+        }
+
+        .partner-btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            margin-top: 10px;
+            border: 1px solid rgba(255,255,255,0.15);
+            cursor: pointer;
+        }
+
+        .partner-btn:hover {
+            background: rgba(255,255,255,0.18);
+        }
+
+
+        /* ==============================
+           需求登记表单
+        ============================== */
+
+        .partner-form {
+            display: none;
+            background: rgba(255,255,255,0.04);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .partner-form h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ddd;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-note {
+            color: #999;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 9px;
+            border: none;
+            background: linear-gradient(135deg, #29b6f6, #03a9f4);
+color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+
+        /* ==============================
+           家属区域
+        ============================== */
+
+        .family-box {
+            background: rgba(255,255,255,0.04);
+            border-radius: 15px;
+            padding: 25px;
+            line-height: 1.9;
+            color: #ccc;
+        }
+
+        .family-box strong {
+            color: #fff;
+        }
+
+
+        /* ==============================
+           未来功能
+        ============================== */
+
+        .future-list {
+            padding-left: 20px;
+            color: #ccc;
+            line-height: 2;
+        }
+
+
+        /* ==============================
+           安全说明
+        ============================== */
+
+        .notice-box {
+            background: rgba(255,255,255,0.04);
+            border-left: 4px solid rgba(255,255,255,0.3);
+            padding: 18px;
+            border-radius: 8px;
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+
+        /* ==============================
+           导航按钮
+        ============================== */
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+
+        /* ==============================
+           移动端
+        ============================== */
+
+        @media (max-width: 768px) {
+
+            .partner-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .safe-intro {
+                padding: 25px 18px;
+            }
+
+            .safe-check-box {
+                padding: 30px 18px;
+            }
+
+            .safe-main-btn {
+                width: 90%;
+                max-width: 330px;
+                padding: 20px 15px;
+            }
+
+            .partner-form {
+                padding: 20px 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+
+
+    <!-- ==============================
+         导航栏
+    ============================== -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            乐龄品质生活 AI助手
+        </a>
+
+        <button class="hamburger" id="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+        <div class="nav-container" id="navContainer">
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html">
+                        首页
+                    </a>
+                </li>
+
+                <li>
+                    <a href="health.html">
+                        乐龄品质生活
+                    </a>
+                </li>
+
+                <li>
+                    <a href="travel.html">
+                        AI旅居规划
+                    </a>
+                </li>
+
+                <li>
+                    <a href="senior.html" class="active">
+                        身体叙事馆
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tools.html">
+                        AI工具助手
+                    </a>
+                </li>
+
+                <li>
+                    <a href="lunch/index.html">
+                        福利专区
+                    </a>
+                </li>
+
+                <li class="dropdown">
+
+                    <a href="products.html">
+                        好物推荐 ▾
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="tea.html">
+                                茶文化好物
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sololiving.html">
+                                尊严自理清单
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sitemap.html" target="_blank">
+                                内容地图
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        关于我们
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         主内容
+    ============================== -->
+
+    <main>
+
+
+        <!-- 页面标题 -->
+
+        <section class="main-content">
+
+            <h1 class="page-title">
+                🛡️ 安心守护
+            </h1>
+
+            <div class="safe-intro">
+
+                <h2>
+                    今天，您还好吗？
+                </h2>
+
+                <p>
+                    对于独居生活的人来说，
+                    有时候家人最想知道的，
+                    只是简单的一句话：
+                    <strong>“今天一切都好吗？”</strong>
+                    <br><br>
+
+                    安心守护希望从简单的平安确认开始，
+                    让老人和独居生活者多一个记录平安的入口，
+                    也让远方的家人多一份安心。
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             今日平安确认
+        ============================== -->
+
+        <section class="card">
+
+            <div class="safe-check-box">
+
+                <div class="safe-check-icon">
+                    🏡
+                </div>
+
+                <h2>
+                    今日平安确认
+                </h2>
+
+                <p>
+                    如果您今天一切正常，
+                    只需要点击下面的按钮，
+                    给自己留下一次简单的平安记录。
+                </p>
+
+                <div
+                    id="safeStatus"
+                    class="safe-status">
+
+                    今天还没有确认平安
+
+                </div>
+
+                <button
+                    id="safeButton"
+                    class="safe-main-btn">
+
+                    ✓ 我今天平安
+
+                </button>
+
+                <br>
+
+                <button
+                    id="helpButton"
+                    class="help-btn">
+
+                    需要家人关注
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             安心伙伴
+        ============================== -->
+
+        <section class="card" id="安心伙伴">
+
+            <h2 class="card-title">
+                🤝 安心伙伴
+            </h2>
+
+            <div class="partner-intro">
+
+                <h3>
+                    身边暂时没有合适的家人或朋友，也可以先从寻找支持开始
+                </h3>
+
+                <p>
+                    有些人独自生活，
+                    有些人的家人不在身边，
+                    也有人虽然有家人，
+                    却暂时缺少能够真正交流和互相支持的人。
+                    <br><br>
+
+                    安心伙伴希望先成为一个
+                    <strong>需求表达与资源连接的入口</strong>。
+                    您可以告诉我们自己需要什么，
+                    未来我们将根据真实需求，
+                    逐步探索生活服务、社区资源及专业支持的连接方式。
+                </p>
+
+            </div>
+
+
+            <div class="partner-grid">
+
+
+                <!-- 需求登记 -->
+
+                <div class="partner-item">
+
+                    <h3>
+                        🤝 我需要一个安心伙伴
+                    </h3>
+
+                    <p>
+                        如果您希望有人陪伴交流，
+                        或希望了解适合自己的生活支持资源，
+                        可以先留下需求。
+                    </p>
+
+                    <button
+                        class="partner-btn"
+                        onclick="showPartnerForm('安心伙伴需求')">
+
+                        登记我的需求
+
+                    </button>
+
+                </div>
+
+
+                <!-- 意定监护 -->
+
+                <div class="partner-item">
+
+                    <h3>
+                        📚 我想了解意定监护
+                    </h3>
+
+                    <p>
+                        如果您想提前了解晚年生活安排、
+                        意定监护等相关信息，
+                        可以先登记了解需求。
+                    </p>
+
+                    <button
+                        class="partner-btn"
+                        onclick="showPartnerForm('意定监护信息了解')">
+
+                        了解相关信息
+
+                    </button>
+
+                </div>
+
+
+                <!-- 生活支持 -->
+
+                <div class="partner-item">
+
+                    <h3>
+                        🌿 我需要生活支持信息
+                    </h3>
+
+                    <p>
+                        如果您正在寻找适老化生活、
+                        康养旅居、陪诊或其他服务信息，
+                        可以告诉我们您的需求。
+                    </p>
+
+                    <button
+                        class="partner-btn"
+                        onclick="showPartnerForm('生活支持信息')">
+
+                        提交需求
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================
+                 需求登记表
+            ============================== -->
+
+            <div
+                id="partnerForm"
+                class="partner-form">
+
+                <h3>
+                    📝 安心伙伴需求登记
+                </h3>
+
+                <div class="form-group">
+
+                    <label for="partnerType">
+                        您希望了解哪方面？
+                    </label>
+
+                    <select id="partnerType">
+
+                        <option value="安心伙伴需求">
+                            寻找安心伙伴或生活支持
+                        </option>
+
+                        <option value="意定监护信息了解">
+                            了解意定监护相关信息
+                        </option>
+
+                        <option value="生活支持信息">
+                            了解生活服务或资源
+                        </option>
+
+                        <option value="其他需求">
+                            其他需求
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="partnerCity">
+                        所在城市（可选）
+                    </label>
+
+                    <input
+                        type="text"
+                        id="partnerCity"
+                        placeholder="例如：北京、上海、广州">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="partnerNeed">
+                        请简单描述您的需求
+                    </label>
+
+                    <textarea
+                        id="partnerNeed"
+                        placeholder="例如：我一个人生活，希望了解附近的养老服务信息；或者希望了解意定监护的基本知识……"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="partnerContact">
+                        联系方式（可选）
+                    </label>
+
+                    <input
+                        type="text"
+                        id="partnerContact"
+                        placeholder="如需后续联系，可留下微信或其他联系方式">
+
+                </div>
+
+
+                <button
+                    class="submit-btn"
+                    onclick="savePartnerRequest()">
+
+                    保存我的需求
+
+                </button>
+
+
+                <p class="form-note">
+
+                    当前版本仅在您的浏览器本地保存需求信息，
+                    不会自动发送给他人。
+                    未来如提供真实的需求提交或资源连接服务，
+                    将在取得用户明确授权后进行。
+
+                </p>
+
+            </div>
+
+
+            <!-- 合规边界 -->
+
+            <div class="notice-box" style="margin-top:25px;">
+
+                <strong>
+                    关于安心伙伴
+                </strong>
+
+                <p>
+                    目前本站的“安心伙伴”仅作为信息整理、
+                    需求表达和未来资源连接的概念入口。
+                </p>
+
+                <p>
+                    本站目前不直接提供监护服务、
+                    医疗服务、陪诊服务或紧急救援服务，
+                    也不会因为用户提交需求而自动建立任何法律上的监护关系。
+                </p>
+
+                <p>
+                    如果涉及意定监护、法律事务或医疗问题，
+                    建议向具备相应资质的专业机构或专业人士咨询。
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             家属区域
+        ============================== -->
+
+        <section class="card">
+
+            <h2 class="card-title">
+                给家人的建议
+            </h2>
+
+            <div class="family-box">
+
+                <p>
+                    如果您是独居老人、中老年独居者或家属，
+                    可以和身边的人提前约定一种简单的联系方式。
+                </p>
+
+                <p>
+                    例如每天固定时间通过电话、微信或其他方式联系。
+                    如果某一天没有联系上，
+                    建议先通过电话等方式主动确认情况。
+                </p>
+
+                <p>
+                    <strong>
+                        当前网页版本不会自动通知家属，
+                        也不会自动拨打电话或联系紧急服务。
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             未来功能
+        ============================== -->
+
+        <section class="card">
+
+            <h2 class="card-title">
+                🌱 安心守护未来可以慢慢做什么？
+            </h2>
+
+            <p class="card-desc">
+                目前先从最简单的功能开始，
+                未来根据真实用户需求逐步完善。
+            </p>
+
+            <ul class="future-list">
+
+                <li>
+                    微信小程序一键报平安
+                </li>
+
+                <li>
+                    老人与家属绑定
+                </li>
+
+                <li>
+                    家属查看最近一次平安确认
+                </li>
+
+                <li>
+                    长时间未回应时提醒家属关注
+                </li>
+
+                <li>
+                    老人主动向家属发出求助提醒
+                </li>
+
+                <li>
+                    安心伙伴需求与合规服务资源连接
+                </li>
+
+                <li>
+                    意定监护等专业信息的权威内容整理
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ==============================
+             安全说明
+        ============================== -->
+
+        <section class="card">
+
+            <h2 class="card-title">
+                使用说明与安全边界
+            </h2>
+
+            <div class="notice-box">
+
+                <p>
+                    本工具目前用于生活方式记录、
+                    平安确认和家人关怀的概念体验，
+                    不属于医疗服务，也不能判断疾病、
+                    生命安全或紧急情况。
+                </p>
+
+                <p>
+                    当前版本不会自动通知家属，
+                    也不会自动拨打电话或联系紧急服务。
+                    如果遇到紧急情况，
+                    请立即联系身边的人或当地紧急服务机构。
+                </p>
+
+                <p>
+                    未来如果增加家属通知、
+                    用户信息提交或资源连接功能，
+                    将需要用户主动授权并完善隐私保护机制。
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             相关工具
+        ============================== -->
+
+        <section class="card">
+
+            <h2 class="card-title">
+                🌿 身体叙事馆
+            </h2>
+
+            <p class="card-desc">
+                如果您希望进一步记录自己的身体感受和生活方式，
+                可以继续使用以下工具。
+            </p>
+
+            <div class="nav-buttons">
+
+                <a
+                    href="consult.html"
+                    class="btn">
+
+                    📝 我的生活记录
+
+                </a>
+
+
+                <a
+                    href="ai-posture.html"
+                    class="btn">
+
+                    📸 AI体态自我观察
+
+                </a>
+
+
+                <a
+                    href="posture-plan.html"
+                    class="btn">
+
+                    📅 30天生活方式计划
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==============================
+         合作区域
+    ============================== -->
+
+    <div class="ad-slot">
+
+        <p class="ad-tips">
+
+            <small style="font-weight: normal; display: block; margin-top: 8px;">
+
+                📢 现开放合作：
+
+                适老化产品 | 老年生活服务 | 康养旅居 | 家庭关怀服务
+
+                <br>
+
+                <a href="cooperation.html">
+                    点击联系合作
+                </a>
+
+            </small>
+
+        </p>
+
+    </div>
+
+
+    <!-- ==============================
+         页脚
+    ============================== -->
+
+    <footer class="footer">
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                返回首页
+            </a>
+
+            <a href="about.html">
+                关于我们
+            </a>
+
+            <a href="service.html">
+                服务说明
+            </a>
+
+            <a href="privacy.html">
+                隐私政策
+            </a>
+
+            <a href="subscribe.html">
+                订阅更新
+            </a>
+
+            <a href="contact.html">
+                联系我们
+            </a>
+
+        </div>
+
+
+        <p class="footer-disclaimer">
+
+            本站内容基于公开信息与 AI 技术进行整理与生成，
+            旨在提供信息参考与认知辅助，不替代专业判断。
+            具体决策请结合个人情况自行判断。
+
+        </p>
+
+
+        <p style="font-size: 0.7rem; color: #666; margin-top: 8px; line-height: 1.4; opacity: 0.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+
+            <b>Disclaimer:</b>
+
+            This site provides information and AI-assisted content for informational purposes only.
+            It is NOT a substitute for professional medical advice, diagnosis, or treatment.
+            Always seek the advice of your physician or other qualified health provider.
+
+        </p>
+
+
+        <p class="copyright">
+
+            © 2026 anrjai.com · 乐龄品质生活 AI助手
+
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<!-- ==============================
+     JavaScript
+============================== -->
+
+<script src="script.js"></script>
+
+<script>
+
+    /* ==========================================
+       安心守护基础功能
+       当前版本：
+       仅在用户自己的浏览器保存记录
+       不连接服务器
+       不自动通知家属
+       不提供紧急报警
+    ========================================== */
+
+
+    /* ==============================
+       今日平安
+    ============================== */
+
+    const safeButton =
+        document.getElementById("safeButton");
+
+    const helpButton =
+        document.getElementById("helpButton");
+
+    const safeStatus =
+        document.getElementById("safeStatus");
+
+
+    const storageKey =
+        "anrjai_safe_check";
+
+
+    /* 获取今天日期 */
+
+    function getToday() {
+
+        const now =
+            new Date();
+
+        const year =
+            now.getFullYear();
+
+        const month =
+            String(
+                now.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                now.getDate()
+            ).padStart(2, "0");
+
+        return (
+            year +
+            "-" +
+            month +
+            "-" +
+            day
+        );
+
+    }
+
+
+    /* 获取当前时间 */
+
+    function getCurrentTime() {
+
+        const now =
+            new Date();
+
+        return now.toLocaleString(
+            "zh-CN"
+        );
+
+    }
+
+
+    /* 检查今天是否已经确认 */
+
+    function checkTodayStatus() {
+
+        const saved =
+            localStorage.getItem(
+                storageKey
+            );
+
+
+        if (!saved) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const data =
+                JSON.parse(saved);
+
+
+            if (
+                data.date ===
+                getToday()
+            ) {
+
+                safeStatus.textContent =
+                    "✓ 今天已经确认平安 · " +
+                    data.time;
+
+                safeStatus.classList.add(
+                    "success"
+                );
+
+                safeButton.textContent =
+                    "✓ 今天已确认平安";
+
+            }
+
+        } catch (error) {
+
+            console.log(
+                "读取平安记录失败"
+            );
+
+        }
+
+    }
+
+
+    /* 点击平安确认 */
+
+    safeButton.addEventListener(
+        "click",
+        function() {
+
+            const data = {
+
+                date:
+                    getToday(),
+
+                time:
+                    getCurrentTime(),
+
+                status:
+                    "今日平安"
+
+            };
+
+
+            localStorage.setItem(
+
+                storageKey,
+
+                JSON.stringify(data)
+
+            );
+
+
+            safeStatus.textContent =
+                "✓ 今天已经确认平安 · " +
+                data.time;
+
+            safeStatus.classList.add(
+                "success"
+            );
+
+
+            safeButton.textContent =
+                "✓ 今天已确认平安";
+
+        }
+    );
+
+
+    /* 点击需要家人关注 */
+
+    helpButton.addEventListener(
+        "click",
+        function() {
+
+            const confirmHelp =
+                confirm(
+                    "您是否需要家人关注？\n\n点击“确定”后，请主动通过电话、微信或其他方式联系家人。\n\n当前网页不会自动通知家人。"
+                );
+
+
+            if (
+                confirmHelp
+            ) {
+
+                alert(
+                    "请现在联系您的家人。\n\n如果您遇到紧急情况，请立即联系身边的人或当地紧急服务机构。"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ==============================
+       安心伙伴
+    ============================== */
+
+    function showPartnerForm(
+        type
+    ) {
+
+        const form =
+            document.getElementById(
+                "partnerForm"
+            );
+
+        const select =
+            document.getElementById(
+                "partnerType"
+            );
+
+
+        form.style.display =
+            "block";
+
+
+        select.value =
+            type;
+
+
+        form.scrollIntoView({
+
+            behavior:
+                "smooth",
+
+            block:
+                "center"
+
+        });
+
+    }
+
+
+    /* 保存安心伙伴需求 */
+
+    function savePartnerRequest() {
+
+        const type =
+            document.getElementById(
+                "partnerType"
+            ).value;
+
+
+        const city =
+            document.getElementById(
+                "partnerCity"
+            ).value;
+
+
+        const need =
+            document.getElementById(
+                "partnerNeed"
+            ).value;
+
+
+        const contact =
+            document.getElementById(
+                "partnerContact"
+            ).value;
+
+
+        if (
+            !need.trim()
+        ) {
+
+            alert(
+                "请简单描述一下您的需求。"
+            );
+
+            return;
+
+        }
+
+
+        const request = {
+
+            type:
+                type,
+
+            city:
+                city,
+
+            need:
+                need,
+
+            contact:
+                contact,
+
+            time:
+                getCurrentTime()
+
+        };
+
+
+        localStorage.setItem(
+
+            "anrjai_partner_request",
+
+            JSON.stringify(request)
+
+        );
+
+
+        alert(
+            "您的需求已经暂存在本机浏览器中。\n\n当前版本不会自动发送给其他人。\n\n感谢您的信任。未来我们会根据真实需求，逐步完善安心伙伴功能。"
+        );
+
+
+        document.getElementById(
+            "partnerForm"
+        ).style.display =
+            "none";
+
+    }
+
+
+    /* 页面打开时检查平安记录 */
+
+    checkTodayStatus();
+
+
+    /* ==============================
+       particles.js 背景
+    ============================== */
+
+    if (
+        typeof particlesJS !==
+        "undefined"
+    ) {
+
+        particlesJS(
+
+            "particles-js",
+
+            {
+
+                "particles": {
+
+                    "number": {
+
+                        "value": 45,
+
+                        "density": {
+
+                            "enable": true,
+
+                            "value_area": 900
+
+                        }
+
+                    },
+
+                    "color": {
+
+                        "value": "#ffffff"
+
+                    },
+
+                    "shape": {
+
+                        "type": "circle"
+
+                    },
+
+                    "opacity": {
+
+                        "value": 0.25,
+
+                        "random": true
+
+                    },
+
+                    "size": {
+
+                        "value": 2,
+
+                        "random": true
+
+                    },
+
+                    "line_linked": {
+
+                        "enable": true,
+
+                        "distance": 150,
+
+                        "color": "#ffffff",
+
+                        "opacity": 0.12,
+
+                        "width": 1
+
+                    },
+
+                    "move": {
+
+                        "enable": true,
+
+                        "speed": 1,
+
+                        "direction": "none",
+
+                        "random": false,
+
+                        "straight": false,
+
+                        "out_mode": "out",
+
+                        "bounce": false
+
+                    }
+
+                },
+
+                "interactivity": {
+
+                    "detect_on": "canvas",
+
+                    "events": {
+
+                        "onhover": {
+
+                            "enable": true,
+
+                            "mode": "grab"
+
+                        },
+
+                        "onclick": {
+
+                            "enable": true,
+
+                            "mode": "push"
+
+                        },
+
+                        "resize": true
+
+                    },
+
+                    "modes": {
+
+                        "grab": {
+
+                            "distance": 140,
+
+                            "line_linked": {
+
+                                "opacity": 0.3
+
+                            }
+
+                        },
+
+                        "push": {
+
+                            "particles_nb": 3
+
+                        }
+
+                    }
+
+                },
+
+                "retina_detect": true
+
+            }
+
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
+```

@@ -1,1 +1,2035 @@
-  30天AI规划
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        30天体态与生活方式计划｜中老年每日生活记录与行动指南 - 乐龄品质生活 AI助手
+    </title>
+
+    <meta name="description"
+          content="30天体态与生活方式计划，围绕睡眠情绪、血压血糖日常管理、关节行动力、肠胃体重、社交与安心守护等生活场景，每天15分钟完成一个简单行动，帮助中老年人建立适合自己的生活记录与行动习惯。">
+
+    <meta name="keywords"
+          content="中老年生活方式,中老年体态观察,腿没劲怎么办,睡眠不好怎么办,饭后腹胀,便秘,每日生活记录,中老年运动,独居老人安心守护">
+
+    <link rel="canonical"
+          href="https://anrjai.com/posture-plan.html">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:title"
+          content="30天体态与生活方式计划｜乐龄品质生活 AI助手">
+
+    <meta property="og:description"
+          content="每天15分钟，从睡眠、活动、饮食、体态和生活记录开始，建立更适合自己的生活方式。">
+
+    <meta property="og:url"
+          content="https://anrjai.com/posture-plan.html">
+
+    <link rel="stylesheet"
+          href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+
+<style>
+
+/* =========================
+   页面基础
+========================= */
+
+.plan-intro {
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    margin: 20px 0 30px;
+
+    line-height: 1.9;
+
+}
+
+.plan-intro p {
+
+    color: #ddd;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================
+   快速导航
+========================= */
+
+.plan-nav {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap: 10px;
+
+    margin: 25px 0;
+
+}
+
+.plan-nav a {
+
+    display: block;
+
+    padding: 12px 8px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    color: #ddd;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+}
+
+.plan-nav a:hover {
+
+    background:
+    rgba(255,255,255,0.12);
+
+}
+
+
+/* =========================
+   每周计划
+========================= */
+
+.week-section {
+
+    margin-bottom: 35px;
+
+}
+
+.week-title {
+
+    font-size: 1.5rem;
+
+    color: #fff;
+
+    margin-bottom: 8px;
+
+}
+
+.week-desc {
+
+    color: #aaa;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   每日任务
+========================= */
+
+.day-card {
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+
+}
+
+.day-card h3 {
+
+    color: #fff;
+
+    margin-top: 0;
+
+}
+
+.day-card p {
+
+    color: #ccc;
+
+    line-height: 1.8;
+
+}
+
+.today-action {
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    line-height: 1.8;
+
+}
+
+.today-action strong {
+
+    color: #fff;
+
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+.faq-item {
+
+    margin-bottom: 15px;
+
+    padding: 18px;
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border-radius: 10px;
+
+}
+
+.faq-item h3 {
+
+    color: #fff;
+
+    font-size: 1rem;
+
+}
+
+.faq-item p {
+
+    color: #bbb;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================
+   私域转化
+========================= */
+
+.private-box {
+
+    text-align: center;
+
+    padding: 30px;
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border-radius: 15px;
+
+    margin-top: 25px;
+
+}
+
+.private-box p {
+
+    color: #ccc;
+
+    line-height: 1.8;
+
+}
+
+.private-buttons {
+
+    margin-top: 20px;
+
+}
+
+.private-buttons a {
+
+    display: inline-block;
+
+    margin: 6px;
+
+}
+
+
+/* =========================
+   资料整理
+========================= */
+
+.record-box {
+
+    background:
+    rgba(255,255,255,0.04);
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    line-height: 1.9;
+
+}
+
+.record-box ul {
+
+    color: #ccc;
+
+}
+
+.record-box li {
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================
+   移动端
+========================= */
+
+@media(max-width:768px){
+
+    .plan-nav {
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .plan-intro {
+
+        padding: 22px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="particles-js"></div>
+
+
+<div class="container">
+
+
+<!-- =========================
+     导航栏
+========================= -->
+
+<nav class="navbar">
+
+<a href="index.html"
+   class="logo">
+
+乐龄品质生活 AI助手
+
+</a>
+
+
+<button class="hamburger"
+        id="hamburger">
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+</button>
+
+
+<div class="nav-container"
+     id="navContainer">
+
+
+<ul class="nav-menu">
+
+
+<li>
+
+<a href="index.html">
+
+首页
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="health.html">
+
+乐龄品质生活
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="travel.html">
+
+AI旅居规划
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="senior.html"
+   class="active">
+
+身体叙事馆
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="tools.html">
+
+AI工具助手
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="lunch/index.html">
+
+福利专区
+
+</a>
+
+</li>
+
+
+<li class="dropdown">
+
+<a href="products.html">
+
+好物推荐 ▾
+
+</a>
+
+
+<ul class="dropdown-menu">
+
+
+<li>
+
+<a href="tea.html">
+
+茶文化好物
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="sololiving.html">
+
+尊严自理清单
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="sitemap.html"
+   target="_blank">
+
+内容地图
+
+</a>
+
+</li>
+
+
+</ul>
+
+</li>
+
+
+<li>
+
+<a href="about.html">
+
+关于我们
+
+</a>
+
+</li>
+
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+<!-- =========================
+     主标题
+========================= -->
+
+<section class="main-content">
+
+
+<h1 class="page-title">
+
+30天体态与生活方式计划
+
+</h1>
+
+
+<div class="plan-intro">
+
+
+<p>
+
+<strong>
+这是什么？
+</strong>
+
+</p>
+
+
+<p>
+
+这是一份为中老年生活场景设计的30天行动计划。
+我们不追求复杂的训练，也不要求每天完成大量任务，
+而是每天用大约15分钟，观察自己的生活状态，
+完成一个简单、可执行的小行动。
+
+</p>
+
+
+<p>
+
+<strong>
+适合谁？
+</strong>
+
+</p>
+
+
+<p>
+
+适合希望改善日常生活习惯、
+关注体态和行动力、
+希望记录自己生活变化的中老年朋友。
+
+</p>
+
+
+<p>
+
+<strong>
+30天能得到什么？
+</strong>
+
+</p>
+
+
+<p>
+
+通过连续记录和行动，
+逐渐了解自己的睡眠、活动、饮食和生活状态，
+并形成属于自己的生活记录。
+
+</p>
+
+
+<p style="color:#aaa;font-size:0.9rem;">
+
+重要提示：本页面内容属于健康生活方式和个人记录建议，
+不能替代医生诊断、治疗或专业医疗建议。
+如有持续或明显不适，请及时咨询正规医疗机构。
+
+</p>
+
+
+</div>
+
+
+
+<!-- =========================
+     计划导航
+========================= -->
+
+<div class="plan-nav">
+
+<a href="#week1">
+
+第1周<br>饮食睡眠情绪
+
+</a>
+
+
+<a href="#week2">
+
+第2周<br>日常管理
+
+</a>
+
+
+<a href="#week3">
+
+第3周<br>关节行动
+
+</a>
+
+
+<a href="#week4">
+
+第4周<br>肠胃体重
+
+</a>
+
+
+<a href="#week5">
+
+第29-30天<br>社交安心
+
+</a>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     第一周
+========================= -->
+
+<section class="card week-section"
+         id="week1">
+
+
+<h2 class="week-title">
+
+第一周：饮食与情绪
+
+</h2>
+
+
+<p class="week-desc">
+
+从睡眠、情绪和退休后的生活节奏开始。
+如果您经常睡不好、容易醒，
+或者退休后感觉生活突然变得空闲，
+可以先从观察自己的生活节奏开始。
+
+</p>
+
+
+<h3>
+中老年人晚上睡不好、容易醒怎么办？
+</h3>
+
+
+<div class="day-card">
+
+<h3>
+  第1天：今天吃了什么？——从一日三餐开始认识自己
+</h3>
+
+<p>
+
+  民以食为天。对于中老年朋友来说，
+  日常饮食是生活状态观察中非常重要的一部分。
+  今天先不评价自己吃得好不好，
+  也不用急着改变什么，
+  我们先从记录一日三餐开始。
+
+</p>
+<p>
+
+  除了关注吃了什么，也可以简单留意日常饮食中
+  是否有蛋白质、钙、维生素B族等营养相关食物来源，
+  同时记录蔬菜、水果和饮水情况。
+  不同年龄、身体状况和饮食习惯的人需求不同，
+  如有特殊营养需求，应结合专业人士建议。
+  
+  </p>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+了解自己一天的饮食结构。
+
+<br>
+
+<strong>具体做法：</strong>
+花5分钟记录今天的早餐、午餐和晚餐，
+也可以简单记录零食和饮水。
+
+<br>
+
+<strong>可以观察：</strong>
+今天是否按时吃饭？
+有没有蛋白质类食物？
+有没有奶类、豆制品等日常钙来源？
+有没有全谷物、豆类、蛋类等维生素B族相关食物来源？
+
+<br>
+<strong>注意事项：</strong>
+今天只记录，不需要刻意节食，
+也不要因为某一顿饭就给自己下结论。
+先了解自己的习惯，再慢慢调整。
+
+</div>
+
+<div style="margin-top:20px; text-align:center;">
+
+  <button
+  class="btn"
+  onclick="document.getElementById('foodWheelModal').style.display='flex';">
+  
+  🎡 不知道今天吃什么？打开吃什么大转盘
+  
+  </button>
+  
+</div>
+
+</div>
+
+<div class="day-card">
+
+<h3>
+第2天：昨晚睡得怎么样？
+</h3>
+
+<p>
+
+选择自己感觉安全、舒服的活动，
+例如散步、整理家务或简单活动身体。
+
+</p>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+增加白天适度活动。
+
+<br>
+
+<strong>具体做法：</strong>
+选择15分钟轻松活动。
+
+<br>
+
+<strong>注意事项：</strong>
+以自己舒适为准，不勉强。
+
+</div>
+<div style="margin-top:20px;
+padding:15px 18px;
+background:rgba(15,23,42,0.65);
+border:1px solid rgba(56,189,248,0.25);
+border-radius:10px;
+color:#cbd5e1;
+font-size:14px;
+line-height:1.8;">
+
+🔒 <strong style="color:#e0f2fe;">隐私提示</strong>
+
+<br>
+
+您在本页面填写的内容仅用于您自己的生活状态记录与信息整理。
+请不要填写身份证号、银行卡号、密码等敏感信息。
+涉及个人隐私的内容，请您根据自身情况谨慎填写。
+
+<p style="margin-top:8px;">
+    当前版本的记录内容仅保存在您当前设备的浏览器中。
+    清除浏览器数据或更换设备后，可能无法继续查看此前记录。
+</p>
+
+</div>  
+</div>
+
+
+<div class="day-card">
+   
+
+<h3>
+第3天：今天心情怎么样？
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察睡前使用手机是否影响自己的休息。
+
+<br>
+
+<strong>具体做法：</strong>
+睡前尝试留出15分钟安静时间。
+
+<br>
+
+<strong>注意事项：</strong>
+根据个人情况调整。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第4天：白天活动30分钟
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+认识自己的情绪变化。
+
+<br>
+
+<strong>具体做法：</strong>
+写下一件今天让自己感觉不错的事情。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第5天：睡前给自己15分钟安静时间
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+让一天有一个期待。
+
+<br>
+
+<strong>具体做法：</strong>
+泡茶、散步、读书、和朋友聊天都可以。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第6天：和一个人聊10分钟
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+保持人与人之间的联系。
+
+<br>
+
+<strong>具体做法：</strong>
+给朋友或家人打一个电话。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第7天：回顾这一周
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+找到这一周最适合自己的一个习惯。
+
+<br>
+
+<strong>具体做法：</strong>
+记录一件自己愿意继续做的事情。
+
+</div>
+
+</div>
+
+
+<h3>
+本周常见问题
+
+</h3>
+
+
+<div class="faq-item">
+
+<h3>
+晚上睡不好是不是一定有问题？
+</h3>
+
+<p>
+每个人的睡眠情况不同。
+如果睡眠问题持续存在并影响日常生活，
+建议咨询专业医生。
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+退休后觉得孤单怎么办？
+</h3>
+
+<p>
+可以从每天与家人、朋友保持联系开始，
+也可以尝试参加社区活动或兴趣活动。
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     第二周
+========================= -->
+
+<section class="card week-section"
+         id="week2">
+
+
+<h2 class="week-title">
+
+第二周：血压、血糖与日常生活管理
+
+</h2>
+
+
+<p class="week-desc">
+
+这一周不讨论用药和疾病治疗，
+重点放在饮食记录、活动习惯和日常生活观察。
+
+</p>
+
+
+<h3>
+中老年人如何做好日常血压、血糖生活记录？
+</h3>
+
+
+<div class="day-card">
+
+<h3>
+第8天：记录今天吃了什么
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+了解自己的饮食习惯。
+
+<br>
+
+<strong>具体做法：</strong>
+简单记录今天三餐。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第9天：看看今天喝了多少水
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的日常饮水习惯。
+
+<br>
+
+<strong>具体做法：</strong>
+按照自己的生活习惯进行记录。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第10天：今天走了多少路？
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的日常活动量。
+
+<br>
+
+<strong>具体做法：</strong>
+记录今天散步或活动的大致时间。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第11天：减少一项不必要的零食
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的饮食选择。
+
+<br>
+
+<strong>具体做法：</strong>
+今天少吃一种自己平时容易多吃的零食。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第12天：记录自己的身体感受
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+了解自己一天中的状态变化。
+
+<br>
+
+<strong>具体做法：</strong>
+记录上午、下午、晚上的感受。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第13天：整理一周生活记录
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+发现自己的生活规律。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第14天：建立自己的日常记录表
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+决定以后每天记录哪三件事情。
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+血压或血糖异常应该怎么办？
+</h3>
+
+<p>
+如果发现异常或身体出现不适，
+应根据医生建议进行专业检查和处理，
+不要自行停药或改变治疗方案。
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     第三周
+========================= -->
+
+<section class="card week-section"
+         id="week3">
+
+
+<h2 class="week-title">
+
+第三周：关节、骨骼与行动力
+
+</h2>
+
+
+<p class="week-desc">
+
+这一周重点观察日常活动能力。
+如果您发现自己走路变慢、
+上下楼梯感觉吃力，
+可以先从记录和安全活动开始。
+
+</p>
+
+
+<h3>
+中老年人腿没劲、下楼梯发软怎么办？
+</h3>
+
+
+<div class="day-card">
+
+<h3>
+第15天：观察走路状态
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的日常行动情况。
+
+<br>
+
+<strong>具体做法：</strong>
+记录今天走路时的感觉。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第16天：靠墙站立观察
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的站立姿态。
+
+<br>
+
+<strong>具体做法：</strong>
+在安全情况下进行短时间站立观察。
+
+<br>
+
+<strong>注意事项：</strong>
+如感觉不适立即停止。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第17天：简单活动肩颈
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+减少长时间保持同一姿势。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第18天：观察上下楼梯情况
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+了解自己的行动能力变化。
+
+<br>
+
+<strong>注意事项：</strong>
+必须优先保证安全，必要时使用扶手。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第19天：记录今天的活动
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+记录今天走路、家务等活动。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第20天：做一次AI体态自我观察
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+了解自己的站姿和日常体态。
+
+<br><br>
+
+<a href="ai-posture.html"
+   class="btn">
+
+📸 开始AI体态自我观察
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第21天：记录自己的变化
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+比较第一天和今天的生活记录。
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+中老年人腿没劲下楼梯发软怎么办？
+</h3>
+
+<p>
+如果这种情况反复出现或逐渐加重，
+建议及时咨询专业医疗人员。
+日常活动应以安全为前提。
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     第四周
+========================= -->
+
+<section class="card week-section"
+         id="week4">
+
+
+<h2 class="week-title">
+
+第四周：肠胃与体重生活管理
+
+</h2>
+
+
+<p class="week-desc">
+
+这一周从饮食规律、活动和生活记录入手，
+不追求快速减重，也不进行疾病诊断。
+
+</p>
+
+
+<h3>
+中老年人便秘、饭后腹胀怎么办？
+</h3>
+
+
+<div class="day-card">
+
+<h3>
+第22天：记录三餐时间
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的饮食规律。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第23天：记录今天的蔬菜水果
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察自己的饮食结构。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第24天：饭后适度活动
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+保持日常活动习惯。
+
+<br>
+
+<strong>注意事项：</strong>
+根据个人情况选择安全、舒适的活动。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第25天：观察饭后身体感受
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+记录饭后是否出现不舒服的感觉。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第26天：记录自己的体重变化
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+观察长期变化，不追求短期数字。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第27天：整理自己的饮食习惯
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+找到一个自己愿意长期保持的小改变。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第28天：回顾30天生活状态
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+总结自己最明显的生活变化。
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+饭后经常腹胀怎么办？
+</h3>
+
+<p>
+如果长期出现明显不适，
+建议及时咨询专业医疗人员。
+不要仅依靠网络信息自行判断原因。
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     第29-30天
+========================= -->
+
+<section class="card week-section"
+         id="week5">
+
+
+<h2 class="week-title">
+
+第29—30天：社交、记忆与安心守护
+
+</h2>
+
+
+<p class="week-desc">
+
+生活方式不仅包括饮食和运动，
+也包括人与人的联系。
+对于独居或经常一个人在家的中老年朋友，
+建立稳定的联系和安心机制同样重要。
+
+</p>
+
+
+<div class="day-card">
+
+<h3>
+第29天：联系一个重要的人
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+保持人与人之间的联系。
+
+<br>
+
+<strong>具体做法：</strong>
+给家人、朋友或熟悉的人打一个电话。
+
+</div>
+
+</div>
+
+
+<div class="day-card">
+
+<h3>
+第30天：建立自己的安心计划
+</h3>
+
+<div class="today-action">
+
+<strong>今日目标：</strong>
+想一想，如果自己独处时遇到突发情况，
+谁可以联系到自己？
+
+<br><br>
+
+<a href="safe-check.html"
+   class="btn">
+
+🛡️ 了解安心守护
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+一个人生活时，如何让家人更安心？
+</h3>
+
+<p>
+可以和家人约定固定联系时间，
+也可以建立紧急联系人和日常报平安机制。
+如果需要更进一步的功能，
+可以关注后续的安心守护工具建设。
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     每周资料整理
+========================= -->
+
+<section class="card">
+
+
+<h2 class="card-title">
+
+📂 30天资料整理
+
+</h2>
+
+
+<div class="record-box">
+
+
+<p>
+
+30天结束后，可以把自己的生活记录整理下来，
+以后就医、体检或和家人沟通时，
+能够更清楚地回忆自己的生活变化。
+
+</p>
+
+
+<ul>
+
+<li>
+📅 每日生活状态记录
+</li>
+
+<li>
+🚶 日常活动与行动记录
+</li>
+
+<li>
+🏥 就医和检查信息整理
+</li>
+
+<li>
+🧪 化验报告相关资料记录
+</li>
+
+<li>
+🩻 影像检查资料记录
+</li>
+
+</ul>
+
+
+<p>
+
+这些资料主要用于个人整理和信息记录，
+不代表医疗诊断或治疗建议。
+
+</p>
+
+
+<a href="consult.html"
+   class="btn">
+
+📝 开始我的生活记录
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     私域入口
+========================= -->
+
+<section class="card">
+
+
+<h2 class="card-title">
+
+🌿 继续陪伴，而不是30天结束就离开
+
+</h2>
+
+
+<div class="private-box">
+
+
+<p>
+
+如果这份30天计划对您有帮助，
+可以继续关注乐龄品质生活 AI助手。
+
+</p>
+
+
+<p>
+
+我们会继续整理适合中老年生活场景的内容，
+包括生活记录、体态观察、旅居规划、
+安心守护和实用生活信息。
+
+</p>
+
+
+<p>
+
+后续如果开放公众号或企业微信服务，
+这里将提供官方入口。
+请以页面公布的正式入口为准。
+
+</p>
+
+
+<div class="private-buttons">
+
+
+<a href="about.html"
+   class="btn">
+
+了解乐龄品质生活 AI助手
+
+</a>
+
+
+<a href="contact.html"
+   class="btn">
+
+联系我们
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     页脚
+========================= -->
+
+<footer class="footer">
+
+
+<div class="footer-links">
+
+
+<a href="index.html">
+
+返回首页
+
+</a>
+
+
+<a href="about.html">
+
+关于我们
+
+</a>
+
+
+<a href="service.html">
+
+服务说明
+
+</a>
+
+
+<a href="privacy.html">
+
+隐私政策
+
+</a>
+
+
+<a href="subscribe.html">
+
+订阅更新
+
+</a>
+
+
+<a href="contact.html">
+
+联系我们
+
+</a>
+
+
+</div>
+
+
+<p class="footer-disclaimer">
+
+本站内容基于公开信息与 AI 技术进行整理与生成，
+旨在提供信息参考与认知辅助，不替代专业判断。
+具体决策请结合个人情况自行判断。
+
+</p>
+
+
+<p style="font-size:0.7rem;
+          color:#666;
+          margin-top:8px;
+          line-height:1.4;
+          opacity:0.6;
+          max-width:800px;
+          margin-left:auto;
+          margin-right:auto;">
+
+<b>Disclaimer:</b>
+
+This site provides information and AI-assisted
+data analysis for informational purposes only.
+It is NOT a substitute for professional medical advice,
+diagnosis, or treatment.
+
+</p>
+
+
+<p class="copyright">
+
+© 2026 anrjai.com · 乐龄品质生活 AI助手
+
+</p>
+
+
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================
+     JavaScript
+========================= -->
+
+<script src="script.js"></script>
+
+
+<script>
+
+if (
+typeof particlesJS !==
+"undefined"
+) {
+
+particlesJS(
+
+"particles-js",
+
+{
+
+"particles": {
+
+"number": {
+
+"value": 45,
+
+"density": {
+
+"enable": true,
+
+"value_area": 900
+
+}
+
+},
+
+"color": {
+
+"value": "#ffffff"
+
+},
+
+"shape": {
+
+"type": "circle"
+
+},
+
+"opacity": {
+
+"value": 0.25,
+
+"random": true
+
+},
+
+"size": {
+
+"value": 2,
+
+"random": true
+
+},
+
+"line_linked": {
+
+"enable": true,
+
+"distance": 150,
+
+"color": "#ffffff",
+
+"opacity": 0.12,
+
+"width": 1
+
+},
+
+"move": {
+
+"enable": true,
+
+"speed": 1,
+
+"direction": "none",
+
+"random": false,
+
+"straight": false,
+
+"out_mode": "out"
+
+}
+
+},
+
+"interactivity": {
+
+"detect_on": "canvas",
+
+"events": {
+
+"onhover": {
+
+"enable": true,
+
+"mode": "grab"
+
+},
+
+"onclick": {
+
+"enable": true,
+
+"mode": "push"
+
+},
+
+"resize": true
+
+}
+
+},
+
+"retina_detect": true
+
+}
+
+);
+
+}
+
+</script>
+<!-- 吃什么大转盘弹窗 -->
+
+<div id="foodWheelModal"
+     style="display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.75);
+            z-index:99999;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+            box-sizing:border-box;">
+
+    <div style="background:#1a1a2e;
+                padding:30px;
+                border-radius:18px;
+                max-width:420px;
+                width:100%;
+                text-align:center;
+                position:relative;
+                box-sizing:border-box;">
+
+        <button
+        onclick="document.getElementById('foodWheelModal').style.display='none';"
+        style="position:absolute;
+               top:10px;
+               right:15px;
+               background:none;
+               border:none;
+               color:#fff;
+               font-size:1.5rem;
+               cursor:pointer;">
+
+        ×
+
+        </button>
+
+
+        <h2 style="color:#fff;">
+
+        今天吃什么？
+
+        </h2>
+
+
+        <p style="color:#ccc;
+                  line-height:1.8;">
+
+        不知道今天吃什么？
+        不妨让大转盘帮你随机选一个饮食灵感。
+        选择适合自己的食物，
+        让每天的一餐多一点轻松和乐趣。
+
+        </p>
+
+
+        <a href="https://lunch.anrjai.com/"
+           class="btn"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="display:inline-block;
+                  margin-top:10px;">
+
+        🎡 打开吃什么大转盘
+
+        </a>
+
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+```

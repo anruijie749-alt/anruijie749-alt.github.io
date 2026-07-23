@@ -1,1 +1,1277 @@
-  AI体态自测
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI体态自测｜身体叙事馆 - 乐龄品质生活 AI助手</title>
+
+    <meta name="description" content="AI体态自测页面，帮助中老年用户从日常站姿、肩颈、身体平衡等角度了解自己的体态状态，并获得简单易行的日常改善建议。内容仅供健康管理参考，不替代专业医疗诊断。">
+
+    <meta name="keywords" content="AI体态自测,体态管理,中老年健康,肩颈管理,身体平衡,健康生活,乐龄生活,身体叙事馆">
+
+    <link rel="canonical" href="https://anrjai.com/ai-posture.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI体态自测｜身体叙事馆 - 乐龄品质生活 AI助手">
+    <meta property="og:description" content="通过AI辅助分析与日常观察，帮助您更好地了解自己的体态状态，建立适合自己的生活方式管理习惯。">
+    <meta property="og:url" content="https://anrjai.com/ai-posture.html">
+    <meta property="og:site_name" content="乐龄品质生活 AI助手">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI体态自测｜身体叙事馆">
+    <meta name="twitter:description" content="AI辅助体态观察与日常生活方式建议。">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        .posture-hero {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            padding: 35px 25px;
+            margin: 20px 0 30px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .posture-hero h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .posture-hero p {
+            color: #ccc;
+            line-height: 1.9;
+            max-width: 850px;
+            margin: 0 auto 22px;
+        }
+
+        .posture-notice {
+            background: rgba(255,255,255,0.04);
+            border-left: 4px solid rgba(255,255,255,0.35);
+            padding: 15px 18px;
+            border-radius: 8px;
+            color: #ccc;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(255,255,255,0.25);
+            border-radius: 15px;
+            padding: 35px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.12);
+            margin-top: 20px;
+        }
+
+        .upload-area input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            display: inline-block;
+            cursor: pointer;
+            padding: 12px 25px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .upload-label:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 360px;
+            border-radius: 12px;
+            margin: 20px auto;
+            display: none;
+        }
+
+        .photo-tips {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-top: 18px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .analysis-item {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .analysis-item h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .analysis-item p {
+            color: #bbb;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .score-box {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .score-number {
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .score-label {
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .result-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .result-item {
+            background: rgba(0,0,0,0.15);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .result-item strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .result-item span {
+            color: #bbb;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .tip-item {
+            background: rgba(255,255,255,0.04);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .tip-item h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .tip-item p {
+            color: #bbb;
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+
+        .product-grid-posture {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .product-card-posture {
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .product-card-posture h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .product-card-posture p {
+            color: #aaa;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .faq-item {
+            margin-top: 15px;
+            padding: 18px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .faq-item h3 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: #bbb;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .privacy-note {
+            color: #999;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .analysis-grid,
+            .result-list {
+                grid-template-columns: 1fr;
+            }
+
+            .tip-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid-posture {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .posture-hero {
+                padding: 28px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid-posture {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "AI体态自测｜身体叙事馆",
+        "url": "https://anrjai.com/ai-posture.html",
+        "description": "AI辅助体态观察与日常生活方式建议页面，为用户提供健康管理参考信息。",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "乐龄品质生活 AI助手",
+            "url": "https://anrjai.com/"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "体态管理与健康生活方式"
+        }
+    }
+    </script>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            乐龄品质生活 AI助手
+        </a>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-container" id="navContainer">
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html">首页</a>
+                </li>
+
+                <li>
+                    <a href="health.html">乐龄品质生活</a>
+                </li>
+
+                <li>
+                    <a href="travel.html">AI旅居规划</a>
+                </li>
+
+                <li>
+                    <a href="senior.html" class="active">身体叙事馆</a>
+                </li>
+
+                <li>
+                    <a href="tools.html">AI工具助手</a>
+                </li>
+
+                <li>
+                    <a href="lunch/index.html">福利专区</a>
+                </li>
+
+                <li class="dropdown">
+
+                    <a href="products.html">
+                        好物推荐 ▾
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="tea.html">茶文化好物</a>
+                        </li>
+
+                        <li>
+                            <a href="sololiving.html">尊严自理清单</a>
+                        </li>
+
+                        <li>
+                            <a href="sitemap.html" target="_blank">
+                                内容地图
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li>
+                    <a href="about.html">关于我们</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- 主内容 -->
+    <main>
+
+        <!-- Hero -->
+        <section class="main-content">
+
+            <h1 class="page-title">
+                AI体态自测
+            </h1>
+
+            <div class="posture-hero">
+
+                <h2>
+                    从了解身体开始，建立自己的生活方式管理习惯
+                </h2>
+
+                <p>
+                    身体叙事馆希望帮助您从日常生活的角度重新认识自己的身体。
+                    通过站姿观察、生活习惯记录和AI辅助分析，
+                    了解可能需要关注的体态变化，并获得简单、温和、适合日常生活的改善建议。
+                </p>
+
+                <div class="action-buttons">
+
+                    <a href="#upload-section" class="btn">
+                        📸 开始AI体态自测
+                    </a>
+
+                    <a href="senior.html" class="btn">
+                        返回身体叙事馆
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 免责声明 -->
+        <section class="card">
+
+            <div class="posture-notice">
+
+                <strong>重要提示：</strong>
+
+                本页面提供的是AI辅助观察和健康生活方式参考信息，
+                不构成医疗诊断、疾病筛查或治疗建议。
+                如果您存在持续疼痛、明显活动受限、跌倒风险或其他身体不适，
+                建议及时咨询医生或专业健康服务人员。
+
+            </div>
+
+        </section>
+
+
+        <!-- 上传照片 -->
+        <section class="card" id="upload-section">
+
+            <h2 class="card-title">
+                📸 第一步：上传站姿照片
+            </h2>
+
+            <p class="card-desc">
+                您可以选择一张清晰的站姿照片作为AI辅助观察的示例。
+                建议照片光线充足、身体轮廓清晰，并尽量保持自然站立。
+            </p>
+
+            <div class="upload-area">
+
+                <label for="postureImage" class="upload-label">
+                    📷 选择一张照片
+                </label>
+
+                <input
+                    type="file"
+                    id="postureImage"
+                    accept="image/jpeg,image/png,image/webp"
+                >
+
+                <img
+                    id="imagePreview"
+                    class="image-preview"
+                    alt="AI体态自测上传照片预览"
+                >
+
+                <div class="photo-tips">
+
+                    建议拍摄方式：<br>
+
+                    正面自然站立 · 光线充足 · 手机保持稳定 ·
+                    尽量完整拍摄身体轮廓
+
+                    <br><br>
+
+                    当前页面仅在您的浏览器中进行图片预览，
+                    不会自动上传照片到服务器。
+
+                </div>
+
+            </div>
+
+            <div class="action-buttons">
+
+                <button
+                    type="button"
+                    class="btn"
+                    id="analyzeButton"
+                >
+                    🤖 开始AI辅助分析
+                </button>
+
+            </div>
+
+            <p class="privacy-note">
+                隐私提示：当前演示版本不会将您选择的照片上传到服务器。
+                后续如接入第三方AI分析服务，将在正式启用前明确说明数据处理方式。
+            </p>
+
+        </section>
+
+
+        <!-- 分析维度 -->
+        <section class="card">
+
+            <h2 class="card-title">
+                🔍 AI辅助观察哪些内容？
+            </h2>
+
+            <p class="card-desc">
+                AI辅助分析可以围绕以下日常体态观察维度进行信息整理。
+                实际结果应结合个人情况综合判断。
+            </p>
+
+            <div class="analysis-grid">
+
+                <div class="analysis-item">
+
+                    <h3>
+                        头部与颈部姿态
+                    </h3>
+
+                    <p>
+                        观察头部是否存在明显前伸或偏移现象，
+                        帮助您关注长期低头、久坐等生活习惯。
+                    </p>
+
+                </div>
+
+                <div class="analysis-item">
+
+                    <h3>
+                        肩部状态
+                    </h3>
+
+                    <p>
+                        观察左右肩高度和肩部姿态是否存在明显差异，
+                        作为日常体态管理的参考。
+                    </p>
+
+                </div>
+
+                <div class="analysis-item">
+
+                    <h3>
+                        身体左右平衡
+                    </h3>
+
+                    <p>
+                        从视觉角度观察身体左右侧的整体状态，
+                        帮助发现值得进一步关注的生活习惯变化。
+                    </p>
+
+                </div>
+
+                <div class="analysis-item">
+
+                    <h3>
+                        身体整体姿态
+                    </h3>
+
+                    <p>
+                        综合观察站立姿势和身体排列状态，
+                        为日常运动、拉伸和生活习惯调整提供参考。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI结果 -->
+        <section class="card result-box" id="resultBox">
+
+            <h2 class="card-title">
+                📊 AI辅助分析示例
+            </h2>
+
+            <div class="score-box">
+
+                <div class="score-number">
+                    参考
+                </div>
+
+                <div class="score-label">
+                    当前页面展示的是示例结果，实际AI分析功能将在后续接入后启用
+                </div>
+
+            </div>
+
+            <div class="result-list">
+
+                <div class="result-item">
+
+                    <strong>
+                        头部姿态
+                    </strong>
+
+                    <span>
+                        示例：建议关注日常低头使用手机和久坐时间。
+                    </span>
+
+                </div>
+
+                <div class="result-item">
+
+                    <strong>
+                        肩部姿态
+                    </strong>
+
+                    <span>
+                        示例：可以在日常生活中增加肩颈放松和轻柔活动。
+                    </span>
+
+                </div>
+
+                <div class="result-item">
+
+                    <strong>
+                        身体平衡
+                    </strong>
+
+                    <span>
+                        示例：建议保持左右均衡的站立和行走习惯。
+                    </span>
+
+                </div>
+
+                <div class="result-item">
+
+                    <strong>
+                        日常建议
+                    </strong>
+
+                    <span>
+                        示例：避免长时间保持同一种姿势，适当起身活动。
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="posture-notice">
+
+                <strong>说明：</strong>
+
+                以上内容仅为页面功能展示示例，
+                并不代表对您的真实身体状态作出判断。
+
+            </div>
+
+        </section>
+
+
+        <!-- 每日改善 -->
+        <section class="card">
+
+            <h2 class="card-title">
+                🌿 日常体态改善建议
+            </h2>
+
+            <p class="card-desc">
+                体态管理不需要追求快速改变。
+                对大多数人来说，从规律活动、减少久坐和保持舒适姿势开始，
+                更容易融入日常生活。
+            </p>
+
+            <div class="tip-grid">
+
+                <div class="tip-item">
+
+                    <h3>
+                        🚶 规律活动
+                    </h3>
+
+                    <p>
+                        长时间坐着时，可以根据自身情况适当起身走动，
+                        让身体保持规律活动。
+                    </p>
+
+                </div>
+
+                <div class="tip-item">
+
+                    <h3>
+                        🧘 温和拉伸
+                    </h3>
+
+                    <p>
+                        在身体允许的情况下进行轻柔拉伸，
+                        不追求疼痛或强度，以舒适为原则。
+                    </p>
+
+                </div>
+
+                <div class="tip-item">
+
+                    <h3>
+                        📱 减少低头
+                    </h3>
+
+                    <p>
+                        使用手机或电子设备时，
+                        可以适当调整使用时间和姿势，避免长时间低头。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 生活记录 -->
+        <section class="card">
+
+            <h2 class="card-title">
+                📝 建立自己的身体观察记录
+            </h2>
+
+            <p class="card-desc">
+                体态变化往往与日常生活习惯有关。
+                您可以从今天开始记录自己的活动情况，
+                逐步了解哪些生活方式让自己感觉更加舒适。
+            </p>
+
+            <div class="analysis-grid">
+
+                <div class="analysis-item">
+
+                    <h3>
+                        今天活动了多久？
+                    </h3>
+
+                    <p>
+                        记录当天散步、家务或其他日常活动时间。
+                    </p>
+
+                </div>
+
+                <div class="analysis-item">
+
+                    <h3>
+                        今天久坐了吗？
+                    </h3>
+
+                    <p>
+                        留意长时间保持同一姿势的情况。
+                    </p>
+
+                </div>
+
+                <div class="analysis-item">
+
+                    <h3>
+                        今天身体感觉如何？
+                    </h3>
+
+                    <p>
+                        简单记录舒适、疲劳或僵硬等主观感受。
+                    </p>
+
+                </div>
+
+                <div class="analysis-item">
+
+                    <h3>
+                        哪个习惯值得改变？
+                    </h3>
+
+                    <p>
+                        每天只选择一个小目标，更容易坚持。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 推荐好物 -->
+        <section class="card">
+
+            <h2 class="card-title">
+                🛍 体态管理相关好物
+            </h2>
+
+            <p class="card-desc">
+                以下类别适合作为日常生活方式管理的辅助工具。
+                选择产品时请结合自身需求和实际情况，
+                不建议将普通商品宣传为具有医疗治疗作用。
+            </p>
+
+            <div class="product-grid-posture">
+
+                <div class="product-card-posture">
+
+                    <div class="product-icon">
+                        🟢
+                    </div>
+
+                    <h3>
+                        弹力带
+                    </h3>
+
+                    <p>
+                        可用于日常轻度力量训练和活动练习。
+                    </p>
+
+                    <a href="product-sportbag.html" class="btn">
+                        查看推荐
+                    </a>
+
+                </div>
+
+
+                <div class="product-card-posture">
+
+                    <div class="product-icon">
+                        🔵
+                    </div>
+
+                    <h3>
+                        筋膜球
+                    </h3>
+
+                    <p>
+                        可作为日常身体放松工具，使用时注意力度适中。
+                    </p>
+
+                    <a href="product-sportbag.html" class="btn">
+                        查看推荐
+                    </a>
+
+                </div>
+
+
+                <div class="product-card-posture">
+
+                    <div class="product-icon">
+                        🟡
+                    </div>
+
+                    <h3>
+                        瑜伽垫
+                    </h3>
+
+                    <p>
+                        适合在家进行拉伸、平衡练习等日常活动。
+                    </p>
+
+                    <a href="product-sportbag.html" class="btn">
+                        查看推荐
+                    </a>
+
+                </div>
+
+
+                <div class="product-card-posture">
+
+                    <div class="product-icon">
+                        ⚖️
+                    </div>
+
+                    <h3>
+                        智能体脂秤
+                    </h3>
+
+                    <p>
+                        可用于记录体重等基础数据，帮助建立长期生活记录。
+                    </p>
+
+                    <a href="product-monitor.html" class="btn">
+                        查看推荐
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAQ -->
+        <section class="card">
+
+            <h2 class="card-title">
+                ❓ AI体态自测常见问题
+            </h2>
+
+            <div class="faq-item">
+
+                <h3>
+                    AI体态自测可以代替医生检查吗？
+                </h3>
+
+                <p>
+                    不可以。本页面提供的是健康生活方式参考和AI辅助观察，
+                    不能用于疾病诊断。如果出现持续疼痛、活动受限或其他明显不适，
+                    应及时寻求专业医疗帮助。
+                </p>
+
+            </div>
+
+            <div class="faq-item">
+
+                <h3>
+                    一定要上传照片才能使用吗？
+                </h3>
+
+                <p>
+                    不需要。您可以直接阅读页面中的体态管理和生活方式建议。
+                    上传照片功能主要用于后续AI辅助分析功能的体验。
+                </p>
+
+            </div>
+
+            <div class="faq-item">
+
+                <h3>
+                    中老年人可以进行体态训练吗？
+                </h3>
+
+                <p>
+                    是否适合运动以及运动强度，需要结合个人年龄、身体状况和运动基础判断。
+                    建议从舒适、温和的活动开始，不要勉强完成高强度动作。
+                </p>
+
+            </div>
+
+            <div class="faq-item">
+
+                <h3>
+                    AI分析结果准确吗？
+                </h3>
+
+                <p>
+                    AI分析只能作为辅助参考，受照片角度、光线、姿势和算法能力等因素影响。
+                    不应将AI结果作为医疗判断或疾病诊断依据。
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 下一步 -->
+        <section class="card">
+
+            <h2 class="card-title">
+                🌱 继续探索身体叙事馆
+            </h2>
+
+            <p class="card-desc">
+                从一次体态观察开始，逐步建立属于自己的健康生活方式。
+            </p>
+
+            <div class="action-buttons">
+
+                <a href="posture-plan.html" class="btn">
+                    🤖 查看30天AI规划
+                </a>
+
+                <a href="consult.html" class="btn">
+                    📝 提交身体情况
+                </a>
+
+                <a href="senior.html" class="btn">
+                    返回身体叙事馆
+                </a>
+
+                <a href="index.html" class="btn">
+                    🏠 返回首页
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- 合作入口 -->
+        <section class="card">
+
+            <h2 class="card-title">
+                🤝 品质生活好物合作
+            </h2>
+
+            <p class="card-desc">
+                如果您是健康生活、适老化产品、运动用品或品质生活品牌，
+                欢迎了解我们的商务合作方式。
+            </p>
+
+            <div class="action-buttons">
+
+                <a href="cooperation.html" class="btn">
+                    了解商务合作
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 广告位 -->
+    <div class="ad-slot">
+
+        <p class="ad-tips">
+
+            <small style="font-weight: normal; display: block; margin-top: 8px;">
+
+                📢 品质生活合作入口：
+
+                健康生活 | 适老化产品 | 运动用品 | 旅游服务
+
+                <br>
+
+                <a href="cooperation.html">
+                    点击了解合作
+                </a>
+
+                <br>
+
+                页面中的商业推广内容将按照相关规定进行明确标识。
+
+            </small>
+
+        </p>
+
+    </div>
+
+
+    <!-- 页脚 -->
+    <footer class="footer">
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                返回首页
+            </a>
+
+            <a href="about.html">
+                关于我们
+            </a>
+
+            <a href="service.html">
+                服务说明
+            </a>
+
+            <a href="privacy.html">
+                隐私政策
+            </a>
+
+            <a href="subscribe.html">
+                订阅更新
+            </a>
+
+            <a href="contact.html">
+                联系我们
+            </a>
+
+        </div>
+
+        <p class="footer-disclaimer">
+
+            本站内容基于公开信息与AI技术进行整理与生成，
+            旨在提供信息参考与认知辅助，不替代专业判断。
+            具体决策请结合个人情况自行判断。
+
+        </p>
+
+        <p style="font-size: 0.7rem; color: #666; margin-top: 8px; line-height: 1.4; opacity: 0.6; max-width: 800px; margin-left: auto; margin-right: auto;">
+
+            <b>Disclaimer:</b>
+
+            This site provides information and AI-assisted content for informational purposes only.
+            It is NOT a substitute for professional medical advice, diagnosis, or treatment.
+            Always seek the advice of your physician or other qualified health provider.
+
+        </p>
+
+        <p class="copyright">
+            © 2026 anrjai.com · 乐龄品质生活 AI助手
+        </p>
+
+    </footer>
+
+</div>
+
+
+<script src="script.js"></script>
+
+<script>
+
+    // 图片本地预览
+    const postureImage = document.getElementById("postureImage");
+    const imagePreview = document.getElementById("imagePreview");
+    const analyzeButton = document.getElementById("analyzeButton");
+    const resultBox = document.getElementById("resultBox");
+
+    postureImage.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith("image/")) {
+            alert("请选择有效的图片文件。");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            imagePreview.src = event.target.result;
+
+            imagePreview.style.display = "block";
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+
+    // 当前为演示版本
+    // 后续接入真实AI API时，在这里替换为实际接口调用
+    analyzeButton.addEventListener("click", function () {
+
+        if (!postureImage.files.length) {
+
+            alert("请先选择一张站姿照片。");
+
+            return;
+
+        }
+
+        resultBox.style.display = "block";
+
+        resultBox.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    });
+
+
+    // particles.js
+    if (typeof particlesJS !== "undefined") {
+
+        particlesJS("particles-js", {
+
+            "particles": {
+
+                "number": {
+                    "value": 45,
+                    "density": {
+                        "enable": true,
+                        "value_area": 900
+                    }
+                },
+
+                "color": {
+                    "value": "#ffffff"
+                },
+
+                "shape": {
+                    "type": "circle"
+                },
+
+                "opacity": {
+                    "value": 0.25,
+                    "random": true
+                },
+
+                "size": {
+                    "value": 2,
+                    "random": true
+                },
+
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.12,
+                    "width": 1
+                },
+
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+
+            },
+
+            "interactivity": {
+
+                "detect_on": "canvas",
+
+                "events": {
+
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+
+                    "resize": true
+
+                },
+
+                "modes": {
+
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.3
+                        }
+                    },
+
+                    "push": {
+                        "particles_nb": 3
+                    }
+
+                }
+
+            },
+
+            "retina_detect": true
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
