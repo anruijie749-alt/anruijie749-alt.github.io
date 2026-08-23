@@ -1,86 +1,83 @@
-```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <url>
-    <loc>https://anrjai.com/</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/about.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/health.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/products.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/travel.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/contact.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/service.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/senior.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/tools.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/article1.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/article2.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/article3.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/guide-30day.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/guide-food.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/guide-lifestyle.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/guide-tools.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/guide-travel.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/subscribe.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/tea.html</loc>
-  </url>
-
-  <url>
-    <loc>https://anrjai.com/sitemap.html</loc>
-  </url>
-
+<url>
+  <loc>https://lunch.anrjai.com/index.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/what-to-eat.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/breakfast.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/dinner.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/diet.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/couple.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/decision.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/food-wheel.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/student.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/office.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/hotpot.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/midnight.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/takeout.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/privacy.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lunch.anrjai.com/terms.html</loc>
+  <lastmod>2026-08-22T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 </urlset>
-```
