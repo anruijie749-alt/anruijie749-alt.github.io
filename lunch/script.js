@@ -1,20 +1,17 @@
-// ==================== CPS链接配置 ====================
-// 只需要改这里：把链接换成你的淘宝联盟/京东联盟链接（外卖券/红包入口）
-// 为空则自动隐藏入口，避免误触/违规风险
-const CPS_LINKS = {
-  prizeLink: 'https://kzurl18.cn/t2KMrt',
-  // prizeLink: 'https://s.click.taobao.com/4jcI3ml',
-  catalogLink: 'https://kzurl18.cn/t2KMrt'
+// ==================== 联盟CPS佣金入口配置 ====================
+// 【重要】下面必须填你自己在联盟后台生成的【带PID的推广链接】，才能赚佣金。
+// 目前暂留空：未配置真实PID链接前，对应平台按钮自动隐藏，绝不跳转任何无关/他人链接。
+// 等你把三个真实链接发给我，我填进去即可上线。
+const UNION_LINKS = {
+  taobao:   '',  // ← 在此填入你的淘宝联盟PID链接（形如 s.click.taobao.com/...?pid=mm_xxxxxx）
+  jingdong: '',  // ← 在此填入你的京东联盟PID链接（形如 u.jd.com/...）
+  eleme:    ''  // ← 在此填入你的饿了么联盟PID链接（形如 u.ele.me/...）
 };
-// ====================================================
-
-// ==================== 外卖平台直达配置（非联盟必填） ====================
-// 说明：这里是普通跳转，默认不给你带任何推广标记，不涉及年龄/联盟审核，
-// 只是帮你打开饿了么 / 美团官方页面，是否下单完全由用户自己决定。
-// 如你日后开通官方推广，可替换为你的合规推广链接。
+// 兜底：UNION_LINKS 某平台留空时，用这里的普通平台首页（不带佣金，纯跳转官网）。
+// 同样只填你确认的官方/自己的链接，不要填来路不明的短码。
 const PLATFORM_LINKS = {
-  eleme: 'https://u.ele.me/BqSwhD2S',   // 饿了么H5首页（可按需修改）
-  jingdong: 'https://u.jd.com/RO6EzFn' // 京东秒送H5首页（可按需修改）
+  eleme: '',
+  jingdong: ''
 };
 // ====================================================
 
@@ -240,13 +237,14 @@ function initFooter() {
 
 function initCatalogLink() {
   const catalogBtn = document.getElementById('catalogBtn');
-  const url = (CPS_LINKS.catalogLink || "").trim();
+  // 优先用联盟CPS链接（赚佣金），没有则隐藏
+  const url = (UNION_LINKS.taobao || UNION_LINKS.jingdong || UNION_LINKS.eleme || "").trim();
 
   if (!url) {
-    catalogBtn.style.display = "none";
+    if (catalogBtn) catalogBtn.style.display = "none";
     return;
   }
-  bindSafeJump(catalogBtn, () => buildJumpUrl(url, { type: "coupon" }));
+  if (catalogBtn) bindSafeJump(catalogBtn, () => buildJumpUrl(url, { type: "coupon" }));
 }
 
 function initPlatformButtons() {
@@ -255,8 +253,8 @@ function initPlatformButtons() {
   const elemeBtn = document.getElementById('elemeBtn');
   const jingdongBtn = document.getElementById('jingdongBtn');
 
-  const elemeUrl = (PLATFORM_LINKS.eleme || "").trim();
-  const jingdongUrl = (PLATFORM_LINKS.jingdong || "").trim();
+  const elemeUrl = (UNION_LINKS.eleme || PLATFORM_LINKS.eleme || "").trim();
+  const jingdongUrl = (UNION_LINKS.jingdong || PLATFORM_LINKS.jingdong || "").trim();
 
   if (elemeBtn) {
     if (elemeUrl) {
@@ -606,16 +604,15 @@ function initResultModal() {
     if (e.key === "Escape") closeResultModal();
   });
 
-  // 弹窗按钮：立即查看外卖优惠（用户点击触发，最稳定）
+  // 弹窗按钮：🎟️ 领取外卖红包（点哪个平台就走哪个CPS链接，你赚佣金）
   const actionBtn = document.getElementById('modalActionBtn');
   actionBtn.addEventListener('click', () => {
-    const url = (CPS_LINKS.prizeLink || "").trim();
-    if (!url) {
-      showInfo("提示", "链接未配置。你可以先不配链接，等测试确认后再配。");
+    const firstUrl = getFirstUnionUrl();
+    if (!firstUrl) {
+      showInfo("提示", "佣金入口尚未配置，请在 lunch/script.js 的 UNION_LINKS 填入你的联盟PID链接。");
       return;
     }
-    // 用 location 更稳（微信内置/浏览器拦截少）
-    window.open(url, '_blank');
+    window.open(firstUrl, '_blank', 'noopener');
   });
 
   // 弹窗按钮：换一个结果
@@ -641,19 +638,44 @@ function openResultModal(item) {
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add('modal-open');
 
-  // Auto redirect logic
-  const url = (CPS_LINKS.prizeLink || "").trim();
-  if (url && actionBtn) {
-    actionBtn.textContent = "🎟️ 立即查看外卖优惠";
-    actionBtn.onclick = () => {
-      // 使用当前页面跳转，成功率 100%，不会被阻止
-      window.open(url, '_blank');
-  
-  };
-} else if (actionBtn) {
-  actionBtn.textContent = "🎟️ 立即查看外卖优惠";
-  actionBtn.disabled = true;
+  // 展示联盟佣金入口（用户主动点哪个平台就走哪个CPS链接）
+  setupUnionChooser();
+  if (actionBtn) {
+    actionBtn.textContent = "🎟️ 领取外卖红包";
+    actionBtn.disabled = false;
+  }
 }
+
+// 在弹窗内渲染联盟平台按钮（有链接才显示）
+function setupUnionChooser() {
+  const chooser = document.getElementById('unionChooser');
+  if (!chooser) return;
+  const map = { taobao: 'unionTaobao', jingdong: 'unionJd', eleme: 'unionEleme' };
+  const labels = { taobao: '🛒 淘宝联盟', jingdong: '📦 京东联盟', eleme: '🍔 饿了么联盟' };
+  let any = false;
+  for (const k in map) {
+    const a = document.getElementById(map[k]);
+    if (!a) continue;
+    const url = (UNION_LINKS[k] || '').trim();
+    if (url) {
+      a.href = url;
+      a.textContent = labels[k];
+      a.style.display = '';
+      any = true;
+    } else {
+      a.style.display = 'none';
+    }
+  }
+  chooser.style.display = any ? '' : 'none';
+}
+
+// 取第一个可用的联盟链接（淘宝优先）
+function getFirstUnionUrl() {
+  for (const k of ['taobao', 'jingdong', 'eleme']) {
+    const url = (UNION_LINKS[k] || '').trim();
+    if (url) return url;
+  }
+  return '';
 }
 
 function closeResultModal() {
