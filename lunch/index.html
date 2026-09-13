@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112556758844974"
+     crossorigin="anonymous"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="今天吃什么总纠结？3秒随机帮你决定午餐！支持预算筛选、口味偏好、最近记录，让选择更轻松。" />
@@ -15,11 +18,12 @@
 <meta name="twitter:description" content="3秒随机帮你决定午餐，支持预算筛选和口味偏好。" />
    
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://lunch.anrjai.com/">
+  <link rel="canonical" href="https://lunch.anrjai.com/index.html">
 
   <meta property="og:title" content="今天吃什么？外卖红包转盘" />
   <meta property="og:description" content="随机午餐大转盘，一键决定今天吃什么，外卖优惠信息（自愿）！" />
   <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="今天吃什么工具站">
   <meta property="og:url" content="https://lunch.anrjai.com/" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:locale:alternate" content="en_US" />
@@ -165,8 +169,18 @@
       <p class="modal-text" id="modalText">今天吃火锅！</p>
 
       <div class="modal-buttons">
-        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 跳转平台查看优惠</button>
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 领取外卖红包</button>
         <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
+      </div>
+
+      <!-- 联盟佣金入口：点哪个平台走哪个CPS链接，你赚佣金 -->
+      <div id="unionChooser" style="display:none; margin-top:14px; text-align:center;">
+        <p style="margin:0 0 8px; font-size:14px; color:#666;">🎁 选平台领红包/优惠（点哪个你赚哪个的佣金）：</p>
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <a id="unionTaobao" href="#" target="_blank" rel="noopener noreferrer" style="display:none; padding:8px 14px; background:#ff5000; color:#fff; border-radius:8px; text-decoration:none; font-size:14px;">🛒 淘宝联盟</a>
+          <a id="unionJd" href="#" target="_blank" rel="noopener noreferrer" style="display:none; padding:8px 14px; background:#e1251b; color:#fff; border-radius:8px; text-decoration:none; font-size:14px;">📦 京东联盟</a>
+          <a id="unionEleme" href="#" target="_blank" rel="noopener noreferrer" style="display:none; padding:8px 14px; background:#0085ff; color:#fff; border-radius:8px; text-decoration:none; font-size:14px;">🍔 饿了么联盟</a>
+        </div>
       </div>
     </div>
   </div>
