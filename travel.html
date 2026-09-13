@@ -608,29 +608,46 @@ ${extra ? `- 特别要求：${extra}` : ''}
 语气要像一位有经验的老朋友在帮你出主意，亲切自然，不要像旅游广告。字数控制在500字左右。`;
 
 try {
-   // 删掉真实的 Key，改为直接请求你自己的 Vercel 后端
+   // 请求自己的 Vercel 后端（Edge 运行时 + 流式返回，不受 10 秒限制）
    const response = await fetch('/api/generate-plan', {
-   method: 'POST',
-   headers: { 'Content-Type': 'application/json' },
-   body: JSON.stringify({ prompt: prompt })
- });
-    const data = await response.json();
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({ prompt: prompt })
+   });
 
     if (!response.ok) {
-      throw new Error(data.error || '请求失败，请稍后再试');
+      let msg = '请求失败，请稍后再试';
+      try { const d = await response.json(); if (d && d.error) msg = d.error; } catch (e) {}
+      throw new Error(msg);
     }
 
-    // 2. 接收智谱返回的文本内容并渲染
-    const text = data.text || '';
-    const formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    resultContent.innerHTML = formatted;
+    // 流式接收：内容边生成边显示，不用干等
     resultArea.classList.add('visible');
+    resultContent.innerHTML = '<span style="color:rgba(255,255,255,0.55);">AI 正在规划中，内容会陆续显示…</span>';
     resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+    let gotAny = false;
+    while (true) {
+      const chunk = await reader.read();
+      if (chunk.done) break;
+      const piece = decoder.decode(chunk.value, { stream: true });
+      if (piece) { fullText += piece; gotAny = true; }
+      resultContent.innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong></strong>');
+    }
+    fullText += decoder.decode();
+    if (!fullText.trim()) {
+      throw new Error('AI 未返回内容，请稍后重试');
+    }
+    resultContent.innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong></strong>');
 
   
   } catch (err) {
     errorMsg.textContent = '生成失败：' + err.message;
     errorMsg.style.display = 'block';
+    if (resultArea) resultArea.classList.remove('visible');
   } finally {
     btn.disabled = false;
     btn.innerHTML = '✦ 生成我的专属旅居方案';
