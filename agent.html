@@ -184,7 +184,7 @@
   <!-- 模拟体验区 -->
   <section class="demo" id="demo">
     <h2>🔬 模拟巡检体验</h2>
-    <p class="hint">选择一个指令，或自行输入，点击"开始演示巡检"。输出为预置脱敏样例（取自 2026-08-21 真实运行记录），不会发起任何真实检查。</p>
+    <p class="hint">选择一个指令，或自行输入，点击"开始演示巡检"。输出为预置脱敏样例（取自 2026-09-13 真实运行记录），不会发起任何真实检查。</p>
     <div class="chips">
       <span class="chip" data-cmd="巡检首页">巡检首页</span>
       <span class="chip" data-cmd="巡检全部页面">巡检全部页面</span>
@@ -203,20 +203,20 @@
       <div class="step"><span class="dot"></span><span class="label">推送摘要到飞书群</span></div>
     </div>
     <div class="output" id="output">
-      <div class="out-head">🔍 站检员 · 每日巡检摘要（演示样例 · 数据取自 2026-08-21 真实运行，已脱敏）</div>
+      <div class="out-head">🔍 站检员 · 每日巡检摘要（演示样例 · 数据取自 2026-09-13 真实运行，已脱敏）</div>
       <p><b>✅ 结论：</b>巡检完成（只读，未修改任何文件）。覆盖 <span class="path">D:\A-cursor-anzhuangbao</span> 全部 47 个条目（含 api、images、lunch、pages 子目录）；全站 UTF-8 无乱码，本地资源引用齐全。</p>
-      <p style="margin-top:6px"><b>发现问题：</b><span class="lvl-a">A 级 2 处</span>、<span class="lvl-b">B 级 4 处</span>、外部波动 2 处（详见报告）。</p>
+      <p style="margin-top:6px"><b>发现问题：</b><span class="lvl-a">A 级 3 处</span>、<span class="lvl-b">B 级 2 处</span>、外部波动 1 处（详见报告）。</p>
       <table>
         <tr><th>#</th><th>级别</th><th>位置</th><th>问题</th></tr>
-        <tr><td>1</td><td class="lvl-a">A</td><td>senior.html:191</td><td>死链 download/posture-7day.pdf（本地无文件，线上 404）</td></tr>
-        <tr><td>2</td><td class="lvl-a">A</td><td>senior.html:31</td><td>og:image 指向 images/og-cover.jpg 缺失</td></tr>
-        <tr><td>3</td><td class="lvl-b">B</td><td>products / tea / tools</td><td>12 处按钮为 example.com 占位链接，无真实跳转</td></tr>
-        <tr><td>4</td><td class="lvl-b">B</td><td>contact / cooperation</td><td>163 邮箱链接指向示例邮箱 anrj@163.com</td></tr>
-        <tr><td>5</td><td class="lvl-b">B</td><td>lunch/sitemap.xml</td><td>本地带 Markdown 围栏且指向主站，与线上不一致</td></tr>
-        <tr><td>6</td><td class="lvl-b">B</td><td>script.js</td><td>generatePlan / submitConsult 为 alert 占位，未对接后端</td></tr>
+        <tr><td>1</td><td class="lvl-a">A</td><td>safe-check.html</td><td>首行与末行残留 Markdown 围栏符号（页面顶部/底部会显示出来）</td></tr>
+        <tr><td>2</td><td class="lvl-a">A</td><td>consult.html</td><td>末行残留 Markdown 围栏符号</td></tr>
+        <tr><td>3</td><td class="lvl-a">A</td><td>posture-plan.html</td><td>末行残留 Markdown 围栏符号</td></tr>
+        <tr><td>4</td><td class="lvl-b">B</td><td>robots.txt</td><td>Sitemap 地址用裸域，与全站 www 域名规则不一致</td></tr>
+        <tr><td>5</td><td class="lvl-b">B</td><td>lunch 子站</td><td>what-to-eat.html 线上为旧版本（缺少广告位）</td></tr>
+        <tr><td>6</td><td class="lvl-b">B</td><td>anrjai.com</td><td>裸域本机网络不通（排查后判定非网站故障，登记复查）</td></tr>
       </table>
-      <p><b>🤔 待确认：</b>是否批准修复 A 级 2 项；真实链接 / 联系邮箱；lunch/sitemap 版本以哪个为准；AI 方案是否对接 API；外部波动复查（h5.ele.me、ipapi.co）。</p>
-      <p style="margin-top:8px"><b>📌 报告路径：</b><span class="path">D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-08-21.md</span></p>
+      <p><b>🤔 待确认：</b>是否批准修复 A 级 3 项与 robots.txt 域名统一；lunch 子站页面是否单独更新部署；裸域连通性复查。</p>
+      <p style="margin-top:8px"><b>📌 报告路径：</b><span class="path">D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-09-13.md</span></p>
     </div>
   </section>
 
@@ -289,33 +289,31 @@
   <!-- 真实样例回放 -->
   <section class="sec">
     <h2>真实运行回放</h2>
-    <p class="lead">以下为 2026-08-21 12:45–12:52 真实运行记录（已脱敏），可核验。</p>
+    <p class="lead">以下为 2026-09-13 20:34–21:05 真实运行记录（已脱敏），可核验。</p>
     <div class="sample">
       <pre>Cronjob Response: 每日巡检 - 1810（job_id: 5aadbb6f5879）
 ---
-# 🔍 站检员・每日巡检摘要（2026-08-21）
+# 🔍 站检员・每日巡检摘要（2026-09-13）
 
 ## ✅ 结论
 - 巡检完成（只读，未修改任何文件）：覆盖 D:\A-cursor-anzhuangbao 全部 47 个条目（含 api、images、lunch、pages 等）
-- 发现问题：A 级 2 处、B 级 4 处、外部波动 2 处（详见报告）
+- 发现问题：A 级 3 处、B 级 2 处、外部波动 1 处（详见报告）
 
 ## ⚠️ 行动项（需批准后修复）
-1. [A] senior.html:191 死链 download/posture-7day.pdf
-2. [A] senior.html:31 og:image 指向 images/og-cover.jpg 缺失
-3. [B] products/tea/tools 12 处 example.com 占位链接
-4. [B] contact/cooperation 163 示例邮箱链接
-5. [B] lunch/sitemap.xml 本地与线上不一致
-6. [B] script.js alert 占位，未对接后端
+1. [A] safe-check.html 首行与末行残留 Markdown 围栏符号
+2. [A] consult.html 末行残留 Markdown 围栏符号
+3. [A] posture-plan.html 末行残留 Markdown 围栏符号
+4. [B] robots.txt Sitemap 地址用裸域（应统一为 www）
+5. [B] lunch 子站 what-to-eat.html 线上为旧版本（缺广告位）
+6. [外部] 裸域 anrjai.com 本机网络不通（排查后判定非网站故障）
 
 ## 🤔 待确认
-1. 是否批准修复 A 级 2 项（需随下次部署上传）
-2. 产品详情/模板下载的真实链接地址
-3. 真实联系邮箱
-4. lunch/sitemap.xml 以哪个版本为准
-5. AI 方案生成功能是否规划对接 API
-6. 外部波动复查：h5.ele.me、ipapi.co
+1. 是否批准修复 A 级 3 项（需随下次部署上传）
+2. robots.txt 是否统一为 www 域名
+3. lunch 子站 what-to-eat.html 是否单独更新部署
+4. 裸域 anrjai.com 连通性复查（建议用外部网络复核）
 
-📌 报告路径：D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-08-21.md
+📌 报告路径：D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-09-13.md
 （运行记录：status=completed，error=None，时长约 7.5 分钟）</pre>
     </div>
     <p class="note">⚠️ 本页为公开演示：所有交互均为前端模拟，预置脱敏样例；不连接任何真实 API、不暴露任何凭证、访客无法触发真实巡检、无数据回传。</p>
