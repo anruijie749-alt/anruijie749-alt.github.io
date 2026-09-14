@@ -495,6 +495,14 @@
                     alt="AI体态自测上传照片预览"
                 >
 
+                <button
+                    type="button"
+                    id="deletePhoto"
+                    style="display:none; margin-top:14px; background:rgba(255,87,87,0.15); color:#ff8a8a; border:1px solid rgba(255,87,87,0.4); padding:10px 22px; border-radius:10px; cursor:pointer; font-size:0.95rem;"
+                >
+                    🗑️ 删除已选照片
+                </button>
+
                 <div class="photo-tips">
 
                     建议拍摄方式：<br>
@@ -1115,7 +1123,7 @@
         </p>
 
         <p class="copyright">
-            © 2026 anrjai.com · 乐龄品质生活 AI助手
+            © 2026 www.anrjai.com · 乐龄品质生活 AI助手
         </p>
 
     </footer>
@@ -1154,11 +1162,41 @@
 
             imagePreview.style.display = "block";
 
+            const delBtn = document.getElementById("deletePhoto");
+
+            if (delBtn) {
+
+                delBtn.style.display = "inline-block";
+
+            }
+
         };
 
         reader.readAsDataURL(file);
 
     });
+
+
+    // 删除已选照片
+    const deletePhotoBtn = document.getElementById("deletePhoto");
+
+    if (deletePhotoBtn) {
+
+        deletePhotoBtn.addEventListener("click", function () {
+
+            postureImage.value = "";
+
+            imagePreview.src = "";
+
+            imagePreview.style.display = "none";
+
+            deletePhotoBtn.style.display = "none";
+
+            resultBox.style.display = "none";
+
+        });
+
+    }
 
 
     // 当前为演示版本

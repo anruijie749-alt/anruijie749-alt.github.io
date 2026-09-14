@@ -576,7 +576,7 @@
                     可以点击选择，也可以在下面自己描述。
                 </small>
 
-                <div class="quick-options">
+                <div class="quick-options multi-select">
 
                     <button class="quick-option" data-value="散步">
                         🚶 散步
@@ -748,6 +748,7 @@
 
                 <input
     type="date"
+    id="medicalDate"
     style="background:#111827;
            color:#fff;
            border:1px solid #38bdf8;
@@ -894,6 +895,17 @@
          页脚
     ========================= -->
 
+<!-- 广告位 -->
+<div class="ad-slot">
+  <p class="ad-tips">
+      <small style="font-weight: normal; display: block; margin-top: 8px;">
+          📢 现开放合作：健康产品 | 养老机构 | 保险服务 | 旅游服务<br>
+          <a href="cooperation.html" style="color: #0066cc;">点击联系合作</a> 
+          | 所有广告均会明确标注"广告"标识
+      </small>
+  </p>
+</div>
+
     <footer class="footer">
 
         <div class="footer-links">
@@ -934,7 +946,7 @@
 
         <p class="copyright">
 
-            © 2026 anrjai.com · 乐龄品质生活 AI助手
+            © 2026 www.anrjai.com · 乐龄品质生活 AI助手
 
         </p>
 
@@ -986,24 +998,39 @@
                     const parent =
                         button.parentElement;
 
-                    parent
-                        .querySelectorAll(
-                            ".quick-option"
+                    // 活动组支持多选（可同时选散步+做家务等）
+                    if (
+                        parent.classList.contains(
+                            "multi-select"
                         )
-                        .forEach(
-                            function(item) {
+                    ) {
 
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
+                        button.classList.toggle(
+                            "active"
                         );
 
+                    } else {
 
-                    button.classList.add(
-                        "active"
-                    );
+                        parent
+                            .querySelectorAll(
+                                ".quick-option"
+                            )
+                            .forEach(
+                                function(item) {
+
+                                    item.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+                    }
 
                 }
             );
@@ -1072,10 +1099,35 @@
             ).value;
 
 
-        const activity =
+        const selectedActivities =
+            Array.from(
+                document.querySelectorAll(
+                    ".multi-select .quick-option.active"
+                )
+            ).map(
+                function(b) {
+                    return b.getAttribute(
+                        "data-value"
+                    );
+                }
+            ).join("、");
+
+        const typedActivity =
             document.getElementById(
                 "activityDescription"
             ).value;
+
+        const activity =
+            selectedActivities ?
+            (
+                selectedActivities +
+                (
+                    typedActivity.trim() ?
+                    "；" + typedActivity :
+                    ""
+                )
+            ) :
+            typedActivity;
 
 
         const bodyFeeling =
