@@ -1339,6 +1339,48 @@
        加载历史记录
     ========================= */
 
+    /* 删除单条记录 */
+    function deleteRecord(index) {
+
+        if (
+            !confirm(
+                "确定要删除这条记录吗？删除后无法恢复。"
+            )
+        ) {
+            return;
+        }
+
+        const records =
+            JSON.parse(
+                localStorage.getItem(
+                    "anrjai_daily_records"
+                ) || "[]"
+            );
+
+        if (
+            index < 0 ||
+            index >= records.length
+        ) {
+            return;
+        }
+
+        records.splice(
+            index,
+            1
+        );
+
+        localStorage.setItem(
+            "anrjai_daily_records",
+            JSON.stringify(
+                records
+            )
+        );
+
+        loadHistory();
+
+    }
+
+
     function loadHistory() {
 
 
@@ -1379,7 +1421,7 @@
 
 
         records.forEach(
-            function(record) {
+            function(record, recordIndex) {
 
 
                 const item =
@@ -1464,7 +1506,21 @@
 
                         ""
 
-                    );
+                    ) +
+
+                    "<div style=\"margin-top:12px;text-align:right;\">" +
+
+                    "<button onclick=\"deleteRecord(" +
+
+                    recordIndex +
+
+                    ")\" style=\"background:rgba(255,87,87,0.15);color:#ff8a8a;border:1px solid rgba(255,87,87,0.4);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:0.85rem;\">" +
+
+                    "🗑️ 删除这条记录" +
+
+                    "</button>" +
+
+                    "</div>";
 
 
                 historyList.appendChild(
