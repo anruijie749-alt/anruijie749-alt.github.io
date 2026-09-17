@@ -519,6 +519,31 @@ body {
       background: rgba(56, 189, 248, 0.2) !important;
       transform: scale(0.98);
   }
+
+
+  /* 下拉子菜单：移动端改为常显流式列表
+     原因：触屏没有 hover，且父容器 overflow-y:hidden 会裁掉第二项之后的子菜单（只露出第一项） */
+  .nav-menu {
+      overflow: visible !important;
+  }
+
+  .dropdown-menu {
+      display: block !important;
+      position: static !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      min-width: 0 !important;
+      padding: 4px 0 0 14px !important;
+  }
+
+  .dropdown-menu li a {
+      background: rgba(56, 189, 248, 0.04) !important;
+      border-color: rgba(56, 189, 248, 0.12) !important;
+      color: rgba(255, 255, 255, 0.78) !important;
+      font-size: 0.82rem !important;
+      padding: 6px 12px !important;
+  }
 }
 
 /* 下拉动画定义 */
