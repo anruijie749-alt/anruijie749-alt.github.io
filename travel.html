@@ -667,13 +667,13 @@ try {
       if (chunk.done) break;
       const piece = decoder.decode(chunk.value, { stream: true });
       if (piece) { fullText += piece; gotAny = true; }
-      resultContent.innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong></strong>');
+      resultContent.innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     }
     fullText += decoder.decode();
     if (!fullText.trim()) {
       throw new Error('AI 未返回内容，请稍后重试');
     }
-    resultContent.innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong></strong>');
+    resultContent.innerHTML = fullText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
   
   } catch (err) {
