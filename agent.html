@@ -191,7 +191,7 @@
   <header class="hero">
     <span class="badge">站检员 AGENT · 官网技术守护者</span>
     <h1>每天为「乐龄品质生活」做一次全站体检</h1>
-    <p class="sub">站检员是本站的巡检自动化 Agent：定时扫描 47 个网站文件（含子目录），检查编码、资源引用、死链与占位内容，
+    <p class="sub">站检员是本站的巡检自动化 Agent：定时扫描 53 个网站页面（含子目录），检查编码、资源引用、死链与占位内容，
       按 A / B / C 分级列清单、自动生成巡检报告并推送到飞书群。下面是一次"模拟巡检"的真实体验。</p>
     <span class="demo-tag">演示模式 · 纯静态页面 · 不接真实 API · 不可被调用</span>
   </header>
@@ -210,7 +210,7 @@
       <button class="btn" id="runBtn">开始演示巡检</button>
     </div>
     <div class="progress" id="progress">
-      <div class="step"><span class="dot"></span><span class="label">锁定范围：D:\A-cursor-anzhuangbao（47 条目）</span></div>
+      <div class="step"><span class="dot"></span><span class="label">锁定范围：D:\A-cursor-anzhuangbao（61 个条目）</span></div>
       <div class="step"><span class="dot"></span><span class="label">扫描本地 HTML / CSS / JS（含子目录）</span></div>
       <div class="step"><span class="dot"></span><span class="label">检查编码 / 资源引用 / 死链 / 占位内容</span></div>
       <div class="step"><span class="dot"></span><span class="label">按 A / B / C 分级问题</span></div>
@@ -219,7 +219,7 @@
     </div>
     <div class="output" id="output">
       <div class="out-head">🔍 站检员 · 每日巡检摘要（演示样例 · 数据取自 2026-09-13 真实运行，已脱敏）</div>
-      <p><b>✅ 结论：</b>巡检完成（只读，未修改任何文件）。覆盖 <span class="path">D:\A-cursor-anzhuangbao</span> 全部 47 个条目（含 api、images、lunch、pages 子目录）；全站 UTF-8 无乱码，本地资源引用齐全。</p>
+      <p><b>✅ 结论：</b>巡检完成（只读，未修改任何文件）。覆盖 <span class="path">D:\A-cursor-anzhuangbao</span> 全部 61 个条目（含 api、downloads、images、lunch 子目录）；全站 UTF-8 无乱码，本地资源引用齐全。</p>
       <p style="margin-top:6px"><b>发现问题：</b><span class="lvl-a">A 级 3 处</span>、<span class="lvl-b">B 级 2 处</span>、外部波动 1 处（详见报告）。</p>
       <table>
         <tr><th>#</th><th>级别</th><th>位置</th><th>问题</th></tr>
@@ -240,7 +240,7 @@
     <h2>核心能力</h2>
     <p class="lead">它每天替你盯住网站，把"漏检"和"忘存档"这两件事交给机器。</p>
     <div class="cards">
-      <div class="card"><div class="ic">🔍</div><h3>全站巡检</h3><p>47 个条目（含子目录）逐文件检查编码、资源引用、死链与占位内容。</p></div>
+      <div class="card"><div class="ic">🔍</div><h3>全站巡检</h3><p>61 个条目（含子目录）逐文件检查编码、资源引用、死链与占位内容。</p></div>
       <div class="card"><div class="ic">🗂️</div><h3>A/B/C 分级</h3><p>A 可安全修、B 需确认、C 禁止触碰；分级列清单，绝不自行越级处理。</p></div>
       <div class="card"><div class="ic">📤</div><h3>飞书推送</h3><p>巡检摘要按固定结构（结论→行动项→待确认）推送到指定飞书群。</p></div>
       <div class="card"><div class="ic">⏰</div><h3>定时任务</h3><p>每天 18:10 自动运行一次，也可飞书发"巡检 &lt;范围&gt;"即时触发。</p></div>
@@ -269,7 +269,7 @@
     <p class="lead">能做什么、不能做什么，白纸黑字写死在规范里（SOUL.md）。</p>
     <div class="two-col">
       <div class="panel"><h3>✅ 它能做</h3><ul>
-        <li class="ok">本地全站巡检（47 条目 + 子目录）</li>
+        <li class="ok">本地全站巡检（61 个条目 + 子目录）</li>
         <li class="ok">编码 / 资源引用 / 死链 / 占位内容检查</li>
         <li class="ok">A/B/C 分级问题清单</li>
         <li class="ok">巡检报告生成与存档（Markdown）</li>
@@ -311,7 +311,7 @@
 # 🔍 站检员・每日巡检摘要（2026-09-13）
 
 ## ✅ 结论
-- 巡检完成（只读，未修改任何文件）：覆盖 D:\A-cursor-anzhuangbao 全部 47 个条目（含 api、images、lunch、pages 等）
+- 巡检完成（只读，未修改任何文件）：覆盖 D:\A-cursor-anzhuangbao 全部 61 个条目（含 api、downloads、images、lunch 等）
 - 发现问题：A 级 3 处、B 级 2 处、外部波动 1 处（详见报告）
 
 ## ⚠️ 行动项（需批准后修复）
