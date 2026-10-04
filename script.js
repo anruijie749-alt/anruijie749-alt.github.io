@@ -107,31 +107,6 @@ function smoothScroll(target) {
   }
 }
 
-// 变现功能：生成方案（示例）
-function generatePlan(type) {
-  alert('AI正在为您生成专属方案，请稍候...\n\n（此功能可对接AI API或后端服务）');
-}
-
-// 变现功能：咨询表单
-function showConsultForm(service) {
-  alert(`${service} - 咨询表单\n\n（可对接后端API或第三方表单服务，如金数据、腾讯问卷等）\n\n功能说明：\n1. 收集用户姓名、电话、咨询内容\n2. 对接支付接口验证\n3. 自动发送通知到管理员\n4. 24小时内联系用户`);
-}
-
-function submitConsult() {
-  alert('咨询信息已提交，我们将在24小时内与您联系！');
-}
-
-// 全局函数：生成方案
-function generatePlan(type) {
-  const typeMap = {
-      'health': '形体管理',
-      'senior': '长者生活',
-      'tea': '茶文化',
-      'tools': 'AI工具'
-  };
-  const typeName = typeMap[type] || '专属';
-  alert(`AI正在为您生成${typeName}专属方案，请稍候...\n\n（此功能可对接AI API，如OpenAI、文心一言等）\n\n实现方式：\n1. 收集用户输入信息\n2. 调用AI API生成方案\n3. 返回个性化方案文档\n4. 支持付费解锁完整版`);
-}
 // 汉堡菜单点击
 const hamburger = document.getElementById('hamburger');
 const navContainer = document.getElementById('navContainer');
