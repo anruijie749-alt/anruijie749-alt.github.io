@@ -83,6 +83,12 @@
   <priority>0.70</priority>
 </url>
 <url>
+  <loc>https://www.anrjai.com/article4.html</loc>
+  <lastmod>2026-10-07</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.70</priority>
+</url>
+<url>
   <loc>https://www.anrjai.com/service.html</loc>
   <lastmod>2026-09-13T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
