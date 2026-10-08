@@ -628,3 +628,8 @@ body {
     color: #00f2fe; 
     background: rgba(255,255,255,0.05);
 }
+
+/* ===== 卡片内正文排版（2026-10-08）：让长文段落行距、段距和其它页面一致 ===== */
+.card > p:not([class]) { font-size: 1.05rem; line-height: 1.85; margin: 0 0 16px; }
+.card > ul:not([class]) li, .card > ol:not([class]) li { line-height: 1.8; margin-bottom: 8px; }
+.card > ul:not([class]), .card > ol:not([class]) { margin: 0 0 16px; padding-left: 22px; }

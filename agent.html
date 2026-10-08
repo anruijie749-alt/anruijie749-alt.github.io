@@ -148,6 +148,7 @@
   .footer p { font-size: .85rem; line-height: 1.7; max-width: 800px; margin: 0 auto 10px; }
   .footer .demo-note { font-size: .8rem; color: #fbbf24; }
 </style>
+<link rel="stylesheet" href="styles.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -174,18 +175,31 @@
 
   <!-- 导航（与官网一致） -->
   <nav class="navbar">
-    <a href="index.html" class="logo">乐龄品质生活 AI助手</a>
-    <ul class="nav-menu">
-      <li><a href="index.html">首页</a></li>
-      <li><a href="health.html">乐龄品质生活</a></li>
-      <li><a href="travel.html">AI旅居规划</a></li>
-      <li><a href="senior.html">身体叙事馆</a></li>
-      <li><a href="tools.html" class="active">AI工具助手</a></li>
-      <li><a href="https://lunch.anrjai.com/">福利专区</a></li>
-      <li><a href="products.html">好物推荐 ▾</a></li>
-      <li><a href="about.html">关于我们</a></li>
-    </ul>
-  </nav>
+            <a href="index.html" class="logo">乐龄品质生活 AI助手</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="travel.html">AI旅居规划</a></li>
+                    <li><a href="health.html">乐龄品质生活</a></li>
+                    <li><a href="senior.html">身体叙事馆</a></li>
+                    <li><a href="tools.html">AI工具助手</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">好物推荐 ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tea.html">茶文化好物</a></li>
+                            <li><a href="sololiving.html">尊严自理清单</a></li>
+                            <li><a href="sitemap.html">内容地图</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+            </div>
+        </nav>
 
   <!-- Hero -->
   <header class="hero">
@@ -407,5 +421,6 @@
   });
 })();
 </script>
+<script src="script.js"></script>
 </body>
 </html>

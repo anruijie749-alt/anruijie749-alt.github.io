@@ -435,32 +435,31 @@
   <div class="container" style="max-width:100%; padding:30px 0 0 0;">   
     <!--  替换为与首页完全统一的导航栏代码 -->
 <nav class="navbar">
-  <a href="index.html" class="logo">乐龄品质生活 AI助手</a>
-  <button class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-  </button>
-  <div class="nav-container" id="navContainer">
-      <ul class="nav-menu">
-          <li><a href="index.html">首页</a></li>
-          <li><a href="health.html">乐龄品质生活</a></li>
-          <li><a href="travel.html" class="active">AI旅居规划</a></li>
-          <li><a href="senior.html">身体叙事馆</a></li>
-          <li><a href="tools.html">AI工具助手</a></li>
-          <li><a href="https://lunch.anrjai.com/">福利专区</a></li>
-          <li class="dropdown">
-              <a href="products.html">好物推荐 ▾</a>
-              <ul class="dropdown-menu">
-                  <li><a href="tea.html">茶文化好物</a></li>
-                  <li><a href="sololiving.html">尊严自理清单</a></li>
-                  <li><a href="sitemap.html">内容地图</a></li>
-              </ul>
-          </li>
-          <li><a href="about.html">关于我们</a></li>
-      </ul>
-  </div>
-</nav>
+            <a href="index.html" class="logo">乐龄品质生活 AI助手</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-menu">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="travel.html" class="active">AI旅居规划</a></li>
+                    <li><a href="health.html">乐龄品质生活</a></li>
+                    <li><a href="senior.html">身体叙事馆</a></li>
+                    <li><a href="tools.html">AI工具助手</a></li>
+                    <li class="dropdown">
+                        <a href="products.html">好物推荐 ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tea.html">茶文化好物</a></li>
+                            <li><a href="sololiving.html">尊严自理清单</a></li>
+                            <li><a href="sitemap.html">内容地图</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+            </div>
+        </nav>
 <!--  精简上移、布局优化版 -->
 <div class="planner" style="padding-top: 0px;"> <!-- 顶部间距由40px缩减到10px -->
   <div class="header" style="margin-bottom: 5px;padding-bottom: 30px"> <!-- 缩短与下方表单的距离 -->
@@ -874,19 +873,37 @@ ${extra ? `- 特别要求：${extra}` : ''}
 
 语气要像一位有经验的老朋友在帮你出主意，亲切自然，不要像旅游广告。字数控制在400字左右。`;
 
+let apiUrlUsed = '';
 try {
    // 请求自己的 Vercel 后端（Edge 运行时 + 流式返回，不受 10 秒限制）
-   const response = await fetch('/api/generate-plan', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({ prompt: prompt })
-   });
-
-    if (!response.ok) {
-      let msg = '请求失败，请稍后再试';
-      try { const d = await response.json(); if (d && d.error) msg = d.error; } catch (e) {}
-      throw new Error(msg);
-    }
+   // 本地打开（双击文件的 file:// ，或本地预览的 127.0.0.1/localhost/局域网地址）都没有后端，自动改走线上接口
+   const h = location.hostname;
+   const isLocal = location.protocol === 'file:' || h === '' || h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0'
+     || h.startsWith('192.168.') || h.startsWith('10.') || h.startsWith('172.1') || h.startsWith('172.2') || h.startsWith('172.3')
+     || h.endsWith('.local');
+   const API_URL = isLocal ? 'https://www.anrjai.com/api/generate-plan' : '/api/generate-plan';
+   apiUrlUsed = API_URL;
+   // 网络偶发失败（临时拦截、连接抖动）时自动重试一次，避免一次失败就报错
+   let response = null;
+   let lastErr = null;
+   for (let attempt = 1; attempt <= 2; attempt++) {
+     try {
+       response = await fetch(API_URL, {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ prompt: prompt })
+       });
+       if (response.ok) break;
+       let msg = '请求失败，请稍后再试';
+       try { const d = await response.json(); if (d && d.error) msg = d.error; } catch (e) {}
+       throw new Error(msg);
+     } catch (e) {
+       lastErr = e;
+       const netErr = (e && e.name === 'TypeError');
+       if (!netErr || attempt === 2) throw e;
+       await new Promise(function(res){ setTimeout(res, 1500); });
+     }
+   }
 
     // 流式接收：内容边生成边显示，不用干等
     resultArea.classList.add('visible');
@@ -912,7 +929,7 @@ try {
 
   
   } catch (err) {
-    errorMsg.textContent = '生成失败：' + err.message;
+    errorMsg.textContent = '生成失败：' + err.message + '（尝试连接的地址：' + apiUrlUsed + '）';
     errorMsg.style.display = 'block';
     if (resultArea) resultArea.classList.remove('visible');
   } finally {
@@ -929,5 +946,6 @@ function resetForm() {
 }
 </script>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
