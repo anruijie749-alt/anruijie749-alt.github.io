@@ -1,19 +1,16 @@
-// ==================== 联盟CPS佣金入口配置 ====================
-// 【重要】下面必须填你自己在联盟后台生成的【带PID的推广链接】，才能赚佣金。
-// 目前暂留空：未配置真实PID链接前，对应平台按钮自动隐藏，绝不跳转任何无关/他人链接。
-// 等你把三个真实链接发给我，我填进去即可上线。
-// 你的淘宝PID（仅核对用，真正用的是下方 taobao 字段里转链后的 s.click.taobao.com 链接）：
-// mm_15568142_3414250019_116269500058  （媒体：今天吃什么外卖大转盘）
+// ==================== 外卖红包入口链接 ====================
+// 访客点「领取外卖红包」时打开的活动入口（平台生成的入口链接，打开后可直接领红包、点外卖）。
 const UNION_LINKS = {
-  taobao:   'https://uland.taobao.com/coupon/edetail?pid=mm_15568142_3414250019_116269500058',  // 用你的淘宝PID(mm_15568142_3414250019_116269500058/媒体:今天吃什么外卖大转盘)拼的推广位落地页直链，带佣金追踪
-  jingdong: 'https://u.jd.com/RO6EzFn',  // ⚠️待确认：你之前代码里的京东短码，若是你推广位的即可赚佣金，不是请换成你的京东PID链接
-  eleme:    'https://u.ele.me/BqSwhD2S'  // ⚠️待确认：你之前代码里的饿了么短码，若是你推广位的即可赚佣金，不是请换成你的饿了么PID链接
-};
-// 兜底：UNION_LINKS 某平台留空时，用这里的普通平台首页（不带佣金，纯跳转官网）。
-// 同样只填你确认的官方/自己的链接，不要填来路不明的短码。
+  // 外卖入口链接（2026-10-10：换成「淘宝闪购·天天领红包(全场景通用)」推广链，2026-10-10 手机实点验证：直接进淘宝闪购外卖页、可领红包）
+  // 说明：这是唤端链，手机上点开直接进淘宝App；电脑上打开是空页，所以电脑端走二维码（见 showQrTip）
+  taobao:   'https://m.duanqu.com/?_ariver_appid=8251537&page=plugin-private%3A%2F%2F2021004134685665%2Fpages%2Ftaoke-guide%2Findex%3Ffrom%3Dminiapp.taobao%26channelInfo%3D%7B%22subSubChannel%22%3A%22miniapp.taobao.et%22%7D%26alsc_exsrc%3DES0006299852%26scene%3Dbd9b9628fa614f5495b8912626c47cfa',
+  eleme:    'https://m.duanqu.com/?_ariver_appid=8251537&page=plugin-private%3A%2F%2F2021004134685665%2Fpages%2Ftaoke-guide%2Findex%3Ffrom%3Dminiapp.taobao%26channelInfo%3D%7B%22subSubChannel%22%3A%22miniapp.taobao.et%22%7D%26alsc_exsrc%3DES0006299852%26scene%3Dbd9b9628fa614f5495b8912626c47cfa',
+  jingdong: 'https://u.jd.com/RO6EzFn'
+};// 兜底：UNION_LINKS 留空时，用这里的【官方平台入口】(纯跳转官网，保证不报错)。
 const PLATFORM_LINKS = {
-  eleme: '',
-  jingdong: ''
+  eleme:    'https://www.ele.me/',
+  jingdong: '',  // 用户 2026-09-21 定：暂无外卖链接，按钮隐藏，以后有链接再填
+  taobao:   'https://www.taobao.com/'
 };
 // ====================================================
 
@@ -25,7 +22,8 @@ const PLATFORM_LINKS = {
 // 注意：如果 endpoint 为空，本功能自动降级，不影响使用。
 const GEO_CONFIG = {
   // 第28行，整行改成这样
-  endpoint: "https://ipapi.co/json/",
+  // 2026-09-21：本站面向全国（将来面向海外华人），不做地区识别，故留空禁用（自动降级，不请求第三方接口）
+  endpoint: "",
   timeoutMs: 1200,
   cacheMs: 6 * 60 * 60 * 1000, // 6小时
   storageKey: "geo_ip_cache_v1"
@@ -239,7 +237,7 @@ function initFooter() {
 
 function initCatalogLink() {
   const catalogBtn = document.getElementById('catalogBtn');
-  // 优先用联盟CPS链接（赚佣金），没有则隐藏
+  // 优先用已配置的入口链接，没有则隐藏
   const url = (UNION_LINKS.taobao || UNION_LINKS.jingdong || UNION_LINKS.eleme || "").trim();
 
   if (!url) {
@@ -252,6 +250,17 @@ function initCatalogLink() {
 function initPlatformButtons() {
   document.querySelector('.platform-section').style.display = 'block';
   
+  // 微信内置浏览器可能拦淘宝App唤起：给访客一句提示（用户 2026-10-10 提）
+  (function addWechatTip() {
+    const sec = document.querySelector('.platform-section');
+    if (!sec || document.getElementById('wechatTip')) return;
+    const tip = document.createElement('p');
+    tip.id = 'wechatTip';
+    tip.style.cssText = 'margin:12px 0 0; font-size:13px; color:#888; line-height:1.8; text-align:center;';
+    tip.textContent = '提示：若在微信里点开没反应，请点右上角「···」→「在浏览器打开」，再点一次就能领红包。';
+    sec.appendChild(tip);
+  })();
+
   const elemeBtn = document.getElementById('elemeBtn');
   const jingdongBtn = document.getElementById('jingdongBtn');
 
@@ -271,10 +280,37 @@ function initPlatformButtons() {
     if (jingdongUrl) {
       bindSafeJump(jingdongBtn, () => buildJumpUrl(jingdongUrl, { platform: "jingdong", type: "platform" }));
     } else {
-      // 默认也允许作为普通直达使用，但不带任何“联盟”/“返利”字样
-      jingdongBtn.classList.add('disabled');
+      // 默认也允许作为普通直达使用，但不带任何多余字样
+      jingdongBtn.style.display = 'none';  // 无链接时隐藏（用户 2026-09-21 定）
       jingdongBtn.disabled = true;
     }
+  }
+}
+
+// 判断是不是手机（手机上点按钮直接进淘宝App；电脑上只能扫码）
+function isMobileDevice() {
+  const ua = navigator.userAgent || "";
+  const mobileUA = /Android|iPhone|iPad|iPod|Mobile|HarmonyOS|MicroMessenger/i.test(ua);
+  return mobileUA || (navigator.maxTouchPoints > 1 && window.innerWidth < 900);
+}
+
+// 电脑端弹二维码：外卖链是唤端链，电脑上打开是空页，所以让访客用手机淘宝扫
+function showQrTip() {
+  let ov = document.getElementById('qrTipOverlay');
+  if (!ov) {
+    ov = document.createElement('div');
+    ov.id = 'qrTipOverlay';
+    ov.style.cssText = 'position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    ov.innerHTML = '<div style="background:#fff;border-radius:16px;padding:22px 20px;max-width:360px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.25);">'
+      + '<p style="margin:0 0 12px;font-size:18px;font-weight:bold;color:#222;">🧧 领外卖红包</p>'
+      + '<img src="qr-hongbao.png" alt="外卖红包二维码" style="width:220px;height:220px;border-radius:12px;background:#fff;padding:8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">'
+      + '<p style="margin:14px 0 0;font-size:16px;color:#333;line-height:1.9;">电脑上请用<b>手机淘宝</b>扫这张码<br>手机上点按钮就能直接领</p>'
+      + '<p style="margin:12px 0 0;font-size:13px;color:#999;">点空白处关闭</p>'
+      + '</div>';
+    ov.addEventListener('click', function () { ov.style.display = 'none'; });
+    document.body.appendChild(ov);
+  } else {
+    ov.style.display = 'flex';
   }
 }
 
@@ -291,8 +327,16 @@ function bindSafeJump(el, urlOrFactory) {
       : urlOrFactory;
     if (url) el.setAttribute("href", url);
 
-    // 使用当前页面跳转，成功率 100%，不会被阻止
-    window.open(url, '_blank');  
+    // 电脑端：外卖链是唤端链，电脑上打开只有空页，所以不跳转，改成弹二维码让访客用手机扫
+    if (!isMobileDevice()) {
+      showQrTip();
+      setTimeout(() => { jumpLock = false; }, 600);
+      return;
+    }
+
+    // 手机端：新标签打开；若被浏览器拦截则退回当前页跳转，保证一定跳得出去
+    const w = window.open(url, '_blank');
+    if (!w) window.location.href = url;
 
     setTimeout(() => { jumpLock = false; }, 1500);
   }, { passive: false });
@@ -606,16 +650,42 @@ function initResultModal() {
     if (e.key === "Escape") closeResultModal();
   });
 
-  // 弹窗按钮：🎟️ 领取外卖红包（点哪个平台就走哪个CPS链接，你赚佣金）
+  // 弹窗按钮：🎟️ 领取外卖红包
   const actionBtn = document.getElementById('modalActionBtn');
   actionBtn.addEventListener('click', () => {
     const firstUrl = getFirstUnionUrl();
     if (!firstUrl) {
-      showInfo("提示", "佣金入口尚未配置，请在 lunch/script.js 的 UNION_LINKS 填入你的联盟PID链接。");
+      showInfo("提示", "外卖红包入口正在准备中，请稍后再试。");
       return;
     }
-    window.open(firstUrl, '_blank', 'noopener');
+    // 2026-10-09 用户定：点「领取外卖红包」直接跳转到红包活动页，不再先弹二维码。
+    // 2026-10-10 补：新入口链是"唤端链"，电脑上打开只有空页 —— 所以手机端照旧直跳，电脑端改成弹二维码（扫码领）。
+    if (!isMobileDevice()) {
+      showQrTip();
+      return;
+    }
+    actionBtn.textContent = '正在打开…';
+    window.location.href = firstUrl;
   });
+
+  // 电脑端万一打不开活动页，留一个不占地方的备用入口：点小字才显示二维码（默认不显示）
+  const qrBlock = document.getElementById('qrBlock');
+  if (qrBlock && !document.getElementById('qrToggleLink')) {
+    const p = document.createElement('p');
+    p.style.cssText = 'margin:14px 0 0; text-align:center;';
+    const a = document.createElement('a');
+    a.id = 'qrToggleLink';
+    a.href = 'javascript:void(0);';
+    a.textContent = '电脑上打不开？用手机扫码领 →';
+    a.style.cssText = 'font-size:13px; color:#888; text-decoration:underline;';
+    a.addEventListener('click', () => {
+      const show = (qrBlock.style.display !== 'block');
+      qrBlock.style.display = show ? 'block' : 'none';
+      a.textContent = show ? '收起二维码 ↑' : '电脑上打不开？用手机扫码领 →';
+    });
+    p.appendChild(a);
+    qrBlock.parentNode.insertBefore(p, qrBlock);
+  }
 
   // 弹窗按钮：换一个结果
   const againBtn = document.getElementById('modalAgainBtn');
@@ -640,7 +710,7 @@ function openResultModal(item) {
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add('modal-open');
 
-  // 展示联盟佣金入口（用户主动点哪个平台就走哪个CPS链接）
+  // 展示外卖红包入口（用户主动点击才跳转）
   setupUnionChooser();
   if (actionBtn) {
     actionBtn.textContent = "🎟️ 领取外卖红包";
@@ -648,12 +718,14 @@ function openResultModal(item) {
   }
 }
 
-// 在弹窗内渲染联盟平台按钮（有链接才显示）
+// 在弹窗内渲染平台平台按钮（有链接才显示）
 function setupUnionChooser() {
   const chooser = document.getElementById('unionChooser');
   if (!chooser) return;
-  const map = { taobao: 'unionTaobao', jingdong: 'unionJd', eleme: 'unionEleme' };
-  const labels = { taobao: '🛒 淘宝联盟', jingdong: '📦 京东联盟', eleme: '🍔 饿了么联盟' };
+  const map = { taobao: 'unionTaobao', jingdong: 'unionJd' };   // 2026-10-10：饿了么已并入淘宝闪购，且指向同一条链，去掉重复入口
+  const labels = { taobao: '🛒 淘宝闪购', jingdong: '📦 京东秒送' };
+  const elemeOld = document.getElementById('unionEleme');
+  if (elemeOld) elemeOld.style.display = 'none';
   let any = false;
   for (const k in map) {
     const a = document.getElementById(map[k]);
@@ -671,10 +743,16 @@ function setupUnionChooser() {
   chooser.style.display = any ? '' : 'none';
 }
 
-// 取第一个可用的联盟链接（淘宝优先）
+// 取第一个可用的入口链接（淘宝优先）
 function getFirstUnionUrl() {
+  // 优先用已配置的入口链接
   for (const k of ['taobao', 'jingdong', 'eleme']) {
     const url = (UNION_LINKS[k] || '').trim();
+    if (url) return url;
+  }
+  // 兜底：链接未配置时，跳官方平台入口（保证能打开、不报错）
+  for (const k of ['eleme', 'jingdong', 'taobao']) {
+    const url = (PLATFORM_LINKS[k] || '').trim();
     if (url) return url;
   }
   return '';
@@ -766,7 +844,8 @@ function initGeoHintAndCache() {
   const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!hint) return;
-  hint.textContent = "📍 正在识别所在地区…（不影响使用）";
+  // 本站不做地区识别，不显示任何定位提示
+  hint.textContent = "";
 
   // 减少额外工作：如果用户系统设置“减少动效”，就不做地理请求
   if (prefersReducedMotion) {
@@ -782,7 +861,7 @@ function initGeoHintAndCache() {
       return;
     }
     const label = [geo.province, geo.city].filter(Boolean).join(" ");
-    hint.textContent = `📍 已识别您的位置，为您推荐本地餐饮`;
+    hint.textContent = "";
   }, 0);
 }
 
