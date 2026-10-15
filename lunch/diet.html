@@ -6,7 +6,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="减脂吃什么？3秒随机帮你决定减脂餐！低卡轻食推荐，支持预算筛选、口味偏好。" />
+  <meta name="description" content="减脂吃什么总没主意？3秒随机帮你决定减脂餐。支持预算筛选、口味偏好、最近记录，帮你在一堆低卡轻食里快速选一个。饮食安排请结合自身情况，有特殊需求请遵专业人士建议。" />
   <meta name="keywords" content="减脂吃什么,减脂餐推荐,低卡食物,轻食推荐,diet food picker" />
   <title>减脂吃什么？随机减脂餐推荐｜低卡轻食选择工具</title>
   
@@ -21,10 +21,10 @@
   <link rel="canonical" href="https://lunch.anrjai.com/diet.html">
 
   <meta property="og:title" content="减脂吃什么？低卡轻食随机推荐" />
-  <meta property="og:description" content="随机早餐大转盘，一键决定今天吃什么，外卖优惠信息（自愿）！" />
+  <meta property="og:description" content="减脂吃什么总没主意？3秒随机帮你决定减脂餐。支持预算筛选、口味偏好、最近记录，帮你在一堆低卡轻食里快速选一个。饮食安排请结合自身情况，有特殊需求请遵专业人士建议。" />
   <meta property="og:type" content="website" />
     <meta property="og:site_name" content="今天吃什么工具站">
-  <meta property="og:url" content="https://lunch.anrjai.com/breakfast.html" />
+  <meta property="og:url" content="https://lunch.anrjai.com/diet.html" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:locale:alternate" content="en_US" />
 
@@ -147,13 +147,13 @@
     </div>
 
     <div class="platform-section"style="display:none;">
-      <h2 class="section-title platform-title">🍱 外卖平台快捷入口（无强制、无默认推广）</h2>
+      <h2 class="section-title platform-title">🍱 想直接去平台点单？</h2>
       <p class="platform-tip">
-        这里只是帮你快速打开平台App/H5，自行选择是否下单；如您以后开通官方推广，只需在配置里填入链接即可。
+        点下面的按钮就能打开平台，点不点、点哪个都随你，不点也能正常用这个转盘。
       </p>
       <div class="platform-buttons">
         <button id="elemeBtn" class="btn-platform btn-eleme" type="button">
-          饿了么直达
+          领红包 · 去淘宝点外卖
         </button>
         <button id="jingdongBtn" class="btn-platform btn-jingdong" type="button">
           京东外卖
@@ -169,9 +169,17 @@
       <p class="modal-text" id="modalText">今天吃火锅！</p>
 
       <div class="modal-buttons">
-        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 跳转平台查看优惠</button>
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 领取外卖红包</button>
         <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
       </div>
+
+      <!-- 外卖红包二维码 -->
+      <div id="qrBlock" style="display:none; margin-top:16px; padding-top:14px; border-top:1px solid #eee; text-align:center;">
+        <p style="margin:0 0 10px; font-size:15px; color:#333; font-weight:bold;">🧧 领外卖红包</p>
+        <img src="qr-hongbao.png" alt="外卖红包二维码" style="width:168px; height:168px; border-radius:12px; background:#fff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+        <p style="margin:12px 0 0; font-size:14px; color:#555; line-height:1.9;">📱 手机上：点上面按钮直接领<br>💻 电脑上：用手机淘宝扫码<br><span style="color:#999; font-size:12px;">红包活动由淘宝平台提供</span></p>
+      </div>
+
     </div>
   </div>
 
