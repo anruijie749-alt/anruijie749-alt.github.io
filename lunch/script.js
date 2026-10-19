@@ -5,7 +5,7 @@ const UNION_LINKS = {
   // 说明：这是唤端链，手机上点开直接进淘宝App；电脑上打开是空页，所以电脑端走二维码（见 showQrTip）
   taobao:   'https://m.duanqu.com/?_ariver_appid=8251537&page=plugin-private%3A%2F%2F2021004134685665%2Fpages%2Ftaoke-guide%2Findex%3Ffrom%3Dminiapp.taobao%26channelInfo%3D%7B%22subSubChannel%22%3A%22miniapp.taobao.et%22%7D%26alsc_exsrc%3DES0006299852%26scene%3Dbd9b9628fa614f5495b8912626c47cfa',
   eleme:    'https://m.duanqu.com/?_ariver_appid=8251537&page=plugin-private%3A%2F%2F2021004134685665%2Fpages%2Ftaoke-guide%2Findex%3Ffrom%3Dminiapp.taobao%26channelInfo%3D%7B%22subSubChannel%22%3A%22miniapp.taobao.et%22%7D%26alsc_exsrc%3DES0006299852%26scene%3Dbd9b9628fa614f5495b8912626c47cfa',
-  jingdong: 'https://u.jd.com/RO6EzFn'
+  jingdong: ''  // 2026-10-19 撤掉：原 u.jd.com 链落点是京东频控页，访客点了没内容
 };// 兜底：UNION_LINKS 留空时，用这里的【官方平台入口】(纯跳转官网，保证不报错)。
 const PLATFORM_LINKS = {
   eleme:    'https://www.ele.me/',
@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initParticleBackground() {
   const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;  // 2026-10-19：没有画布的页面直接跳过
   const ctx = canvas.getContext('2d');
   const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const isSmallScreen = Math.min(window.innerWidth, window.innerHeight) < 420;
@@ -344,6 +345,8 @@ function bindSafeJump(el, urlOrFactory) {
 
 function initWheel() {
   wheelCanvas = document.getElementById('wheelCanvas');
+  // 2026-10-19：隐私/条款页没有转盘 canvas，取不到就跳过，避免整段脚本报 TypeError
+  if (!wheelCanvas) return;
   wheelCtx = wheelCanvas.getContext('2d');
 
   function resizeWheel() {
