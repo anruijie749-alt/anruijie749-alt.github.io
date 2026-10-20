@@ -649,6 +649,7 @@ function updateTodayRecommend() {
 // ----------------- 结果弹窗（修复：不再绑定不存在的ID） -----------------
 function initResultModal() {
   const modal = document.getElementById('resultModal');
+  if (!modal) return;  // 隐私/条款等无结果弹窗的页面
 
   // 点击遮罩关闭
   modal.addEventListener('click', (e) => {
@@ -662,7 +663,7 @@ function initResultModal() {
 
   // 弹窗按钮：🎟️ 领取外卖红包
   const actionBtn = document.getElementById('modalActionBtn');
-  actionBtn.addEventListener('click', () => {
+  if (actionBtn) actionBtn.addEventListener('click', () => {
     const firstUrl = getFirstUnionUrl();
     if (!firstUrl) {
       showInfo("提示", "外卖红包入口正在准备中，请稍后再试。");
@@ -699,7 +700,7 @@ function initResultModal() {
 
   // 弹窗按钮：换一个结果
   const againBtn = document.getElementById('modalAgainBtn');
-  againBtn.addEventListener('click', () => {
+  if (againBtn) againBtn.addEventListener('click', () => {
     closeResultModal();
     setTimeout(() => spinWheel(), 50);
   });
