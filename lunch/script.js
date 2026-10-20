@@ -254,7 +254,9 @@ function initCatalogLink() {
 }
 
 function initPlatformButtons() {
-  document.querySelector('.platform-section').style.display = 'block';
+  const platformSec = document.querySelector('.platform-section');
+  if (!platformSec) return;  // 隐私/条款等无优惠入口的页面
+  platformSec.style.display = 'block';
   
   // 微信内置浏览器可能拦淘宝App唤起：给访客一句提示（用户 2026-10-10 提）
   (function addWechatTip() {
