@@ -199,14 +199,19 @@ function initParticleBackground() {
   animate();
 }
 
+function bindClick(id, fn) {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', fn);
+}
+
 function initEventListeners() {
-  document.getElementById('spinBtn').addEventListener('click', () => spinWheel());
-  document.getElementById('againBtn').addEventListener('click', () => spinWheel());
+  bindClick('spinBtn', () => spinWheel());
+  bindClick('againBtn', () => spinWheel());
 
   // 图一三个按钮
-  document.getElementById('menuBtn').addEventListener('click', showMenuCatalog);
-  document.getElementById('statsBtn').addEventListener('click', showStats);
-  document.getElementById('clearBtn').addEventListener('click', clearData);
+  bindClick('menuBtn', showMenuCatalog);
+  bindClick('statsBtn', showStats);
+  bindClick('clearBtn', clearData);
 
   // 筛选变化
   document.querySelectorAll('input[name="budget"], input[name="taste"]').forEach(input => {
@@ -219,7 +224,7 @@ function initEventListeners() {
 }
 
 function initFooter() {
-  document.getElementById('privacyLink').addEventListener('click', (e) => {
+  bindClick('privacyLink', (e) => {
     e.preventDefault();
     showInfo(
       "隐私政策",
@@ -227,7 +232,7 @@ function initFooter() {
     );
   });
 
-  document.getElementById('termsLink').addEventListener('click', (e) => {
+  bindClick('termsLink', (e) => {
     e.preventDefault();
     showInfo(
       "使用条款",
