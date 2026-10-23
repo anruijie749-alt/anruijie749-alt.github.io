@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112556758844974"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+    <meta name="google-adsense-account" content="ca-pub-3112556758844974">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="今天吃什么总纠结？3秒随机帮你决定午餐。支持预算筛选、口味偏好、最近记录，还有外卖红包入口。不用再翻半天菜单，点一下就有结果，一个人或几个人都能用。" />
+  <meta name="keywords" content="午餐转盘,今天吃什么,lunch picker,random lunch picker,food wheel,random food picker" />
+  <title>今天吃什么？随机午餐转盘｜午餐选择工具</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
+  
+  <meta property="og:image" content="https://lunch.anrjai.com/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="今天吃什么？随机午餐转盘" />
+<meta name="twitter:description" content="3秒随机帮你决定午餐，支持预算筛选和口味偏好。" />
+   
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lunch.anrjai.com/index.html">
+
+  <meta property="og:title" content="今天吃什么？外卖红包转盘" />
+  <meta property="og:description" content="今天吃什么总纠结？3秒随机帮你决定午餐。支持预算筛选、口味偏好、最近记录，还有外卖红包入口。不用再翻半天菜单，点一下就有结果，一个人或几个人都能用。" />
+  <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="今天吃什么工具站">
+  <meta property="og:url" content="https://lunch.anrjai.com/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "今天吃什么 - 外卖红包转盘",
+    "description": "随机午餐转盘工具，帮你决定今天吃什么，同时领取外卖优惠红包",
+    "url": "https://lunch.anrjai.com/",
+    "applicationCategory": "LifestyleApplication",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1 class="title">🍱 今天吃什么？3秒随机帮你决定午餐</h1>
+      <p class="brand-text">
+        乐龄品质生活｜今天吃什么工具站
+        </p>
+      <p class="subtitle">
+        每天中午纠结吃什么？点一下直接给答案（可选：结果页提供外卖优惠入口，自愿领取）。
+      </p>
+    </header>
+
+    <p id="locationHint" class="location-hint" aria-live="polite"></p>
+
+    <div class="button-area">
+      <div class="today-tip">
+        🔥 查看今日优惠信息，先领红包再下单更省钱
+      </div> 
+      <button id="spinBtn" class="btn-primary" type="button">🍜 立即帮我选午餐</button>
+      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 换一个结果</button>
+    </div>
+
+    <div class="tool-area">
+      <button id="menuBtn" class="btn-tool" type="button">📋 菜单目录</button>
+      <button id="statsBtn" class="btn-tool" type="button">📊 查看统计</button>
+      <button id="clearBtn" class="btn-tool btn-danger" type="button">🗑️ 清除数据</button>
+    </div>
+
+    <p class="tip-text">
+      *说明：本页为“午餐选择工具”。如您主动点击相关入口，将跳转第三方平台查看优惠信息；是否领券/下单以第三方页面为准。
+    </p>
+
+    <div class="wheel-container">
+      <canvas id="wheelCanvas" aria-label="午餐选择随机转盘" role="img"></canvas>
+    </div>
+
+    <section class="filter-section">
+      <h2 class="section-title">💰 预算控制</h2>
+      <div class="budget-controls">
+        <label class="budget-option">
+          <input type="radio" name="budget" value="30" checked />
+          <span>30元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="50" />
+          <span>50元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="100" />
+          <span>100元或请人吃😎</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="999" />
+          <span>不限</span>
+        </label>
+      </div>
+
+      <h2 class="section-title">🌶️ 口味偏好</h2>
+      <div class="taste-controls">
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="清淡" />
+          <span>清淡</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="中辣" />
+          <span>中辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="重辣" />
+          <span>重辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="素食" />
+          <span>素食</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="recommend-section">
+      <h2 class="section-title">⭐ 今日推荐</h2>
+      <div id="todayRecommend" class="recommend-item">加载中...</div>
+
+      <h2 class="section-title">🧾 最近选择</h2>
+      <div id="recentChips" class="recent-chips"></div>
+      
+      <div class="hot-keywords">
+        🔥 热门选择：
+        <span class="keyword-tag">火锅</span> / 
+        <span class="keyword-tag">黄焖鸡</span> / 
+        <span class="keyword-tag">麻辣烫</span> / 
+        <span class="keyword-tag">汉堡</span> / 
+        <span class="keyword-tag">炸鸡</span> / 
+        <span class="keyword-tag">寿司</span>
+      </div>
+    </section>
+
+    <div class="menu-catalog-section">
+      <a id="catalogBtn" class="btn-catalog" href="javascript:void(0);" rel="noopener noreferrer">
+        🎟️ 查看平台活动入口（自愿）
+      </a>
+    </div>
+
+    <div class="platform-section"style="display:none;">
+      <h2 class="section-title platform-title">🍱 想直接去平台点单？</h2>
+      <p class="platform-tip">
+        点下面的按钮就能打开平台，点不点、点哪个都随你，不点也能正常用这个转盘。
+      </p>
+      <div class="platform-buttons">
+        <button id="elemeBtn" class="btn-platform btn-eleme" type="button">
+          领红包 · 去淘宝点外卖
+        </button>
+        <button id="jingdongBtn" class="btn-platform btn-jingdong" type="button">
+          京东外卖
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h2 class="modal-title" id="modalTitle">恭喜你！</h2>
+      <p class="modal-text" id="modalText">今天吃火锅！</p>
+
+      <div class="modal-buttons">
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 领取外卖红包</button>
+        <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
+
+      <!-- 外卖红包二维码 -->
+      <div id="qrBlock" style="display:none; margin-top:16px; padding-top:14px; border-top:1px solid #eee; text-align:center;">
+        <p style="margin:0 0 10px; font-size:15px; color:#333; font-weight:bold;">🧧 领外卖红包</p>
+        <img src="qr-hongbao.png" alt="外卖红包二维码" style="width:168px; height:168px; border-radius:12px; background:#fff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+        <p style="margin:12px 0 0; font-size:14px; color:#555; line-height:1.9;">📱 手机上：点上面按钮直接领<br>💻 电脑上：用手机淘宝扫码<br><span style="color:#999; font-size:12px;">红包活动由淘宝平台提供</span></p>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <section class="seo-text"><h2>每天中午最难的不是做饭，是决定吃什么</h2>
+<p>中午这一顿有个特点：时间紧、肚子饿、可选的东西又多。人一饿，判断力反而下降，翻着外卖菜单越翻越拿不定主意，最后往往随便点一个，吃完又觉得不合口味。这不是不会安排生活，是选项太多的时候，人会把决定往后推。</p>
+<p>所以把“决定”这一步单独拿出来处理，会比一边刷菜单一边想更省时间。这个转盘不替你选该吃什么，只从你已经能接受的范围里挑一个出来，把纠结的两三分钟压成两三秒。</p>
+
+<h2>怎么用：三步就够</h2>
+<ul class="seo-list">
+<li>先定预算：30 元、50 元、100 元以上，或者不限。预算一卡，可选范围就少一半。</li>
+<li>再选口味：清淡、中辣、重辣、素食。这一步是排除法，比“想吃什么”好回答得多。</li>
+<li>点「立即帮我选午餐」照结果去吃。不喜欢就点「换一个」，但别连点五次以上——那时候你其实已经有答案了。</li>
+</ul>
+
+<h2>一周不重样的思路（参考）</h2>
+<ul class="seo-list">
+<li>周一：清淡些，汤面或粥配小菜，开工第一天别给胃加班</li>
+<li>周二：盖浇饭、牛肉饭一类，主食足，顶得到下午</li>
+<li>周三：蔬菜多的一份或轻食，前面吃得重，中间缓一缓</li>
+<li>周四：来点辣的，麻辣烫、香锅，一周中间最需要提神</li>
+<li>周五：和同事一起吃，火锅、炒菜、烤肉适合多人</li>
+<li>周末：在家做或下楼吃，时间宽裕，可以试没吃过的店</li>
+</ul>
+<p>这张表不是让你照着执行，是给你一个“今天轮到哪一类”的粗框架。有了框架，具体点哪家就不那么费劲。</p>
+
+<h2>预算定多少比较合理</h2>
+<p>工作日午餐多数人落在 20 到 40 元；超过 50 元一般是聚餐或想吃点好的；30 元以内要吃饱又不太将就，通常得在快餐、面食、盖饭里挑。先把预算卡住能省掉一大半纠结，因为很多“想吃”是被菜单图片勾出来的，不是真饿。</p>
+
+<h2>常见问题</h2>
+<h3>结果出来了不喜欢怎么办？</h3>
+<p>点「换一个结果」重来就行。如果连着换三次都不满意，问题多半不在随机，而是你心里早有想吃的，直接去吃那家。</p>
+<h3>会记住我常吃的口味吗？</h3>
+<p>页面只把你最近几次的选择记在本机浏览器里，换设备或清除数据后不再保留，这些记录不会上传到任何服务器。</p>
+<h3>预算和口味一起选，会不会选不出东西？</h3>
+<p>不会。工具是在符合条件的范围里挑，两组条件本身不打架；如果选出来的都太像，把口味放宽一档就行。</p>
+<h3>家里长辈用得了吗？</h3>
+<p>页面按钮大、字大，点两下就出结果，不用注册、不用填任何信息。</p><h2>一个人吃和几个人吃，选法不一样</h2>
+<p>一个人吃饭，重点是省事，别为了凑一份菜单折腾半小时；两三个人，重点是折中，选能各点各的地方；四五个人以上，重点是别超预算，先定人均再看店。</p>
+<ul class="seo-list">
+<li>独食：面、粉、盖饭这类一份就能吃好的</li>
+<li>两人：小炒、火锅小份、一人一份的快餐</li>
+<li>多人：先定人均，再选品类，最后挑店</li>
+</ul>
+  </section>
+  
+  <section class="related-links">
+    <h2>🍽️ 更多选择工具</h2>
+    <ul>
+      <li><a href="what-to-eat.html">今天吃什么</a></li>
+      <li><a href="breakfast.html">早餐吃什么</a></li>
+      <li><a href="dinner.html">晚餐吃什么</a></li>
+      <li><a href="diet.html">减脂吃什么</a></li>
+      <li><a href="couple.html">情侣吃什么</a></li>
+      <li><a href="decision.html">选择困难症</a></li>
+      <li><a href="student.html">学生党午餐</a></li>
+      <li><a href="office.html">上班族午餐</a></li>
+      <li><a href="hotpot.html">火锅吃什么</a></li>
+      <li><a href="midnight.html">夜宵吃什么</a></li>
+      <li><a href="takeout.html">外卖推荐</a></li>
+      <li><a href="food-wheel.html">Random Lunch Picker</a></li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a id="privacyLink" href="javascript:void(0);">隐私政策</a>
+      <a id="termsLink" href="javascript:void(0);">使用条款</a>
+    </div>
+    <p class="footer-note">© 2026 乐龄品质生活 · 今天吃什么工具站  </p>
+  </footer>
+
+  <div id="infoModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h2 class="modal-title" id="infoTitle">信息</h2>
+      <p class="modal-text" id="infoText">内容</p>
+      <div class="modal-buttons">
+        <button id="infoOkBtn" class="btn-share" type="button">✅ 我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
