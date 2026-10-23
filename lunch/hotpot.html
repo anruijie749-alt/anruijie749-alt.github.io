@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112556758844974"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+    <meta name="google-adsense-account" content="ca-pub-3112556758844974">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="火锅吃什么？3秒随机帮你决定火锅涮什么，不用再挨个问一圈。支持预算筛选、口味偏好、最近记录，人多的时候也能快速定下来，把讨论菜单的时间用来好好吃饭。" />
+  <meta name="keywords" content="火锅转盘,今天吃什么,lunch picker,random lunch picker,food wheel,random food picker" />
+  <title>今天火锅吃什么？｜火锅随机推荐工具，火锅选择困难症神器｜Random Lunch Picker</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
+  
+  <meta property="og:image" content="https://lunch.anrjai.com/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="火锅吃什么？｜火锅随机推荐工具" />
+<meta name="twitter:description" content="3秒随机帮你决定火锅，支持预算筛选和口味偏好。" />
+   
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lunch.anrjai.com/hotpot.html">
+
+  <meta property="og:title" content="火锅吃什么？｜火锅随机推荐工具" />
+  <meta property="og:description" content="火锅吃什么？3秒随机帮你决定火锅涮什么，不用再挨个问一圈。支持预算筛选、口味偏好、最近记录，人多的时候也能快速定下来，把讨论菜单的时间用来好好吃饭。" />
+  <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="今天吃什么工具站">
+  <meta property="og:url" content="https://lunch.anrjai.com/hotpot.html" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "今天吃什么 - 外卖红包转盘",
+    "description": "随机火锅转盘工具，帮你决定今天吃什么，同时领取外卖优惠红包",
+    "url": "https://lunch.anrjai.com/",
+    "applicationCategory": "LifestyleApplication",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1 class="title">🍱 火锅吃什么？｜火锅随机推荐工具</h1>
+      <p class="brand-text">
+        乐龄品质生活｜今天吃什么工具站
+        </p>
+      <p class="subtitle">
+        火锅吃什么？｜火锅随机推荐工具，点一下直接给答案（可选：结果页提供外卖优惠入口，自愿领取）。
+      </p>
+    </header>
+
+    <p id="locationHint" class="location-hint" aria-live="polite"></p>
+
+    <div class="button-area">
+      <div class="today-tip">
+        🔥 查看今日优惠信息，先领红包再下单更省钱
+      </div> 
+      <button id="spinBtn" class="btn-primary" type="button">🍜 立即帮我选火锅</button>
+      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 换一个结果</button>
+    </div>
+
+    <div class="tool-area">
+      <button id="menuBtn" class="btn-tool" type="button">📋 菜单目录</button>
+      <button id="statsBtn" class="btn-tool" type="button">📊 查看统计</button>
+      <button id="clearBtn" class="btn-tool btn-danger" type="button">🗑️ 清除数据</button>
+    </div>
+
+    <p class="tip-text">
+      *说明：本页为“火锅选择工具”。如您主动点击相关入口，将跳转第三方平台查看优惠信息；是否领券/下单以第三方页面为准。
+    </p>
+
+    <div class="wheel-container">
+      <canvas id="wheelCanvas" aria-label="火锅选择随机转盘" role="img"></canvas>
+    </div>
+
+    <section class="filter-section">
+      <h2 class="section-title">💰 预算控制</h2>
+      <div class="budget-controls">
+        <label class="budget-option">
+          <input type="radio" name="budget" value="30" checked />
+          <span>30元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="50" />
+          <span>50元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="100" />
+          <span>100元或请人吃😎</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="999" />
+          <span>不限</span>
+        </label>
+      </div>
+
+      <h2 class="section-title">🌶️ 口味偏好</h2>
+      <div class="taste-controls">
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="清淡" />
+          <span>清淡</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="中辣" />
+          <span>中辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="重辣" />
+          <span>重辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="素食" />
+          <span>素食</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="recommend-section">
+      <h2 class="section-title">⭐ 今日推荐</h2>
+      <div id="todayRecommend" class="recommend-item">加载中...</div>
+
+      <h2 class="section-title">🧾 最近选择</h2>
+      <div id="recentChips" class="recent-chips"></div>
+      
+      <div class="hot-keywords">
+        🔥 热门选择：
+        <span class="keyword-tag">火锅</span> / 
+        <span class="keyword-tag">黄焖鸡</span> / 
+        <span class="keyword-tag">麻辣烫</span> / 
+        <span class="keyword-tag">汉堡</span> / 
+        <span class="keyword-tag">炸鸡</span> / 
+        <span class="keyword-tag">寿司</span>
+      </div>
+    </section>
+
+    <div class="menu-catalog-section">
+      <a id="catalogBtn" class="btn-catalog" href="javascript:void(0);" rel="noopener noreferrer">
+        🎟️ 查看平台活动入口（自愿）
+      </a>
+    </div>
+
+    <div class="platform-section"style="display:none;">
+      <h2 class="section-title platform-title">🍱 想直接去平台点单？</h2>
+      <p class="platform-tip">
+        点下面的按钮就能打开平台，点不点、点哪个都随你，不点也能正常用这个转盘。
+      </p>
+      <div class="platform-buttons">
+        <button id="elemeBtn" class="btn-platform btn-eleme" type="button">
+          领红包 · 去淘宝点外卖
+        </button>
+        <button id="jingdongBtn" class="btn-platform btn-jingdong" type="button">
+          京东外卖
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h2> class="modal-title" id="modalTitle">恭喜你！</h2>
+      <p class="modal-text" id="modalText">今天吃火锅！</p>
+
+      <div class="modal-buttons">
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 领取外卖红包</button>
+        <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
+      </div>
+
+      <!-- 外卖红包二维码 -->
+      <div id="qrBlock" style="display:none; margin-top:16px; padding-top:14px; border-top:1px solid #eee; text-align:center;">
+        <p style="margin:0 0 10px; font-size:15px; color:#333; font-weight:bold;">🧧 领外卖红包</p>
+        <img src="qr-hongbao.png" alt="外卖红包二维码" style="width:168px; height:168px; border-radius:12px; background:#fff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+        <p style="margin:12px 0 0; font-size:14px; color:#555; line-height:1.9;">📱 手机上：点上面按钮直接领<br>💻 电脑上：用手机淘宝扫码<br><span style="color:#999; font-size:12px;">红包活动由淘宝平台提供</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="seo-text"><h2>火锅先定锅底，再定菜</h2>
+<p>火锅点单的顺序很影响体验：先定锅底，鸳鸯还是单锅；再按人数定份量；最后才是具体点什么。顺序反了，最容易出现的情况是锅底和菜不搭，或者点了一堆吃不完。</p>
+
+<h2>锅底怎么挑</h2>
+<ul class="seo-list">
+<li><b>清汤/菌汤</b>：能吃到食材本味，家里有长辈或者不太能吃辣的局优先</li>
+<li><b>番茄/酸汤</b>：酸口开胃，孩子和不吃辣的人接受度高</li>
+<li><b>麻辣/牛油</b>：口味重、气氛足，但吃的时候建议配一碗清汤过一下</li>
+<li><b>鸳鸯锅</b>：人多口味不齐时最省事的折中，不用争论</li>
+</ul>
+
+<h2>四个人以内点多少（参考）</h2>
+<p>两个人的话，两荤两素加一份主食一般够；三四个人，四到六个菜加一份主食比较稳；人再多，按每人一荤半素往上加。肉类两三样就够，重复点同一类肉不如把蔬菜和豆制品补齐。菜上齐之前别急着加单，火锅吃到后面往往还剩不少。</p>
+
+<h2>涮的顺序与时间</h2>
+<p>先涮蔬菜和菌类，汤底会更鲜；然后涮肉，肉片变色就能吃，久煮发柴；最后下主食，粉面吸味但也吸油，吃得清淡的人可以少下一点。生肉和熟食的筷子分开用，这个小习惯在火锅局里最实用。</p>
+
+<h2>常见问题</h2>
+<h3>几个人吃火锅最合适？</h3>
+<p>三个人以上比较划算，锅底和菜能摊开；两个人吃容易点多吃不完，可以选小份或者半份。</p>
+<h3>吃火锅总觉得口渴，是不是正常的？</h3>
+<p>锅底和蘸料偏咸的时候很常见。可以多要一碗清汤或者温水，蘸料少放一点酱油和盐，吃完多喝水。</p>
+<h3>家里长辈一起吃，点什么比较稳妥？</h3>
+<p>选清汤或鸳鸯锅，菜以豆腐、菌类、青菜、鱼片为主，肉切薄一点、别涮太久。</p><h2>蘸料怎么调不容易失手</h2>
+<p>一个不容易出错的配方：香油加蒜末加香菜，配一点生抽；喜欢芝麻酱的先用水或汤调开，再加别的，不然会结成团。辣锅和清汤锅可以各调一小碗，别混着用。</p>
+<p>吃的时候慢一点。火锅最容易吃多，是因为一直在涮，建议中间停一下，喝口汤再继续。</p>
+  <h2>在家吃火锅，备菜清单</h2>
+<p>四个人在家吃，采购按这个量准备基本不会剩太多：肉两三盘、豆制品两样、菌类两样、绿叶菜两三把、根茎类一两样、主食一份。买回来的菜先洗好沥干再摆盘，桌上才不会一片湿。</p>
+<ul class="seo-list">
+<li><b>锅底</b>：一包底料够四个人，人多再补半包，别一开始就全倒，中途觉得淡可以再加</li>
+<li><b>肉类</b>：牛羊卷各一盘，加一份虾滑或鱼片，比全点肉更耐吃</li>
+<li><b>豆制品</b>：冻豆腐、千张、豆腐皮任选两样，吸汤又顶饱</li>
+<li><b>菌类</b>：金针菇、香菇、平菇挑两种，先下锅汤会更鲜</li>
+<li><b>蔬菜</b>：生菜、菠菜、娃娃菜各一把，涮十秒就能吃</li>
+<li><b>主食</b>：宽粉、面条或年糕一份，最后下锅</li>
+</ul>
+<h2>在家吃怎么少洗锅少收拾</h2>
+<p>汤底先烧开再上桌，用电磁炉边吃边煮，比在厨房煮好再端出来省事。菜提前分盘摆好，一顿吃完只洗一个锅和几个盘子。吃完的汤别直接倒进水池，油容易堵，晾凉后把上层油撇出来再倒。</p>
+<h2>吃完火锅第二天怎么吃</h2>
+<p>火锅的盐和油都偏高，第二天早上先喝一杯温水，早餐做得清淡些，比如粥配鸡蛋或者牛奶配面包。中午多要一份青菜，主食照常吃，不用刻意饿一顿，饿过头反而容易晚上吃多。</p>
+<h2>一个人想吃火锅怎么办</h2>
+<p>买小包装底料，用奶锅或小电锅煮，菜按两三样、每样一小份准备，肉买现成的小盘装。一个人吃最容易点多，先摆两盘，吃完了再添，比一次全下锅好控制。想吃辣又怕上火，可以选番茄锅底加一勺辣酱，比纯牛油锅清爽。</p>
+<h3>火锅汤能喝吗？</h3>
+<p>刚开始的菌汤、清汤喝一小碗没问题；涮过肉和菜以后，汤里的油和盐都上来了，尽量少喝，尤其是血压偏高的人。</p>
+<h3>剩下的菜怎么处理？</h3>
+<p>生菜、肉、豆制品当天冷藏，第二天彻底加热再吃；已经涮过又在桌上放了很久的，建议不要再留。</p></section>
+  
+  <section class="related-links">
+    <h2>🍽️ 更多选择工具</h2>
+    <ul>
+      <li><a href="what-to-eat.html">今天吃什么</a></li>
+      <li><a href="breakfast.html">早餐吃什么</a></li>
+      <li><a href="dinner.html">晚餐吃什么</a></li>
+      <li><a href="diet.html">减脂吃什么</a></li>
+      <li><a href="couple.html">情侣吃什么</a></li>
+      <li><a href="decision.html">选择困难症</a></li>
+      <li><a href="food-wheel.html">Random Lunch Picker</a></li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a id="privacyLink" href="javascript:void(0);">隐私政策</a>
+      <a id="termsLink" href="javascript:void(0);">使用条款</a>
+    </div>
+    <p class="footer-note">© 2026 乐龄品质生活 · 今天吃什么工具站  </p></footer>
+
+  <div id="infoModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h2 class="modal-title" id="infoTitle">信息</h2>
+      <p class="modal-text" id="infoText">内容</p>
+      <div class="modal-buttons">
+        <button id="infoOkBtn" class="btn-share" type="button">✅ 我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
