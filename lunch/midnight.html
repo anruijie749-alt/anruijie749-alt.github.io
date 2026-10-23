@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112556758844974"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+    <meta name="google-adsense-account" content="ca-pub-3112556758844974">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="夜宵吃什么总纠结？3秒随机帮你决定夜宵，不用再刷外卖刷到半夜。支持预算筛选、口味偏好、最近记录。注意夜宵尽量清淡少量，吃完别马上躺下，也要照顾好自己的作息。" />
+  <meta name="keywords" content="夜宵转盘,今天吃什么,lunch picker,random lunch picker,food wheel,random food picker" />
+  <title>夜宵吃什么？｜夜宵随机推荐工具｜夜宵选择困难症神器｜Random Lunch Picker</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
+  
+  <meta property="og:image" content="https://lunch.anrjai.com/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="今天吃什么？随机夜宵转盘" />
+<meta name="twitter:description" content="3秒随机帮你决定夜宵，支持预算筛选和口味偏好。" />
+   
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lunch.anrjai.com/midnight.html">
+
+  <meta property="og:title" content="今天吃什么？外卖红包转盘" />
+  <meta property="og:description" content="夜宵吃什么总纠结？3秒随机帮你决定夜宵，不用再刷外卖刷到半夜。支持预算筛选、口味偏好、最近记录。注意夜宵尽量清淡少量，吃完别马上躺下，也要照顾好自己的作息。" />
+  <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="今天吃什么工具站">
+  <meta property="og:url" content="https://lunch.anrjai.com/midnight.html" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "今天吃什么 - 外卖红包转盘",
+    "description": "随机夜宵转盘工具，帮你决定今天吃什么，同时领取外卖优惠红包",
+    "url": "https://lunch.anrjai.com/",
+    "applicationCategory": "LifestyleApplication",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1 class="title">🍱 今天夜宵吃什么？3秒随机帮你决定夜宵</h1>
+      <p class="brand-text">
+        乐龄品质生活｜今天吃什么工具站
+        </p>
+      <p class="subtitle">
+        每天晚上纠结吃什么？点一下直接给答案（可选：结果页提供外卖优惠入口，自愿领取）。
+      </p>
+    </header>
+
+    <p id="locationHint" class="location-hint" aria-live="polite"></p>
+
+    <div class="button-area">
+      <div class="today-tip">
+        🔥 查看今日优惠信息，先领红包再下单更省钱
+      </div> 
+      <button id="spinBtn" class="btn-primary" type="button">🍜 立即帮我选夜宵</button>
+      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 换一个结果</button>
+    </div>
+
+    <div class="tool-area">
+      <button id="menuBtn" class="btn-tool" type="button">📋 菜单目录</button>
+      <button id="statsBtn" class="btn-tool" type="button">📊 查看统计</button>
+      <button id="clearBtn" class="btn-tool btn-danger" type="button">🗑️ 清除数据</button>
+    </div>
+
+    <p class="tip-text">
+      *说明：本页为“夜宵选择工具”。如您主动点击相关入口，将跳转第三方平台查看优惠信息；是否领券/下单以第三方页面为准。
+    </p>
+
+    <div class="wheel-container">
+      <canvas id="wheelCanvas" aria-label="夜宵选择随机转盘" role="img"></canvas>
+    </div>
+
+    <section class="filter-section">
+      <h2 class="section-title">💰 预算控制</h2>
+      <div class="budget-controls">
+        <label class="budget-option">
+          <input type="radio" name="budget" value="30" checked />
+          <span>30元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="50" />
+          <span>50元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="100" />
+          <span>100元或请人吃😎</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="999" />
+          <span>不限</span>
+        </label>
+      </div>
+
+      <h2 class="section-title">🌶️ 口味偏好</h2>
+      <div class="taste-controls">
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="清淡" />
+          <span>清淡</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="中辣" />
+          <span>中辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="重辣" />
+          <span>重辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="素食" />
+          <span>素食</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="recommend-section">
+      <h2 class="section-title">⭐ 今日推荐</h2>
+      <div id="todayRecommend" class="recommend-item">加载中...</div>
+
+      <h2 class="section-title">🧾 最近选择</h2>
+      <div id="recentChips" class="recent-chips"></div>
+      
+      <div class="hot-keywords">
+        🔥 热门选择：
+        <span class="keyword-tag">火锅</span> / 
+        <span class="keyword-tag">黄焖鸡</span> / 
+        <span class="keyword-tag">麻辣烫</span> / 
+        <span class="keyword-tag">汉堡</span> / 
+        <span class="keyword-tag">炸鸡</span> / 
+        <span class="keyword-tag">寿司</span>
+      </div>
+    </section>
+
+    <div class="menu-catalog-section">
+      <a id="catalogBtn" class="btn-catalog" href="javascript:void(0);" rel="noopener noreferrer">
+        🎟️ 查看平台活动入口（自愿）
+      </a>
+    </div>
+
+    <div class="platform-section" style="display:none;">
+      <h2 class="section-title platform-title">🍱 想直接去平台点单？</h2>
+      <p class="platform-tip">
+        点下面的按钮就能打开平台，点不点、点哪个都随你，不点也能正常用这个转盘。
+      </p>
+      <div class="platform-buttons">
+        <button id="elemeBtn" class="btn-platform btn-eleme" type="button">
+          领红包 · 去淘宝点外卖
+        </button>
+        <button id="jingdongBtn" class="btn-platform btn-jingdong" type="button">
+          京东外卖
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h2 class="modal-title" id="modalTitle">恭喜你！</h2>
+      <p class="modal-text" id="modalText">今天吃火锅！</p>
+
+      <div class="modal-buttons">
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 领取外卖红包</button>
+        <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
+      </div>
+
+      <!-- 外卖红包二维码 -->
+      <div id="qrBlock" style="display:none; margin-top:16px; padding-top:14px; border-top:1px solid #eee; text-align:center;">
+        <p style="margin:0 0 10px; font-size:15px; color:#333; font-weight:bold;">🧧 领外卖红包</p>
+        <img src="qr-hongbao.png" alt="外卖红包二维码" style="width:168px; height:168px; border-radius:12px; background:#fff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+        <p style="margin:12px 0 0; font-size:14px; color:#555; line-height:1.9;">📱 手机上：点上面按钮直接领<br>💻 电脑上：用手机淘宝扫码<br><span style="color:#999; font-size:12px;">红包活动由淘宝平台提供</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="seo-text"><h2>夜宵要不要吃，看你的作息</h2>
+<p>如果是正常作息、晚饭吃得不算早，夜里多半只是嘴馋，喝点水或者早点睡比加一顿更划算。如果是加班到十点以后、晚饭在六点前，那这一顿当成“补晚饭”来处理更合适，少量、清淡、好消化是原则。</p>
+
+<h2>夜里点单的三个原则</h2>
+<ul class="seo-list">
+<li><b>量小</b>：夜里的目标是别饿醒，不是吃饱。一份小份的就够</li>
+<li><b>清淡</b>：汤面、粥、蒸煮类优先，重油重辣的夜里吃容易睡不着</li>
+<li><b>别太晚</b>：吃完至少留出一小时再躺下，不然胀得难受</li>
+</ul>
+
+<h2>适合夜里的几类东西</h2>
+<p>粥配小菜、清汤面、馄饨、蒸蛋、热牛奶、水果，这几样在夜里都算温和。反过来，炸物、烧烤、麻辣锅这类，夜里吃下去负担重，第二天早上容易口干、胃里不舒服。</p>
+<p>还有一个实际提醒：夜里外卖可选范围比白天小很多，能开的店少，等待时间也长。如果常加班，可以在办公室备一点不需要加工的垫底的东西，比等四十分钟外卖强。</p>
+
+<h2>常见问题</h2>
+<h3>夜里饿了不吃，会不会影响睡眠？</h3>
+<p>太饿确实会影响入睡。少量吃点清淡的，比如半碗粥、一杯热牛奶，通常比硬扛更好受。</p>
+<h3>加班到很晚，第二天还要早起，怎么安排？</h3>
+<p>把夜宵当正餐的替代，别再吃第二顿正餐的量；吃完留一小时缓冲，睡觉时间尽量别推到太晚。</p>
+<h3>夜里点外卖总踩雷，怎么办？</h3>
+<p>优先选距离近、还在营业的老店，避开需要现做和带汤水多的东西，送到时口感差别很大。</p><h2>家里常备点什么比较省事</h2>
+<p>不用复杂的：牛奶、即食燕麦、面包、鸡蛋、一小袋挂面，这几样放着不占地方，夜里饿了十几分钟就能弄好，比等外卖快，也比点烧烤踏实。</p>
+<p>如果经常加班到很晚，可以在办公室放一点不需要加工的东西，回家路上就不至于被路边的炸物勾走。</p>
+  <h3>喝点酒算不算夜宵？</h3>
+<p>不算好选择。空腹喝酒更伤胃，也容易影响睡眠。真要喝，先吃点东西垫一下，量尽量少。</p>
+  
+<h2>夜里能点的店，其实没几家</h2>
+<p>过了十一点还开着的，多是连锁快餐、粥铺、烧烤和便利店配送。想吃的那家可能已经打烊，菜单也会缩水，很多菜显示“售完”。所以夜宵别抱“想吃什么点什么”的期待，先看还有哪些店在营业，再在里面挑能接受的，落差会小很多。常加班的人可以提前把附近两三家夜宵店的营业时间记下来，省得临时翻。</p>
+
+<h2>夜班和倒班的人，一天怎么排</h2>
+<p>倒班不必照“三餐”来吃，按醒着的时间分三段更实用：起床后一顿正经的、上班中间一顿轻的、下班前一顿少量的。下班回家那一顿最容易吃多，尽量控制在七分饱，吃完别马上躺下，留半小时做点安静的事再睡。白天睡觉的人，把“晚饭”挪到上班前吃，夜里就不容易饿。</p>
+
+<h2>吃完睡不着，怎么办</h2>
+<p>夜里吃太饱、太油、太辣，躺下后容易反酸、心跳快。已经吃了的话别立刻躺平，坐一会儿或者慢慢走十分钟；枕头垫高一点也有帮助，左侧卧比平躺舒服。下次把量减半、把辣去掉，问题通常就没了。频繁反酸的人别硬扛，这类情况值得去医院查一次。</p>
+
+<h2>家里备这几样，半夜不用等外卖</h2>
+<p>挂面、鸡蛋、即食燕麦、常温牛奶、一小袋紫菜或虾皮，这几样放得住，几分钟就能出一碗。真饿了煮一小碗面，打个蛋，比等四十分钟的烧烤踏实。备的时候注意看保质期，放在一眼能看到的地方，别放到过期才发现。冰箱里再留一小盒切好的青菜，煮面时抓一把进去，比纯碳水更顶。</p>
+</section>
+  
+  <section class="related-links">
+    <h2>🍽️ 更多选择工具</h2>
+    <ul>
+      <li><a href="what-to-eat.html">今天吃什么</a></li>
+      <li><a href="breakfast.html">早餐吃什么</a></li>
+      <li><a href="dinner.html">晚餐吃什么</a></li>
+      <li><a href="diet.html">减脂吃什么</a></li>
+      <li><a href="couple.html">情侣吃什么</a></li>
+      <li><a href="decision.html">选择困难症</a></li>
+      <li><a href="food-wheel.html">Random Lunch Picker</a></li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a id="privacyLink" href="javascript:void(0);">隐私政策</a>
+      <a id="termsLink" href="javascript:void(0);">使用条款</a>
+    </div>
+    <p class="footer-note">© 2026 乐龄品质生活 · 今天吃什么工具站  </p></footer>
+
+  <div id="infoModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h2 class="modal-title" id="infoTitle">信息</h2>
+      <p class="modal-text" id="infoText">内容</p>
+      <div class="modal-buttons">
+        <button id="infoOkBtn" class="btn-share" type="button">✅ 我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
