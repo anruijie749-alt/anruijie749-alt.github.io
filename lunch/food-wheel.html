@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="CN">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3112556758844974"
+     crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+    <meta name="google-adsense-account" content="ca-pub-3112556758844974">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="每天中午不知道吃什么？3秒随机帮你决定午餐！支持预算筛选、口味偏好、最近记录，还有外卖平台快捷入口。" />
+  <meta name="keywords" content="午餐,转盘,随机,美食,外卖优惠" />
+  <title>Food Wheel - Random Lunch Picker</title>
+  <!-- 改成 ✅ 直接用表情，不需要文件 -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
+ <!-- 出海英文SEO备用，暂时注释
+<meta name="keywords" content="lunch picker, what to eat today, random food wheel, lunch roulette, food delivery" />-->
+<meta property="og:image" content="https://lunch.anrjai.com/og-cover.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Lunch Roulette - Random Food Picker" />
+<meta name="twitter:description" content="Can't decide what to eat? Spin the food wheel and get a random lunch pick in 3 seconds!" />
+<!-- SEO基础 -->
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://lunch.anrjai.com/food-wheel.html" />
+
+<!-- 社交分享OG标签 -->
+<meta property="og:title" content="Random Lunch Picker - Food Wheel" />
+<meta property="og:description" content="Can't decide what to eat? Spin the wheel!" />
+<meta property="og:type" content="website" />
+    <meta property="og:site_name" content="今天吃什么工具站">
+<meta property="og:url" content="https://lunch.anrjai.com/food-wheel.html" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:locale:alternate" content="en_US" />
+
+<!-- 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "今天吃什么 - 外卖红包转盘",
+  "description": "随机午餐转盘工具，帮你决定今天吃什么，同时领取外卖优惠红包",
+  "url": "https://lunch.anrjai.com/",
+  "applicationCategory": "LifestyleApplication",
+  "inLanguage": "zh-CN"
+}
+</script>
+  <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+  <canvas id="particleCanvas"></canvas>
+
+  <div class="container">
+    <h1 class="title">🍔 Food Wheel Random Picker</h1>
+    <p class="subtitle">
+      Can't decide what to eat? One click and we'll pick for you!
+    </p>
+
+    <!-- IP定位提示（可选，不会阻塞使用） -->
+    <p id="locationHint" class="location-hint" aria-live="polite"></p>
+
+    <!-- 主按钮区 -->
+    <div class="button-area">
+      <div class="today-tip">
+        🔥 查看今日优惠信息，先领红包再下单更省钱
+        </div> 
+      <button id="spinBtn" class="btn-primary" type="button">🍜 Spin the Wheel</button>
+      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 Try Again</button>
+    </div>
+
+    <!-- 图一的三按钮：菜单目录 / 查看统计 / 清除数据 -->
+    <div class="tool-area">
+      <button id="menuBtn" class="btn-tool" type="button">📋 菜单目录</button>
+      <button id="statsBtn" class="btn-tool" type="button">📊 查看统计</button>
+      <button id="clearBtn" class="btn-tool btn-danger" type="button">🗑️ 清除数据</button>
+    </div>
+
+    <p class="tip-text">
+      *说明：本页为“午餐选择工具”。如你主动点击相关入口，将跳转第三方平台查看优惠信息；是否领券/下单以第三方页面为准。
+    </p>
+
+    <!-- 转盘 -->
+    <div class="wheel-container">
+      <canvas id="wheelCanvas" aria-label="午餐转盘"></canvas>
+    </div>
+
+    <!-- 筛选 -->
+    <div class="filter-section">
+      <h2 class="section-title">💰 预算控制</h2>
+      <div class="budget-controls">
+        <label class="budget-option">
+          <input type="radio" name="budget" value="30" checked />
+          <span>30元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="50" />
+          <span>50元</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="100" />
+          <span>100元或请人吃😎</span>
+        </label>
+        <label class="budget-option">
+          <input type="radio" name="budget" value="999" />
+          <span>不限</span>
+        </label>
+      </div>
+
+      <h2 class="section-title">🌶️ 口味偏好</h2>
+      <div class="taste-controls">
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="清淡" />
+          <span>清淡</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="中辣" />
+          <span>中辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="重辣" />
+          <span>重辣</span>
+        </label>
+        <label class="taste-option">
+          <input type="checkbox" name="taste" value="素食" />
+          <span>素食</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 推荐 + 最近选择 -->
+    <div class="recommend-section">
+      <h2 class="section-title">⭐ 今日推荐</h2>
+      <div id="todayRecommend" class="recommend-item">加载中...</div>
+
+      <h2 class="section-title">🧾 最近选择</h2>
+      <div id="recentChips" class="recent-chips"></div>
+      <div class="hot-keywords">
+        🔥 热门选择：
+        火锅 / 黄焖鸡 / 麻辣烫 / 汉堡 / 炸鸡 / 寿司
+      </div>
+    </div>
+
+    <!-- 自愿入口（保留） + 外卖平台直达按钮 -->
+    <div class="menu-catalog-section">
+      <a id="catalogBtn" class="btn-catalog" href="javascript:void(0);" rel="noopener noreferrer">
+        🎟️ 查看平台活动入口（自愿）
+      </a>
+    </div>
+
+    <div class="platform-section" style="display:none;">
+      <h2 class="section-title platform-title">🍱 想直接去平台点单？</h2>
+      <p class="platform-tip">
+        点下面的按钮就能打开平台，点不点、点哪个都随你，不点也能正常用这个转盘。
+      </p>
+      <div class="platform-buttons">
+        <button id="elemeBtn" class="btn-platform btn-eleme" type="button">
+          领红包 · 去淘宝点外卖
+        </button>
+        <button id="jingdongBtn" class="btn-platform btn-jingdong" type="button">
+          京东外卖
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 结果弹窗 -->
+  <div id="resultModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h2 class="modal-title" id="modalTitle">恭喜你！</h2>
+      <p class="modal-text" id="modalText">今天吃火锅！</p>
+
+      <div class="modal-buttons">
+        <button id="modalActionBtn" class="btn-share" type="button">🎟️ 跳转平台查看优惠</button>
+        <button id="modalAgainBtn" class="btn-close" type="button">🔄 换一个结果</button>
+
+
+      <!-- 外卖红包二维码 -->
+      <div id="qrBlock" style="display:none; margin-top:16px; padding-top:14px; border-top:1px solid #eee; text-align:center;">
+        <p style="margin:0 0 10px; font-size:15px; color:#333; font-weight:bold;">🧧 领外卖红包</p>
+        <img src="qr-hongbao.png" alt="外卖红包二维码" style="width:168px; height:168px; border-radius:12px; background:#fff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+        <p style="margin:12px 0 0; font-size:14px; color:#555; line-height:1.9;">📱 手机上：点上面按钮直接领<br>💻 电脑上：用手机淘宝扫码<br><span style="color:#999; font-size:12px;">红包活动由淘宝平台提供</span></p>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚（图二） -->
+  <section class="seo-text"><h2>What this wheel actually does</h2>
+<p>It picks one lunch option for you, and that is the whole point. When you already know roughly what you can accept, deciding is not a matter of taste, it is a matter of stopping the comparison. The wheel does the stopping.</p>
+<h2>How to use it in three steps</h2>
+<ul class="seo-list">
+<li>Set a budget first. A range removes about half of the options before you look at a single menu.</li>
+<li>Pick a flavour profile: mild, medium, spicy, or vegetarian. That is elimination, not preference.</li>
+<li>Spin once and go with the result. If you spin more than four times, you already know what you want.</li>
+</ul>
+<h2>Why a random pick works for lunch</h2>
+<p>Most lunch choices are close to equivalent. Rice or noodles, this shop or the next, over a month the difference is small. What is not small is the ten minutes spent scrolling and the low mood that comes with it. Handing that decision to a wheel costs nothing and gives the time back.</p>
+<p>Where to draw the line: low-cost decisions such as lunch, what to wear, which film to watch, let the wheel decide. High-cost decisions such as housing, jobs, health, take your time and gather information instead.</p>
+<h2>Privacy and technical notes</h2>
+<p>No account is needed, nothing is uploaded, and the page works offline once loaded. Recent picks are stored only in your own browser, and clearing site data removes them. There is no location request and no automatic redirect. Any link to a delivery platform opens only when you tap it yourself.</p>
+<h2>Frequently asked</h2>
+<h3>Is the result truly random?</h3>
+<p>It is picked from the options that match the filters you set, so it is random within your own limits rather than across every dish that exists.</p>
+<h3>Can I use it on a phone?</h3>
+<p>Yes. The buttons are large and the layout fits a narrow screen, so it works one-handed.</p>
+<h3>Does it remember my history?</h3>
+<p>Only inside your own browser, and only the last few picks. Nothing is sent to a server.</p></section>
+    <section class="related-links">
+   <h2>🍽️ More Tools</h2>  
+    <ul>
+      <li><a href="what-to-eat.html">今天吃什么</a></li>
+    <li><a href="breakfast.html">早餐吃什么</a></li>
+    <li><a href="dinner.html">晚餐吃什么</a></li>
+    <li><a href="diet.html">减脂吃什么</a></li>
+    <li><a href="couple.html">情侣吃什么</a></li>
+    <li><a href="decision.html">选择困难症</a></li>
+    <li><a href="food-wheel.html">Random Lunch Picker</a></li>
+</ul>
+  </section>
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="footer-nav"style="display:none">
+        <a href="what-to-eat.html">今天吃什么</a>
+        <span>|</span>
+      
+        <a href="dinner.html">晚饭吃什么</a>
+        <span>|</span>
+      
+        <a href="breakfast.html">早餐推荐</a>
+        <span>|</span>
+      
+        <a href="food-wheel.html">Food Wheel</a>
+      </div>
+      <a href="privacy.html" id="privacyLink">隐私政策</a>
+      <span class="footer-split">|</span>
+      <a href="terms.html" id="termsLink">使用条款</a>
+    </div>
+    <div class="footer-note">让选择变得有趣 🎉</div>
+    <div class="footer-brand">
+      乐龄品质生活 AI助手 · Lunch ANRJAI
+    </div>
+  </footer>
+
+  <!-- 简单弹窗：隐私/条款/目录/统计 都复用这一套 -->
+  <div id="infoModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <h2 class="modal-title" id="infoTitle">信息</h2>
+      <p class="modal-text" id="infoText">内容</p>
+      <div class="modal-buttons">
+        <button id="infoOkBtn" class="btn-share" type="button">✅ 我知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+  // 🌏 全国可用定位提示（不依赖定位）
+
+  const locationHint = document.getElementById("locationHint");
+  
+  if (locationHint) {
+  
+    if ("geolocation" in navigator) {
+  
+      navigator.geolocation.getCurrentPosition(
+  
+        () => {
+  
+          locationHint.innerText =
+            "📍 已开启位置服务，可推荐附近热门餐饮";
+  
+        },
+  
+        () => {
+  
+          locationHint.innerText =
+            "🌏 未开启定位，也可正常使用全国随机推荐";
+  
+        },
+  
+        {
+          enableHighAccuracy: false,
+          timeout: 3000,
+          maximumAge: 600000
+        }
+  
+      );
+  
+    } else {
+  
+      locationHint.innerText =
+        "🌏 当前设备不支持定位，已切换全国模式";
+  
+    }
+  
+  }
+</script>
+ 
+  </body>
+</html>
