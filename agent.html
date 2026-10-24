@@ -7,7 +7,7 @@
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="站检员 Agent · 乐龄品质生活 AI 助手">
-    <meta property="og:description" content="站检员：乐龄品质生活 AI 助手的网站巡检自动化 Agent。公开演示页，不接任何真实 API，他人无法调用。">
+    <meta property="og:description" content="站检员：乐龄品质生活 AI 助手的网站巡检自动化 Agent。展示站检员的真实巡检运行记录（已脱敏），不连接任何外部 API。">
     <meta property="og:image" content="https://www.anrjai.com/images/tupian1.jpg">
     <meta property="og:url" content="https://www.anrjai.com/agent.html">
     <meta property="og:site_name" content="乐龄品质生活 AI助手">
@@ -214,7 +214,7 @@
   <!-- 模拟体验区 -->
   <section class="demo" id="demo">
     <h2>🔬 模拟巡检体验</h2>
-    <p class="hint">选择一个指令，或自行输入，点击"开始演示巡检"。输出为预置的脱敏运行记录（取自 2026-09-13 真实运行记录），不会发起任何真实检查。</p>
+    <p class="hint">选择一个指令，或自行输入，点击"查看巡检记录"。下面是 2026-09-13 的真实运行记录（已脱敏）。</p>
     <div class="chips">
       <span class="chip" data-cmd="巡检首页">巡检首页</span>
       <span class="chip" data-cmd="巡检全部页面">巡检全部页面</span>
@@ -222,7 +222,7 @@
     </div>
     <div class="demo-row">
       <input id="cmd" type="text" value="巡检全部页面" placeholder="输入巡检指令，如：巡检全部页面">
-      <button class="btn" id="runBtn">开始演示巡检</button>
+      <button class="btn" id="runBtn">查看巡检记录</button>
     </div>
     <div class="progress" id="progress">
       <div class="step"><span class="dot"></span><span class="label">锁定范围：D:\A-cursor-anzhuangbao（61 个条目）</span></div>
@@ -297,7 +297,7 @@
         <li class="no">不改模型 / 配置 / 部署 / 环境</li>
         <li class="no">不上传、不推送、不发布</li>
         <li class="no">不越出允许目录，不读取范围外内容</li>
-        <li class="no">本页为公开演示：不接 API、不可调用、无数据回传</li>
+        <li class="no">本页展示的是已脱敏的真实运行记录，不连接任何外部 API</li>
       </ul></div>
     </div>
   </section>
@@ -346,7 +346,7 @@
 📌 报告路径：D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-09-13.md
 （运行记录：status=completed，error=None，时长约 7.5 分钟）</pre>
     </div>
-    <p class="note">⚠️ 本页为公开演示：所有交互均为前端模拟，预置脱敏记录；不连接任何真实 API、不暴露任何凭证、访客无法触发真实巡检、无数据回传。</p>
+    <p class="note">⚠️ 本页展示的是已脱敏的真实运行记录；不连接任何外部 API、不暴露任何凭证、访客无法触发真实巡检。</p>
   </section>
 
   <!-- 页脚（与官网一致） -->
@@ -372,7 +372,7 @@
       <a href="contact.html">联系我们</a>
     </div>
     <p>本站内容基于公开信息与 AI 技术进行整理与生成，旨在提供信息参考与认知辅助，不替代专业判断。具体决策请结合个人情况自行判断。</p>
-    <p class="demo-note">本页为「站检员 Agent」公开演示页：纯静态、无后端、不接 API、不可调用、无数据回传。</p>
+    <p class="demo-note">本页是「站检员 Agent」的运行记录展示：纯静态页面，不连接任何外部 API。</p>
     <p class="copyright">© 2026 www.anrjai.com · 乐龄品质生活 AI助手 · All Rights Reserved.</p>
   </footer>
 </div>
@@ -400,13 +400,13 @@
     progress.classList.remove('show');
     output.classList.remove('show');
     runBtn.disabled = false;
-    runBtn.textContent = '开始演示巡检';
+    runBtn.textContent = '查看巡检记录';
   }
 
   runBtn.addEventListener('click', function () {
     reset();
     runBtn.disabled = true;
-    runBtn.textContent = '演示巡检中…';
+    runBtn.textContent = '加载记录中…';
     progress.classList.add('show');
     steps.forEach(function (s, i) {
       timers.push(setTimeout(function () {
@@ -415,7 +415,7 @@
           setTimeout(function () {
             output.classList.add('show');
             runBtn.disabled = false;
-            runBtn.textContent = '重新演示';
+            runBtn.textContent = '重新查看';
             output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }, 420);
         }
