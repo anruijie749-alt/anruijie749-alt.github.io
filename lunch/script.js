@@ -422,8 +422,11 @@ function drawWheel(items) {
     wheelCtx.textAlign = 'center';
     wheelCtx.textBaseline = 'middle';
 
-    const baseFontSize = Math.max(12, radius / 15);
-    const maxWidth = radius * 0.40;
+    // 2026-10-27：扇形少的时候把字放大，避免看着小
+    const sectorCount = itemsToShow.length;
+    const fontBoost = sectorCount <= 6 ? 1.6 : (sectorCount <= 8 ? 1.3 : 1);
+    const baseFontSize = Math.max(12, Math.min((radius / 15) * fontBoost, radius / 7));
+    const maxWidth = radius * 0.46;
     const text = `${item.icon || ""} ${item.name || ""}`.trim();
 
     let fontSize = baseFontSize;
@@ -484,12 +487,13 @@ function spinWheel() {
   closeResultModal();
 
   const anglePerItem = (2 * Math.PI) / candidates.length;
-  const targetAngle = -selectedIndex * anglePerItem + Math.PI / 2;
-
-  const spins = 5 + Math.floor(Math.random() * 2);
-  const totalRotation = spins * 2 * Math.PI + targetAngle;
-
   const startRotation = currentRotation;
+  // 2026-10-27：指针必须落在选中扇形的中线上。
+  // 原来 targetAngle 是绝对角、没减掉当前起始角，也没算半格，实测指针和弹窗结果差约 2 个扇形。
+  const desired = -selectedIndex * anglePerItem - anglePerItem / 2;
+  const delta = ((desired - startRotation) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+  const spins = 5 + Math.floor(Math.random() * 2);
+  const totalRotation = spins * 2 * Math.PI + delta;
   const startTime = performance.now();
   const duration = 2600 + Math.floor(Math.random() * 350);
 
@@ -568,6 +572,21 @@ function getCandidatesForWheel() {
       }
       return true;
     });
+  }
+
+  // 2026-10-27：不足 12 个时补齐（用同预算/同口味的菜补，不重复），保证转盘固定 12 扇形
+  if (filtered.length < MAX_WHEEL_ITEMS) {
+    const have = filtered.map(x => x.name);
+    const extra = menuItems.filter(item => {
+      if (have.includes(item.name)) return false;
+      if (budget !== 999 && item.price > budget) return false;
+      if (selectedTastes.length > 0) {
+        if (selectedTastes.includes('素食')) return !!item.vegetarian;
+        return item.taste.some(t => selectedTastes.includes(t));
+      }
+      return true;
+    });
+    filtered = filtered.concat(extra);
   }
 
   // 打乱并取前 12 个
