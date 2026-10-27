@@ -299,7 +299,7 @@ function initPlatformButtons() {
 function isMobileDevice() {
   const ua = navigator.userAgent || "";
   const mobileUA = /Android|iPhone|iPad|iPod|Mobile|HarmonyOS|MicroMessenger/i.test(ua);
-  return mobileUA || (navigator.maxTouchPoints > 1 && window.innerWidth < 900);
+  return mobileUA;  // 2026-10-27：去掉 maxTouchPoints 判断（触屏笔记本会被误判成手机，电脑端点按钮直接跳唤端链空页）
 }
 
 // 电脑端弹二维码：外卖链是唤端链，电脑上打开是空页，所以让访客用手机淘宝扫
@@ -333,14 +333,15 @@ function bindSafeJump(el, urlOrFactory) {
     const url = (typeof urlOrFactory === "function")
       ? urlOrFactory()
       : urlOrFactory;
-    if (url) el.setAttribute("href", url);
-
-    // 电脑端：外卖链是唤端链，电脑上打开只有空页，所以不跳转，改成弹二维码让访客用手机扫
+    // 电脑端：外卖链是唤端链，电脑上打开只有空页，所以不跳转、也不写入 href，改成弹二维码让访客用手机扫
     if (!isMobileDevice()) {
+      el.setAttribute("href", "javascript:void(0);");
       showQrTip();
       setTimeout(() => { jumpLock = false; }, 600);
       return;
     }
+
+    if (url) el.setAttribute("href", url);
 
     // 手机端：新标签打开；若被浏览器拦截则退回当前页跳转，保证一定跳得出去
     const w = window.open(url, '_blank');
@@ -348,6 +349,9 @@ function bindSafeJump(el, urlOrFactory) {
 
     setTimeout(() => { jumpLock = false; }, 1500);
   }, { passive: false });
+
+  // 2026-10-27：电脑端拦截 a 标签默认跳转，避免访客被带到唤端链空页（只显示 正在跳转 四个字）
+  el.addEventListener("click", (ev) => { if (!isMobileDevice()) ev.preventDefault(); });
 }
 
 function initWheel() {
