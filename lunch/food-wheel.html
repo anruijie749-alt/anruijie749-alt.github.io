@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="每天中午不知道吃什么？3秒随机帮你决定午餐！支持预算筛选、口味偏好、最近记录，还有外卖平台快捷入口。" />
   <meta name="keywords" content="午餐,转盘,随机,美食,外卖优惠" />
-  <title>Food Wheel - Random Lunch Picker</title>
+  <title>午餐转盘：一键决定今天吃什么｜乐龄品质生活 AI助手</title>
   <!-- 改成 ✅ 直接用表情，不需要文件 -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
  <!-- 出海英文SEO备用，暂时注释
@@ -17,18 +17,17 @@
 <meta property="og:image" content="https://lunch.anrjai.com/og-cover.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Lunch Roulette - Random Food Picker" />
-<meta name="twitter:description" content="Can't decide what to eat? Spin the food wheel and get a random lunch pick in 3 seconds!" />
+  <meta name="twitter:description" content="不知道中午吃什么？转一下转盘，3 秒帮你定午餐，可按预算和口味筛选。" />
 <!-- SEO基础 -->
 <link rel="canonical" href="https://lunch.anrjai.com/food-wheel.html" />
 
 <!-- 社交分享OG标签 -->
-<meta property="og:title" content="Random Lunch Picker - Food Wheel" />
-<meta property="og:description" content="Can't decide what to eat? Spin the wheel!" />
+  <meta property="og:title" content="午餐转盘 · 一键决定今天吃什么" />
+  <meta property="og:description" content="不知道吃什么？转一下，帮你在预算和口味范围内挑一个。" />
 <meta property="og:type" content="website" />
     <meta property="og:site_name" content="今天吃什么工具站">
 <meta property="og:url" content="https://lunch.anrjai.com/food-wheel.html" />
 <meta property="og:locale" content="zh_CN" />
-<meta property="og:locale:alternate" content="en_US" />
 
 <!-- 结构化数据 -->
 <script type="application/ld+json">
@@ -50,9 +49,9 @@
   <canvas id="particleCanvas"></canvas>
 
   <div class="container">
-    <h1 class="title">🍔 Food Wheel Random Picker</h1>
+    <h1 class="title">🍔 午餐转盘 · 随机选饭</h1>
     <p class="subtitle">
-      Can't decide what to eat? One click and we'll pick for you!
+      拿不定主意？点一下，我帮你挑一个
     </p>
 
     <!-- IP定位提示（可选，不会阻塞使用） -->
@@ -63,8 +62,8 @@
       <div class="today-tip">
         🔥 查看今日优惠信息，先领红包再下单更省钱
         </div> 
-      <button id="spinBtn" class="btn-primary" type="button">🍜 Spin the Wheel</button>
-      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 Try Again</button>
+      <button id="spinBtn" class="btn-primary" type="button">🎲 转一下</button>
+      <button id="againBtn" class="btn-secondary" type="button" disabled>🔄 再转一次</button>
     </div>
 
     <!-- 图一的三按钮：菜单目录 / 查看统计 / 清除数据 -->
@@ -185,28 +184,38 @@
   </div>
 
   <!-- 页脚（图二） -->
-  <section class="seo-text"><h2>What this wheel actually does</h2>
-<p>It picks one lunch option for you, and that is the whole point. When you already know roughly what you can accept, deciding is not a matter of taste, it is a matter of stopping the comparison. The wheel does the stopping.</p>
-<h2>How to use it in three steps</h2>
+  <section class="seo-text">
+<h2>这个转盘到底做了什么</h2>
+<p>它只做一件事：替你挑一个午餐。当你知道自己大致能接受什么，决定就不再是口味问题，而是「停止比较」——转盘负责按下停止键。</p>
+<h2>三步用起来</h2>
 <ul class="seo-list">
-<li>Set a budget first. A range removes about half of the options before you look at a single menu.</li>
-<li>Pick a flavour profile: mild, medium, spicy, or vegetarian. That is elimination, not preference.</li>
-<li>Spin once and go with the result. If you spin more than four times, you already know what you want.</li>
+<li>先定预算。一个区间就能砍掉一半选项，不用翻菜单。</li>
+<li>再选口味：清淡、中辣、重辣，或者素食。这一步是排除，不是偏爱。</li>
+<li>转一次，就按结果吃。转超过四次，说明你心里其实已经想好了。</li>
 </ul>
-<h2>Why a random pick works for lunch</h2>
-<p>Most lunch choices are close to equivalent. Rice or noodles, this shop or the next, over a month the difference is small. What is not small is the ten minutes spent scrolling and the low mood that comes with it. Handing that decision to a wheel costs nothing and gives the time back.</p>
-<p>Where to draw the line: low-cost decisions such as lunch, what to wear, which film to watch, let the wheel decide. High-cost decisions such as housing, jobs, health, take your time and gather information instead.</p>
-<h2>Privacy and technical notes</h2>
-<p>No account is needed, nothing is uploaded, and the page works offline once loaded. Recent picks are stored only in your own browser, and clearing site data removes them. There is no location request and no automatic redirect. Any link to a delivery platform opens only when you tap it yourself.</p>
-<h2>Frequently asked</h2>
-<h3>Is the result truly random?</h3>
-<p>It is picked from the options that match the filters you set, so it is random within your own limits rather than across every dish that exists.</p>
-<h3>Can I use it on a phone?</h3>
-<p>Yes. The buttons are large and the layout fits a narrow screen, so it works one-handed.</p>
-<h3>Does it remember my history?</h3>
-<p>Only inside your own browser, and only the last few picks. Nothing is sent to a server.</p></section>
+<h2>为什么随机反而适合午餐</h2>
+<p>大多数午餐之间的差别很小。米饭还是面条，这家还是隔壁，一个月算下来差不了多少。真正差得多的是刷手机的十分钟，和随之而来的那点烦躁。把这一件事交给转盘，代价是零，时间还回来了。</p>
+<p>界线在哪：午餐、穿什么、看哪部片子这类小决定，可以交给转盘；住房、工作、健康这类大决定，慢一点、多查资料。</p>
+<h2>隐私与技术说明</h2>
+<p>不用注册，不上传任何内容，页面打开后离线也能用。最近的选择只存在你自己的浏览器里，清除网站数据就没了。不请求定位，不自动跳转；去平台的链接只有你自己点才会打开。</p>
+<h2>常见问题</h2>
+<h3>结果是真随机吗？</h3>
+<p>是从符合你筛选条件的菜里挑的，所以是在你自己划的范围内随机，不是全世界的菜一起抽。</p>
+<h3>手机上能用吗？</h3>
+<p>能。按钮大、版式窄，单手也点得动。</p>
+<h3>会记住我选过什么吗？</h3>
+<p>只记在你自己的浏览器里，而且只留最近几次，不会传到服务器。</p>
+<h2>什么时候不该用转盘</h2>
+<p>转盘适合「差不多都行」的时候。下面几种情况，自己定更好：</p>
+<ul>
+<li><strong>有忌口或医嘱：</strong>比如要控盐、控糖，先按身体条件筛一遍，再让转盘在剩下的里挑。</li>
+<li><strong>有人请客或约了人：</strong>要顾着对方的时间、路程和口味，这不是一个人的决定。</li>
+<li><strong>今天只想吃某一样：</strong>心里已经有答案就别转了，转了也会不甘心。</li>
+</ul>
+<p>转盘的用处是替你省掉「都行」的那几分钟，不是替你负责。选完发现不合口味，记下来，下次把它从名单里去掉就行。</p>
+</section>
     <section class="related-links">
-   <h2>🍽️ More Tools</h2>  
+   <h2>🍽️ 更多工具</h2>  
     <ul>
       <li><a href="what-to-eat.html">今天吃什么</a></li>
     <li><a href="breakfast.html">早餐吃什么</a></li>
@@ -214,7 +223,7 @@
     <li><a href="diet.html">减脂吃什么</a></li>
     <li><a href="couple.html">情侣吃什么</a></li>
     <li><a href="decision.html">选择困难症</a></li>
-    <li><a href="food-wheel.html">Random Lunch Picker</a></li>
+    <li><a href="food-wheel.html">午餐转盘</a></li>
 </ul>
   </section>
   <footer class="footer">
