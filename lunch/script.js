@@ -71,7 +71,15 @@ const menuItems = [
   { name: '炸鸡', icon: '🍗', price: 40, taste: ['清淡', '中辣'], vegetarian: false },
   { name: '盖浇饭', icon: '🍱', price: 22, taste: ['清淡', '中辣'], vegetarian: false },
   { name: '酸辣粉', icon: '🍲', price: 18, taste: ['中辣', '重辣'], vegetarian: false },
-  { name: '粥', icon: '🥣', price: 15, taste: ['清淡'], vegetarian: true }
+  { name: '粥', icon: '🥣', price: 15, taste: ['清淡'], vegetarian: true },
+  { name: '番茄鸡蛋面', icon: '🍜', price: 22, taste: ['清淡'], vegetarian: true },
+  { name: '香菇青菜', icon: '🥬', price: 18, taste: ['清淡'], vegetarian: true },
+  { name: '素炒时蔬', icon: '🥗', price: 16, taste: ['清淡'], vegetarian: true },
+  { name: '鸡蛋羹', icon: '🥚', price: 12, taste: ['清淡'], vegetarian: true },
+  { name: '麻婆豆腐', icon: '🌶️', price: 20, taste: ['中辣'], vegetarian: true },
+  { name: '三鲜豆腐煲', icon: '🍲', price: 25, taste: ['清淡'], vegetarian: true },
+  { name: '皮蛋瘦肉粥', icon: '🥣', price: 18, taste: ['清淡'], vegetarian: false },
+  { name: '黄焖鸡米饭', icon: '🍗', price: 26, taste: ['清淡', '中辣'], vegetarian: false }
 ];
 
 const wheelColors = [
