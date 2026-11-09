@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /_live_
 
 Sitemap: https://www.anrjai.com/sitemap.xml
