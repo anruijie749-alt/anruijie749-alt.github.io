@@ -206,15 +206,15 @@
   <header class="hero">
     <span class="badge">站检员 AGENT · 官网技术守护者</span>
     <h1>每天为「乐龄品质生活」做一次全站体检</h1>
-    <p class="sub">站检员是本站的巡检自动化 Agent：定时扫描 53 个网站页面（含子目录），检查编码、资源引用、死链与占位内容，
-      按 A / B / C 分级列清单、自动生成巡检报告并推送到飞书群。下面是一次"模拟巡检"的真实体验。</p>
-    <span class="demo-tag">巡检记录节选 · 2026-09-13 真实运行输出</span>
+    <p class="sub">站检员是本站的巡检自动化 Agent：定时扫描 62 个网站页面（含子目录），检查编码、资源引用、死链与占位内容，
+      按 A / B / C 分级列清单、自动生成巡检报告并推送到飞书群。下面是最近一次巡检的真实记录。</p>
+    <span class="demo-tag">巡检记录节选 · 2026-11-09 真实运行输出</span>
   </header>
 
   <!-- 模拟体验区 -->
   <section class="demo" id="demo">
-    <h2>🔬 模拟巡检体验</h2>
-    <p class="hint">选择一个指令，或自行输入，点击"查看巡检记录"。下面是 2026-09-13 的真实运行记录（已脱敏）。</p>
+    <h2>🔬 巡检体验</h2>
+    <p class="hint">选择一个指令，或自行输入，点击"查看巡检记录"。下面是 2026-11-09 的真实运行记录（已脱敏）。</p>
     <div class="chips">
       <span class="chip" data-cmd="巡检首页">巡检首页</span>
       <span class="chip" data-cmd="巡检全部页面">巡检全部页面</span>
@@ -225,7 +225,7 @@
       <button class="btn" id="runBtn">查看巡检记录</button>
     </div>
     <div class="progress" id="progress">
-      <div class="step"><span class="dot"></span><span class="label">锁定范围：D:\A-cursor-anzhuangbao（61 个条目）</span></div>
+      <div class="step"><span class="dot"></span><span class="label">锁定范围：网站根目录（93 个文件）</span></div>
       <div class="step"><span class="dot"></span><span class="label">扫描本地 HTML / CSS / JS（含子目录）</span></div>
       <div class="step"><span class="dot"></span><span class="label">检查编码 / 资源引用 / 死链 / 占位内容</span></div>
       <div class="step"><span class="dot"></span><span class="label">按 A / B / C 分级问题</span></div>
@@ -233,20 +233,20 @@
       <div class="step"><span class="dot"></span><span class="label">推送摘要到飞书群</span></div>
     </div>
     <div class="output" id="output">
-      <div class="out-head">🔍 站检员 · 每日巡检摘要（预置记录 · 数据取自 2026-09-13 真实运行，已脱敏）</div>
-      <p><b>✅ 结论：</b>巡检完成（只读，未修改任何文件）。覆盖 <span class="path">D:\A-cursor-anzhuangbao</span> 全部 61 个条目（含 api、downloads、images、lunch 子目录）；全站 UTF-8 无乱码，本地资源引用齐全。</p>
-      <p style="margin-top:6px"><b>发现问题：</b><span class="lvl-a">A 级 3 处</span>、<span class="lvl-b">B 级 2 处</span>、外部波动 1 处（详见报告）。</p>
-      <table>
-        <tr><th>#</th><th>级别</th><th>位置</th><th>问题</th></tr>
-        <tr><td>1</td><td class="lvl-a">A</td><td>safe-check.html</td><td>首行与末行残留 Markdown 围栏符号（页面顶部/底部会显示出来）</td></tr>
-        <tr><td>2</td><td class="lvl-a">A</td><td>consult.html</td><td>末行残留 Markdown 围栏符号</td></tr>
-        <tr><td>3</td><td class="lvl-a">A</td><td>posture-plan.html</td><td>末行残留 Markdown 围栏符号</td></tr>
-        <tr><td>4</td><td class="lvl-b">B</td><td>robots.txt</td><td>Sitemap 地址用裸域，与全站 www 域名规则不一致</td></tr>
-        <tr><td>5</td><td class="lvl-b">B</td><td>lunch 子站</td><td>what-to-eat.html 线上为旧版本（缺少广告位）</td></tr>
-        <tr><td>6</td><td class="lvl-b">B</td><td>anrjai.com</td><td>裸域本机网络不通（排查后判定非网站故障，登记复查）</td></tr>
-      </table>
-      <p><b>🤔 待确认：</b>是否批准修复 A 级 3 项与 robots.txt 域名统一；lunch 子站页面是否单独更新部署；裸域连通性复查。</p>
-      <p style="margin-top:8px"><b>📌 报告路径：</b><span class="path">D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-09-13.md</span></p>
+      <div class="out-head">🔍 站检员 · 每日巡检摘要（数据取自 2026-11-09 真实运行，已脱敏）</div>
+      <p><b>✅ 结论：</b>巡检完成（只读，未修改任何文件）。覆盖 <span class="path">网站根目录</span> 全部 93 个文件（含 api、downloads、images、lunch 子目录）；全站 UTF-8 无乱码，本地资源引用齐全。</p>
+      <p style="margin-top:6px"><b>发现问题：</b><span class="lvl-a">A 级 2 处</span>、<span class="lvl-b">B 级 3 处</span>、外部波动 1 处（详见报告）。</p>
+<table>
+<tr><th>#</th><th>级别</th><th>位置</th><th>问题</th></tr>
+<tr><td>1</td><td class="lvl-a">A</td><td>www.anrjai.com</td><td>域名 DNS 解析失败，访客打不开；部署与页面内容本身正常（需站主在域名后台处理）</td></tr>
+<tr><td>2</td><td class="lvl-a">A</td><td>article1 / article2 / article3 / product-monitor / tea</td><td>正文 15 天未更新；agent 页数据停在 9 月（当天全部改完并上线）</td></tr>
+<tr><td>3</td><td class="lvl-b">B</td><td>article1 / article2 / article3 / article4 / article13</td><td>页脚站名与其余 41 页不一致（当天统一）</td></tr>
+<tr><td>4</td><td class="lvl-b">B</td><td>robots.txt</td><td>残留一条指向不存在文件的规则（当天清理）</td></tr>
+<tr><td>5</td><td class="lvl-b">B</td><td>ziliao-full-8f3k9m.html</td><td>完整版里 3 处写稿备注没清（当天改成正常使用说明）</td></tr>
+<tr><td>6</td><td class="lvl-b">B</td><td>本机网络</td><td>到 Google 的四个端点全部连不通，AdSense 与 GSC 数据取不到，登记复查</td></tr>
+</table>
+      <p><b>🤔 待确认：</b>域名 DNS 需站主在注册商后台处理；AdSense 审核状态与 GSC 收录数，等本机到 Google 的网络恢复后补取。</p>
+      <p style="margin-top:8px"><b>📌 报告路径：</b><span class="path">巡检报告/巡检报告-2026-11-09.md</span></p>
     </div>
   </section>
 
@@ -255,7 +255,7 @@
     <h2>核心能力</h2>
     <p class="lead">它每天替你盯住网站，把"漏检"和"忘存档"这两件事交给机器。</p>
     <div class="cards">
-      <div class="card"><div class="ic">🔍</div><h3>全站巡检</h3><p>61 个条目（含子目录）逐文件检查编码、资源引用、死链与占位内容。</p></div>
+      <div class="card"><div class="ic">🔍</div><h3>全站巡检</h3><p>93 个文件（含子目录）逐文件检查编码、资源引用、死链与占位内容。</p></div>
       <div class="card"><div class="ic">🗂️</div><h3>A/B/C 分级</h3><p>A 可安全修、B 需确认、C 禁止触碰；分级列清单，绝不自行越级处理。</p></div>
       <div class="card"><div class="ic">📤</div><h3>飞书推送</h3><p>巡检摘要按固定结构（结论→行动项→待确认）推送到指定飞书群。</p></div>
       <div class="card"><div class="ic">⏰</div><h3>定时任务</h3><p>每天 18:10 自动运行一次，也可飞书发"巡检 &lt;范围&gt;"即时触发。</p></div>
@@ -284,7 +284,7 @@
     <p class="lead">能做什么、不能做什么，白纸黑字写死在规范里（SOUL.md）。</p>
     <div class="two-col">
       <div class="panel"><h3>✅ 它能做</h3><ul>
-        <li class="ok">本地全站巡检（61 个条目 + 子目录）</li>
+        <li class="ok">本地全站巡检（93 个文件 + 子目录）</li>
         <li class="ok">编码 / 资源引用 / 死链 / 占位内容检查</li>
         <li class="ok">A/B/C 分级问题清单</li>
         <li class="ok">巡检报告生成与存档（Markdown）</li>
@@ -319,32 +319,30 @@
   <!-- 真实样例回放 -->
   <section class="sec">
     <h2>真实运行回放</h2>
-    <p class="lead">以下为 2026-09-13 20:34–21:05 真实运行记录（已脱敏），可核验。</p>
+    <p class="lead">以下为 2026-11-09 18:10–18:55 真实运行记录（已脱敏），可核验。</p>
     <div class="sample">
       <pre>Cronjob Response: 每日巡检 - 1810（job_id: 5aadbb6f5879）
 ---
-# 🔍 站检员・每日巡检摘要（2026-09-13）
+# 🔍 站检员・每日巡检摘要（2026-11-09）
 
 ## ✅ 结论
-- 巡检完成（只读，未修改任何文件）：覆盖 D:\A-cursor-anzhuangbao 全部 61 个条目（含 api、downloads、images、lunch 等）
-- 发现问题：A 级 3 处、B 级 2 处、外部波动 1 处（详见报告）
+- 巡检完成：本地 62 个 html 加样式脚本逐页扫；线上 105 个地址逐条取回，0 个 404、0 个空壳页
+- 发现问题：A 级 2 处、B 级 3 处、外部波动 1 处（详见报告）
 
-## ⚠️ 行动项（需批准后修复）
-1. [A] safe-check.html 首行与末行残留 Markdown 围栏符号
-2. [A] consult.html 末行残留 Markdown 围栏符号
-3. [A] posture-plan.html 末行残留 Markdown 围栏符号
-4. [B] robots.txt Sitemap 地址用裸域（应统一为 www）
-5. [B] lunch 子站 what-to-eat.html 线上为旧版本（缺广告位）
-6. [外部] 裸域 anrjai.com 本机网络不通（排查后判定非网站故障）
+## ⚠️ 行动项
+1. [A] 域名 www.anrjai.com 解析失败，访客打不开（需站主在注册商后台处理）
+2. [A] article1 / article2 / article3 / product-monitor / tea 正文 15 天未更新 → 当天补厚并上线
+3. [B] 5 个页面页脚站名与全站不一致 → 当天统一
+4. [B] robots.txt 残留规则 → 当天清理
+5. [B] 完整版资料页 3 处写稿备注 → 当天改成正常说明
+6. [外部] 本机到 Google 不通，AdSense 与 GSC 数据取不到，登记复查
 
 ## 🤔 待确认
-1. 是否批准修复 A 级 3 项（需随下次部署上传）
-2. robots.txt 是否统一为 www 域名
-3. lunch 子站 what-to-eat.html 是否单独更新部署
-4. 裸域 anrjai.com 连通性复查（建议用外部网络复核）
+1. 域名 DNS 处理进度（需站主操作）
+2. AdSense 审核状态与 GSC 收录数，等网络恢复补取
 
-📌 报告路径：D:\A-cursor-anzhuangbao\巡检报告\巡检报告-2026-09-13.md
-（运行记录：status=completed，error=None，时长约 7.5 分钟）</pre>
+📌 报告路径：巡检报告/巡检报告-2026-11-09.md
+（运行记录：status=completed，error=None）</pre>
     </div>
     <p class="note">⚠️ 本页展示的是已脱敏的真实运行记录；不连接任何外部 API、不暴露任何凭证、访客无法触发真实巡检。</p>
   </section>
@@ -364,7 +362,7 @@
 ===== 已停用 结束 ===== -->
 
   <div class="src-block" style="max-width:900px;margin:24px auto 8px;padding:0 16px;line-height:1.9;">
-  <p style="margin:0 0 6px;font-size:0.9rem;color:#888;">作者：本站编辑 ｜ 审校：本站编辑 ｜ 更新时间：2026-10-27</p>
+  <p style="margin:0 0 6px;font-size:0.9rem;color:#888;">作者：本站编辑 ｜ 审校：本站编辑 ｜ 更新时间：2026-11-09</p>
   <p style="margin:0 0 6px;font-size:0.9rem;color:#888;">信息来源：本文依据公开政策文件、平台公开信息与公开科普资料整理；价格、政策与商品信息会随时间调整，以官方最新发布为准。</p>
   <p style="margin:0;font-size:0.9rem;color:#888;">免责声明：本文为公开资料整理，供日常生活参考，不构成专业建议，也不替代医生与专业人士的判断；涉及具体政策与价格，以官方发布为准。</p>
   </div>
