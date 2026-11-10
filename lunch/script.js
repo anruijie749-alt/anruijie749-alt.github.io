@@ -1,7 +1,7 @@
 // ==================== 外卖红包入口链接 ====================
 // 访客点「领取外卖红包」时打开的活动入口（平台生成的入口链接，打开后可直接领红包、点外卖）。
 const UNION_LINKS = {
-  // 外卖入口链接（2026-10-10：换成「淘宝闪购·天天领红包(全场景通用)」推广链，2026-10-10 手机实点验证：直接进淘宝闪购外卖页、可领红包）
+  // 外卖入口链接（2026-10-10：换成「淘宝闪购·天天领红包(全场景通用)」入口链，2026-10-10 手机实点验证：直接进淘宝闪购外卖页、可领红包）
   // 说明：这是唤端链，手机上点开直接进淘宝App；电脑上打开是空页，所以电脑端走二维码（见 showQrTip）
   taobao:   'https://m.duanqu.com/?_ariver_appid=8251537&page=plugin-private%3A%2F%2F2021004134685665%2Fpages%2Ftaoke-guide%2Findex%3Ffrom%3Dminiapp.taobao%26channelInfo%3D%7B%22subSubChannel%22%3A%22miniapp.taobao.et%22%7D%26alsc_exsrc%3DES0006299852%26scene%3Dbd9b9628fa614f5495b8912626c47cfa',
   eleme:    'https://m.duanqu.com/?_ariver_appid=8251537&page=plugin-private%3A%2F%2F2021004134685665%2Fpages%2Ftaoke-guide%2Findex%3Ffrom%3Dminiapp.taobao%26channelInfo%3D%7B%22subSubChannel%22%3A%22miniapp.taobao.et%22%7D%26alsc_exsrc%3DES0006299852%26scene%3Dbd9b9628fa614f5495b8912626c47cfa',
