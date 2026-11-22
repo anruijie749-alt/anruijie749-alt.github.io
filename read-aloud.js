@@ -21,7 +21,8 @@
     active: false,
     paused: false,
     utt: null,
-    hinted: false
+    hinted: false,
+    errCount: 0
   };
 
   var SKIP_SEL = [
@@ -404,6 +405,7 @@
       if (!state.active || state.paused) {
         return;
       }
+      state.errCount = 0;
       speakAt(i + 1);
     };
     u.onerror = function (ev) {
@@ -411,6 +413,15 @@
         return;
       }
       if (ev && (ev.error === 'interrupted' || ev.error === 'canceled')) {
+        return;
+      }
+      // 2026-11-22：设备没有中文语音时每次朗读都会触发 onerror，
+      // 原来这里直接 speakAt(i+1) 会无限递归把栈打爆（RangeError），
+      // 按钮卡在「朗读中」。连续失败 3 次就停下并给出提示。
+      state.errCount = (state.errCount || 0) + 1;
+      if (state.errCount > 3) {
+        stop();
+        showHint();
         return;
       }
       speakAt(i + 1);
@@ -445,6 +456,7 @@
     }
     state.queue = q;
     state.idx = 0;
+    state.errCount = 0;
     state.active = true;
     state.paused = false;
     state.hinted = false;
