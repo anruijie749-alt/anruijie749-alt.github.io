@@ -115,3 +115,24 @@ if (hamburger) {
       navContainer.classList.toggle('active');
   });
 }
+
+/* ===== 站内搜索入口（2026-11-27）=====
+   自动加载 search.js，在页面右下角加一个放大镜按钮。
+   加载失败不影响页面其它功能（整体 try/catch）。 */
+(function () {
+  try {
+    function inject() {
+      try {
+        if (document.getElementById('as-fab')) { return; }
+        if (document.getElementById('as-script')) { return; }
+        var s = document.createElement('script');
+        s.id = 'as-script';
+        s.src = 'search.js';
+        s.defer = true;
+        document.body.appendChild(s);
+      } catch (e) {}
+    }
+    if (document.body) { inject(); }
+    else { document.addEventListener('DOMContentLoaded', inject); }
+  } catch (e) {}
+})();
