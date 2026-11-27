@@ -248,8 +248,8 @@
       '.ra-rate{flex:0 0 auto;font-size:11.5px;line-height:1;padding:5px 7px;border-radius:999px;cursor:pointer;',
       'color:#bdf3ff;background:rgba(0,242,254,.08);border:1px solid rgba(0,242,254,.26);font-variant-numeric:tabular-nums;}',
       '.ra-rate:hover{background:rgba(0,242,254,.20);}',
-      '.ra-close{background:transparent;border:0;color:#9fe9f3;opacity:.7;}',
-      '.ra-close:hover{opacity:1;background:rgba(255,255,255,.10);}',
+      '.ra-stop{width:auto;min-width:44px;padding:0 9px;border-radius:999px;font-size:11.5px;letter-spacing:.04em;}',
+      '.ra-stop:hover{background:rgba(255,120,120,.22);border-color:rgba(255,150,150,.5);color:#ffd7d7;}',
       '.ra-hint{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:9999;max-width:290px;',
       'padding:12px 14px;font-size:14px;line-height:1.6;color:#3a2a00;background:#ffe9a8;border-radius:12px;',
       'box-shadow:0 8px 24px rgba(0,0,0,.35);}',
@@ -347,9 +347,13 @@
     rate.setAttribute('aria-label', '调整语速');
     rate.title = '调整语速';
 
-    var close = mkBtn('ra-btn ra-close', '关闭朗读条');
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'ra-btn ra-stop';
     close.id = 'ra-close';
-    close.innerHTML = SVG.close;
+    close.textContent = '停止';
+    close.setAttribute('aria-label', '停止朗读');
+    close.title = '停止朗读';
 
     panel.appendChild(play);
     panel.appendChild(prev);
@@ -887,9 +891,17 @@
     buildUI();
   }
 
-  window.addEventListener('beforeunload', function () {
+  function killSpeech() {
+    state.active = false;
+    state.paused = false;
+    state.uid++;
+    stopTicker();
     try {
       window.speechSynthesis.cancel();
     } catch (e) {}
-  });
+  }
+
+  window.addEventListener('beforeunload', killSpeech);
+  window.addEventListener('pagehide', killSpeech);
+  window.addEventListener('unload', killSpeech);
 })();
