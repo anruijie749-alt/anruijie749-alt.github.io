@@ -908,7 +908,7 @@ try {
    const isLocal = location.protocol === 'file:' || h === '' || h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0'
      || h.startsWith('192.168.') || h.startsWith('10.') || h.startsWith('172.1') || h.startsWith('172.2') || h.startsWith('172.3')
      || h.endsWith('.local');
-   const API_URL = isLocal ? 'https://www.anrjai.com/api/generate-plan' : '/api/generate-plan';
+   const API_URL = 'https://anruijie749-alt-github-io.vercel.app/api/generate-plan';
    apiUrlUsed = API_URL;
    // 网络偶发失败（临时拦截、连接抖动）时自动重试一次，避免一次失败就报错
    let response = null;
